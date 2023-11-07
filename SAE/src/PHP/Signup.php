@@ -14,7 +14,7 @@ class Signup{
         $this->db = $db;
     }
 
-    public function signup( string $email, string $password):bool {
+    public function signup(string $nom, string $prenom, string $email, string $password):bool {
 
         // On vérifie que ce mail n'a pas déjà un compte
         $query = "SELECT COUNT(*) FROM Utilisateur WHERE email = :email";
@@ -38,9 +38,21 @@ class Signup{
             throw new MDPNonRobusteException("Le mot de passe n'est pas assez robuste, vérifiez les exigences.");
         }
 
-        $hash = password_hash($password, PASSWORD_DEFAULT, ['cost'=>12]);
-        "insert into Utilisateur (email, passwd ) values($email, $hash)";
-        return true ;
+        // à nouveau on utilise une requête préparée afin de prévenir toutes injections SQL
+        $query = "INSERT INTO Utilisateur (nom, prenom, email, password) VALUES (:nom, :prenom, :email, :password)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
+        $stmt->bindParam(':prenom', $prenom, PDO::PARAM_STR);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $hash = password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]);
+        $stmt->bindParam(':password', $hash);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            //Dans le cas ou false est retourné, soit il y'a un problème dans la BDD soit un problème dans le nom ou le prénom
+            return false;
+        }
     }
 
 
