@@ -1,0 +1,92 @@
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Touiteur - Accueil</title>
+    <link rel="stylesheet" href="../CSS/signup.css">
+    <link rel="icon" type="image/jpeg" href="../images/icon.jpg">
+</head>
+
+<body>
+
+
+<div class="container">
+    <img src="../images/logo.jpeg" alt="Logo Touiteur" class="logo">
+
+    <header>
+
+    </header>
+    <main class="content">
+        <!-- Container pour le formulaire -->
+        <div class="login-form">
+            <h2>Inscrivez-vous</h2>
+
+            <!-- Formulaire de connexion -->
+            <div class="form-group">
+                <label for="pseudo">Pseudonyme:</label>
+                <input type="text" id="pseudo" name="pseudo" required>
+            </div>
+
+            <!-- Groupe de formulaire pour le nom -->
+            <div class="form-group">
+                <label for="lastname">Nom:</label>
+                <input type="text" id="lastname" name="lastname" required>
+            </div>
+
+            <!-- Groupe de formulaire pour le prénom -->
+            <div class="form-group">
+                <label for="firstname">Prénom:</label>
+                <input type="text" id="firstname" name="firstname" required>
+            </div>
+
+            <!-- Groupe de formulaire pour l'email -->
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <!-- Groupe de formulaire pour le mot de passe -->
+            <div class="form-group">
+                <label for="password">Mot de passe:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <!-- Bouton de connexion -->
+                <button type="submit" class="btn-inscription">S'INSCRIRE</button>
+            </form>
+        </div>
+
+    </main>
+
+
+    <aside class="sidebar">
+        <nav>
+
+            <ul class="menu">
+                <li><a href="accueil.html"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
+                <li><a href="tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
+            </ul>
+
+            <form action="login.html" method="post">
+                <button type="submit" class="btn-connexion">Se connecter</button>
+            </form>
+            <form action="signup.html" method="post">
+                <button type="submit" class="btn-inscription">S'inscrire</button>
+            </form>
+
+
+        </nav>
+        <div class="profile-module">
+            <img src="../images/profile-pic.jpg" alt="Votre nom" class="profile-picture">
+            <div class="profile-username">@votreIdentifiant</div>
+        </div>
+    </aside>
+    <main class="content">
+    </main>
+
+
+</div>
+</body>
+</html>
