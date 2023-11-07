@@ -1,0 +1,76 @@
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Touiteur - Accueil</title>
+    <link rel="stylesheet" href="../CSS/login.css">
+    <link rel="icon" type="image/jpeg" href="../images/icon.jpg">
+</head>
+
+<body>
+
+
+<div class="container">
+    <img src="../images/logo.jpeg" alt="Logo Touiteur" class="logo">
+
+    <header>
+
+    </header>
+    <main class="content">
+        <!-- Container pour le formulaire -->
+        <div class="login-form">
+            <!-- Formulaire de connexion -->
+            <form id="formulaire-connexion" action="/login" method="post">
+                <h2>Connectez-vous</h2>
+
+                <!-- Groupe de formulaire pour le nom d'utilisateur -->
+                <div class="form-group">
+                    <label for="username">Nom d'utilisateur:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+
+                <!-- Groupe de formulaire pour le mot de passe -->
+                <div class="form-group">
+                    <label for="password">Mot de passe:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <!-- Bouton de connexion -->
+                <button type="submit" class="btn-connexion">Se connecter</button>
+            </form>
+        </div>
+
+    </main>
+
+
+    <aside class="sidebar">
+        <nav>
+
+            <ul class="menu">
+                <li><a href="accueil.html"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
+                <li><a href="tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
+            </ul>
+
+            <form action="login.html" method="post">
+                <button type="submit" class="btn-connexion">Se connecter</button>
+            </form>
+            <form action="signup.html" method="post">
+                <button type="submit" class="btn-inscription">S'inscrire</button>
+            </form>
+
+
+        </nav>
+        <div class="profile-module">
+            <img src="../images/profile-pic.jpg" alt="Votre nom" class="profile-picture">
+            <div class="profile-username">@votreIdentifiant</div>
+        </div>
+    </aside>
+    <main class="content">
+    </main>
+
+
+</div>
+</body>
+</html>
