@@ -1,0 +1,223 @@
+/* Réinitialiser quelques styles par défaut */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none; /* Enlève le soulignement sur tous les liens */
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    background-color: #000000; /* Fond noir pour tout le site */
+    color: #ffffff; /* Couleur de texte blanche pour contraste */
+}
+
+header {
+    width: 100%;
+    padding: 50px 50px 50px 50px;
+    background-color: #000000; /* Assurer que le header est aussi noir */
+    text-align: center;
+}
+
+.logo {
+    width: 300px; /* Augmentation significative de la taille du logo */
+    display: block; /* Pour centrer le logo si nécessaire */
+    margin-right: auto;
+    position: fixed;
+}
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: calc(1.5 * 250px); /* Largeur de la sidebar 1.5 fois plus grande */
+    background-color: #000000; /* Même couleur de fond que le body */
+    border-left: 1px solid #ffffff; /* Barre verticale fine blanche */
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    color: #fff;
+    display: flex;
+    flex-direction: column; /* Organise les éléments de la sidebar en colonne */
+    justify-content: center; /* Centre verticalement les éléments dans la sidebar */
+
+}
+
+.menu {
+    width: 100%; /* Permet aux éléments de la liste de remplir la sidebar */
+    list-style-type: none; /* Enlève les puces devant les éléments de liste */
+    padding: 0; /* Enlève le padding par défaut de la liste */
+}
+.menu a {
+
+    display: flex;
+    align-items: center; /* Alignement vertical des éléments de la liste */
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none;
+    border: 2px solid transparent;
+    border-radius: 25px;
+    transition: border-color 0.3s;
+    max-width: 80%; /* Définit une largeur maximale pour les boutons */
+    margin: 10px auto; /* Centre les boutons horizontalement */
+    list-style-type: none; /* Enlève les puces devant les éléments de liste */
+
+
+}
+
+.menu a:hover {
+    background-color: rgba(255, 255, 255, 0.23); /* Bordure blanche au survol */
+}
+.menu li {
+    list-style-type: none; /* Enlève les puces devant les éléments de liste */
+
+}
+.menu ul {
+    list-style-type: none; /* Enlève les puces devant les éléments de liste */
+
+
+}
+
+.menu-icon {
+    width: 22px;
+    height: 22px;
+    margin-right: 40px;
+    vertical-align: middle;
+    object-fit: cover; /* Cela garantit que l'image couvre la zone sans être déformée */
+    align-items: center;
+
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #ffffff;
+    display: block;
+    padding: 10px;
+    transition: background-color 0.3s;
+    border-radius: 55px; /* Coins très arrondis pour le survol */
+align-items: center;
+}
+
+
+.content {
+    margin-left: 20px; /* Espace entre le contenu et la sidebar */
+    margin-right: calc(1.5 * 250px + 20px); /* Espace à droite pour la sidebar */
+    padding: 20px;
+}
+
+/* Style pour le bouton Se connecter */
+.btn-connexion {
+    display: block;
+    width: calc(100% - 40px); /* ajustez selon la largeur de votre sidebar */
+    margin: 10px auto;
+    padding: 10px;
+    text-align: center;
+    border: 2px solid #FFA500; /* Bordure orange */
+    color: white;
+    background-color: transparent; /* Fond transparent */
+    border-radius: 55px; /* Coins arrondis */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-connexion:hover {
+    background-color: #FFA500; /* Fond orange au survol */
+    color: white; /* Texte blanc au survol */
+}
+
+/* Style pour le bouton S'inscrire */
+.btn-inscription {
+    display: block;
+    width: calc(100% - 40px); /* ajustez selon la largeur de votre sidebar */
+    margin: 10px auto;
+    padding: 10px;
+    text-align: center;
+    background-color: #FFA500; /* Fond orange */
+    color: white;
+    border: none;
+    border-radius: 55px; /* Coins arrondis */
+    transition: background-color 0.3s;
+    border: 2px solid #FFA500; /* Ajoute une bordure orange pour le bouton S'inscrire */
+
+}
+
+.btn-inscription:hover {
+    color: white;
+    background-color: transparent; /* Rend le fond transparent au survol */
+
+}
+
+
+.bottom-containerA {
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: end; /* Centre verticalement */
+    margin: 20px 0;
+    padding-bottom: 30px;
+}
+
+.btn-poster {
+    margin: 10px auto;
+    padding: 10px 30px 10px 30px;
+    text-align: center;
+    border-radius: 55px; /* Coins arrondis */
+    font-size: 18px;
+    color: black;
+    position: fixed;
+    background-color: white; /* Fond transparent */
+    transition: all 0.3s; /* Transition pour tous les changements */
+}
+.btn-poster:hover {
+    color: white;
+    background-color: transparent; /* Fond transparent */
+    border: 2px solid white;
+
+}
+
+/* Styliser toute la scrollbar */
+::-webkit-scrollbar {
+    width: 12px; /* Largeur de la scrollbar */
+}
+
+/* Styliser le fond de la scrollbar */
+::-webkit-scrollbar-track {
+    background: linear-gradient(to bottom, orange , red); /* Dégradé vertical */
+}
+
+/* Styliser la partie mobile (le thumb) de la scrollbar */
+::-webkit-scrollbar-thumb {
+    background-color: darkorange; /* Couleur de base pour le thumb */
+    border-radius: 6px;
+    border: 3px solid orange; /* Ajouter si vous voulez une bordure autour du thumb */
+}
+
+/* Style pour le thumb lors du survol ou du clic */
+::-webkit-scrollbar-thumb:hover {
+    background-color: red;
+}
+.profile-module {
+    text-align: left; /* Centrer le contenu */
+    padding: 20px; /* Ajoutez un padding pour un peu d'espace */
+    justify-items: end;
+}
+
+.profile-picture {
+    width: 20px; /* Ou la taille que vous voulez pour l'image de profil */
+    height: 20px; /* Gardez la hauteur et la largeur égales pour un cercle parfait */
+    border-radius: 50%; /* Cela rend l'image de profil ronde */
+    margin-bottom: 10px; /* Ajoutez un peu d'espace entre l'image et le texte */
+    object-fit: cover; /* Cela s'assure que l'image couvre tout l'espace sans déformation */
+    border: 1px solid white; /* Ajoutez une bordure si vous le souhaitez */
+}
+
+.profile-username {
+    color: #ffffff; /* La couleur de votre choix */
+    font-size: 18px; /* La taille de police de votre choix */
+    font-weight: bold; /* Si vous voulez un texte en gras */
+    overflow-wrap: break-word; /* Empêche le texte de sortir de son conteneur */
+}
