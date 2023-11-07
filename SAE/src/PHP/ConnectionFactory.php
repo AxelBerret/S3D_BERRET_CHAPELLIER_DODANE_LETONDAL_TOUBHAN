@@ -4,9 +4,6 @@ class ConnectionFactory{
     private static $pdo;
     public static function setConfig($configName){
         self::$config = parse_ini_file($configName);
-        $dsn = "'{$config['driver']}:host={$config['host']};dbname={$config['database']};charset=utf8'";
-        $username = self::$config['username'];
-        $password = $config['password'];
     }
 
     public static function makeConnection(){
