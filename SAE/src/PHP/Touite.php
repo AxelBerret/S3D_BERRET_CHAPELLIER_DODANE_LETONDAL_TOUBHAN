@@ -94,6 +94,57 @@ class Touite{
 
     }
 
+    //DANS LE MAIN LORS DE L'IMPLEMENTATION NE PAS OUBLIER DE VERIFIER SI L'UTILISATEUR EST CONNECTÉ
+    public function publierTouite(string $idutilisateur, string $texte) : bool{
+
+        $query = "SELECT COUNT(id_touite) as nbtouite FROM TOUITE";
+
+        $result = this->db->query($query);
+
+        $row = $result->fetch(PDO::FETCH_ASSOC);
+
+        if ($row) {
+            $idtouite = $row['nbtouite'];
+        }
+
+        // On insère un nouveau touite dans la table touite
+        $query = "INSERT INTO TOUITE (id_touite, id_utilisateur, texte, datePub, score) VALUES ($idtouite, :id_utilisateur, :texte, NOW(), 0)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':id_utilisateur', $idutilisateur, PDO::PARAM_STR);
+        $stmt->bindParam(':texte', $texte, PDO::PARAM_STR);
+        $stmt->execute();
+
+        //On retourne true si la publication du touite à marcher
+        return true;
+    }
+
+    public function evaluerTouite(string $idtouite, bool $eval) : bool{
+
+        if($eval){
+            $query = "UPDATE TOUITE SET Like = Like + 1 WHERE id_touite = :idtouite";
+        }
+        else{
+            $query = "UPDATE TOUITE SET Dislike = Dislike + 1 WHERE id_touite = :idtouite";
+        }
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':idtouite', $idtouite, PDO::PARAM_STR);
+        $stmt->execute();
+
+        //On retourne true si l'update du touite à marcher
+        return true;
+    }
+
+    public function effacerTouite(string $idtouite) : bool{
+
+        $query = "DELETE FROM Touite WHERE id_touite = :idtouite";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':idtouite', $idtouite, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return true;
+    }
+
 
 }
 
