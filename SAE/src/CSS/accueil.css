@@ -20,7 +20,6 @@ header {
     width: 100%;
     padding: 50px 50px 50px 50px;
     background-color: #000000; /* Assurer que le header est aussi noir */
-    text-align: center;
 }
 
 .logo {
@@ -31,10 +30,12 @@ header {
 }
 .container {
     display: flex;
+    justify-content: space-between;
 }
 
 .sidebar {
     width: calc(1.5 * 250px); /* Largeur de la sidebar 1.5 fois plus grande */
+    max-width: 375px;
     background-color: #000000; /* Même couleur de fond que le body */
     border-left: 1px solid #ffffff; /* Barre verticale fine blanche */
     position: fixed;
@@ -109,6 +110,10 @@ align-items: center;
     margin-left: 20px; /* Espace entre le contenu et la sidebar */
     margin-right: calc(1.5 * 250px + 20px); /* Espace à droite pour la sidebar */
     padding: 20px;
+    flex-grow: 1;
+    padding-left: 20px; /* Cela décale le contenu de la zone principale à droite */
+
+
 }
 
 /* Style pour le bouton Se connecter */
@@ -139,7 +144,6 @@ align-items: center;
     text-align: center;
     background-color: #FFA500; /* Fond orange */
     color: white;
-    border: none;
     border-radius: 55px; /* Coins arrondis */
     transition: background-color 0.3s;
     border: 2px solid #FFA500; /* Ajoute une bordure orange pour le bouton S'inscrire */
@@ -153,32 +157,6 @@ align-items: center;
 }
 
 
-.bottom-containerA {
-    display: flex;
-    justify-content: center; /* Centre horizontalement */
-    align-items: end; /* Centre verticalement */
-    margin: 20px 0;
-    padding-bottom: 30px;
-}
-
-.btn-poster {
-    margin: 10px auto;
-    padding: 10px 30px 10px 30px;
-    text-align: center;
-    border-radius: 55px; /* Coins arrondis */
-    font-size: 18px;
-    color: black;
-    position: fixed;
-    background-color: white; /* Fond transparent */
-    transition: all 0.3s; /* Transition pour tous les changements */
-}
-.btn-poster:hover {
-    color: white;
-    background-color: transparent; /* Fond transparent */
-    border: 2px solid white;
-
-}
-
 /* Styliser toute la scrollbar */
 ::-webkit-scrollbar {
     width: 12px; /* Largeur de la scrollbar */
@@ -186,7 +164,7 @@ align-items: center;
 
 /* Styliser le fond de la scrollbar */
 ::-webkit-scrollbar-track {
-    background: linear-gradient(to bottom, orange , red); /* Dégradé vertical */
+    background-color: #ffffff;
 }
 
 /* Styliser la partie mobile (le thumb) de la scrollbar */
@@ -196,10 +174,7 @@ align-items: center;
     border: 3px solid orange; /* Ajouter si vous voulez une bordure autour du thumb */
 }
 
-/* Style pour le thumb lors du survol ou du clic */
-::-webkit-scrollbar-thumb:hover {
-    background-color: red;
-}
+
 .profile-module {
     text-align: left; /* Centrer le contenu */
     padding: 20px; /* Ajoutez un padding pour un peu d'espace */
@@ -207,8 +182,8 @@ align-items: center;
 }
 
 .profile-picture {
-    width: 20px; /* Ou la taille que vous voulez pour l'image de profil */
-    height: 20px; /* Gardez la hauteur et la largeur égales pour un cercle parfait */
+    width: 30px; /* Ou la taille que vous voulez pour l'image de profil */
+    height: 30px; /* Gardez la hauteur et la largeur égales pour un cercle parfait */
     border-radius: 50%; /* Cela rend l'image de profil ronde */
     margin-bottom: 10px; /* Ajoutez un peu d'espace entre l'image et le texte */
     object-fit: cover; /* Cela s'assure que l'image couvre tout l'espace sans déformation */
@@ -220,4 +195,98 @@ align-items: center;
     font-size: 18px; /* La taille de police de votre choix */
     font-weight: bold; /* Si vous voulez un texte en gras */
     overflow-wrap: break-word; /* Empêche le texte de sortir de son conteneur */
+}
+.fil {
+    margin: 20px;
+    padding: 10px;
+}
+
+
+
+.tweet-header {
+    display: flex;
+    align-items: center;
+}
+
+.tweet-profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.tweet-user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.tweet-username {
+    font-weight: bold;
+}
+
+.tweet-divider {
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+    margin: 10px 0;
+}
+
+.tweet-content {
+    margin-top: 10px;
+}
+
+.tweet-content p {
+    margin-bottom: 10px;
+}
+
+.tweet-image {
+    max-width: 100%;
+    border-radius: 5px;
+}
+.content {
+    flex-grow: 1; /* Permet au contenu de remplir l'espace disponible */
+    padding-left: 300px;
+}
+
+/* Reste du CSS du fil d'actualité comme précédemment */
+
+.feed {
+    list-style: none;
+    padding-top: 200px;
+}
+
+.tweet {
+    min-width: 700px; /* ou max-width si vous voulez que cela soit responsive */
+    border: 1px solid #ccc;
+    padding: 30px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: rgba(199, 196, 196, 0.12);
+    /* Pas besoin de margin-left ici car .content a déjà un padding */
+}
+
+.header-buttons {
+    /* aucun style supplémentaire n'est nécessaire si vous utilisez déjà flexbox sur le header */
+}
+
+.btn-poster {
+    padding: 10px 70px 10px 70px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid #ffffff;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 55px; /* Coins arrondis */
+    font-size: 18px;
+    position: fixed; /* Position fixe sur l'écran */
+    right: 400px; /* À droite de la sidebar (en supposant que la sidebar fait 250px de large) */
+    top: 70px; /* En haut de l'écran */
+    transition: all 0.3s; /* Transition pour les changements d'état */
+    z-index: 1000; /* S'assurer qu'il reste au-dessus des autres éléments */
+}
+
+.btn-poster:hover {
+    color: black;
+    background-color: white; /* Fond change au survol */
 }
