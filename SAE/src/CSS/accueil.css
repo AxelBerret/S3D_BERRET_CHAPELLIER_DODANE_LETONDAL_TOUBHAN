@@ -1,0 +1,292 @@
+/* Réinitialiser quelques styles par défaut */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none; /* Enlève le soulignement sur tous les liens */
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    background-color: #000000; /* Fond noir pour tout le site */
+    color: #ffffff; /* Couleur de texte blanche pour contraste */
+}
+
+header {
+    width: 100%;
+    padding: 50px 50px 50px 50px;
+    background-color: #000000; /* Assurer que le header est aussi noir */
+}
+
+.logo {
+    width: 300px; /* Augmentation significative de la taille du logo */
+    display: block; /* Pour centrer le logo si nécessaire */
+    margin-right: auto;
+    position: fixed;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidebar {
+    width: calc(1.5 * 250px); /* Largeur de la sidebar 1.5 fois plus grande */
+    max-width: 375px;
+    background-color: #000000; /* Même couleur de fond que le body */
+    border-left: 1px solid #ffffff; /* Barre verticale fine blanche */
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    color: #fff;
+    display: flex;
+    flex-direction: column; /* Organise les éléments de la sidebar en colonne */
+    justify-content: center; /* Centre verticalement les éléments dans la sidebar */
+
+}
+
+.menu {
+    width: 100%; /* Permet aux éléments de la liste de remplir la sidebar */
+    list-style-type: none; /* Enlève les puces devant les éléments de liste */
+    padding: 0; /* Enlève le padding par défaut de la liste */
+}
+.menu a {
+
+    display: flex;
+    align-items: center; /* Alignement vertical des éléments de la liste */
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none;
+    border: 2px solid transparent;
+    border-radius: 25px;
+    transition: border-color 0.3s;
+    max-width: 80%; /* Définit une largeur maximale pour les boutons */
+    margin: 10px auto; /* Centre les boutons horizontalement */
+    list-style-type: none; /* Enlève les puces devant les éléments de liste */
+
+
+}
+
+.menu a:hover {
+    background-color: rgba(255, 255, 255, 0.23); /* Bordure blanche au survol */
+}
+.menu li {
+    list-style-type: none; /* Enlève les puces devant les éléments de liste */
+
+}
+.menu ul {
+    list-style-type: none; /* Enlève les puces devant les éléments de liste */
+
+
+}
+
+.menu-icon {
+    width: 22px;
+    height: 22px;
+    margin-right: 40px;
+    vertical-align: middle;
+    object-fit: cover; /* Cela garantit que l'image couvre la zone sans être déformée */
+    align-items: center;
+
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #ffffff;
+    display: block;
+    padding: 10px;
+    transition: background-color 0.3s;
+    border-radius: 55px; /* Coins très arrondis pour le survol */
+align-items: center;
+}
+
+
+.content {
+    margin-left: 20px; /* Espace entre le contenu et la sidebar */
+    margin-right: calc(1.5 * 250px + 20px); /* Espace à droite pour la sidebar */
+    padding: 20px;
+    flex-grow: 1;
+    padding-left: 20px; /* Cela décale le contenu de la zone principale à droite */
+
+
+}
+
+/* Style pour le bouton Se connecter */
+.btn-connexion {
+    display: block;
+    width: calc(100% - 40px); /* ajustez selon la largeur de votre sidebar */
+    margin: 10px auto;
+    padding: 10px;
+    text-align: center;
+    border: 2px solid #FFA500; /* Bordure orange */
+    color: white;
+    background-color: transparent; /* Fond transparent */
+    border-radius: 55px; /* Coins arrondis */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-connexion:hover {
+    background-color: #FFA500; /* Fond orange au survol */
+    color: white; /* Texte blanc au survol */
+}
+
+/* Style pour le bouton S'inscrire */
+.btn-inscription {
+    display: block;
+    width: calc(100% - 40px); /* ajustez selon la largeur de votre sidebar */
+    margin: 10px auto;
+    padding: 10px;
+    text-align: center;
+    background-color: #FFA500; /* Fond orange */
+    color: white;
+    border-radius: 55px; /* Coins arrondis */
+    transition: background-color 0.3s;
+    border: 2px solid #FFA500; /* Ajoute une bordure orange pour le bouton S'inscrire */
+
+}
+
+.btn-inscription:hover {
+    color: white;
+    background-color: transparent; /* Rend le fond transparent au survol */
+
+}
+
+
+/* Styliser toute la scrollbar */
+::-webkit-scrollbar {
+    width: 12px; /* Largeur de la scrollbar */
+}
+
+/* Styliser le fond de la scrollbar */
+::-webkit-scrollbar-track {
+    background-color: #ffffff;
+}
+
+/* Styliser la partie mobile (le thumb) de la scrollbar */
+::-webkit-scrollbar-thumb {
+    background-color: darkorange; /* Couleur de base pour le thumb */
+    border-radius: 6px;
+    border: 3px solid orange; /* Ajouter si vous voulez une bordure autour du thumb */
+}
+
+
+.profile-module {
+    text-align: left; /* Centrer le contenu */
+    padding: 20px; /* Ajoutez un padding pour un peu d'espace */
+    justify-items: end;
+}
+
+.profile-picture {
+    width: 30px; /* Ou la taille que vous voulez pour l'image de profil */
+    height: 30px; /* Gardez la hauteur et la largeur égales pour un cercle parfait */
+    border-radius: 50%; /* Cela rend l'image de profil ronde */
+    margin-bottom: 10px; /* Ajoutez un peu d'espace entre l'image et le texte */
+    object-fit: cover; /* Cela s'assure que l'image couvre tout l'espace sans déformation */
+    border: 1px solid white; /* Ajoutez une bordure si vous le souhaitez */
+}
+
+.profile-username {
+    color: #ffffff; /* La couleur de votre choix */
+    font-size: 18px; /* La taille de police de votre choix */
+    font-weight: bold; /* Si vous voulez un texte en gras */
+    overflow-wrap: break-word; /* Empêche le texte de sortir de son conteneur */
+}
+.fil {
+    margin: 20px;
+    padding: 10px;
+}
+
+
+
+.tweet-header {
+    display: flex;
+    align-items: center;
+}
+
+.tweet-profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.tweet-user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.tweet-username {
+    font-weight: bold;
+}
+
+.tweet-divider {
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+    margin: 10px 0;
+}
+
+.tweet-content {
+    margin-top: 10px;
+}
+
+.tweet-content p {
+    margin-bottom: 10px;
+}
+
+.tweet-image {
+    max-width: 100%;
+    border-radius: 5px;
+}
+.content {
+    flex-grow: 1; /* Permet au contenu de remplir l'espace disponible */
+    padding-left: 300px;
+}
+
+/* Reste du CSS du fil d'actualité comme précédemment */
+
+.feed {
+    list-style: none;
+    padding-top: 200px;
+}
+
+.tweet {
+    min-width: 700px; /* ou max-width si vous voulez que cela soit responsive */
+    border: 1px solid #ccc;
+    padding: 30px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: rgba(199, 196, 196, 0.12);
+    /* Pas besoin de margin-left ici car .content a déjà un padding */
+}
+
+.header-buttons {
+    /* aucun style supplémentaire n'est nécessaire si vous utilisez déjà flexbox sur le header */
+}
+
+.btn-poster {
+    padding: 10px 70px 10px 70px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid #ffffff;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 55px; /* Coins arrondis */
+    font-size: 18px;
+    position: fixed; /* Position fixe sur l'écran */
+    right: 400px; /* À droite de la sidebar (en supposant que la sidebar fait 250px de large) */
+    top: 70px; /* En haut de l'écran */
+    transition: all 0.3s; /* Transition pour les changements d'état */
+    z-index: 1000; /* S'assurer qu'il reste au-dessus des autres éléments */
+}
+
+.btn-poster:hover {
+    color: black;
+    background-color: white; /* Fond change au survol */
+}
