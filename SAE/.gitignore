@@ -42,3 +42,4 @@ bin/
 .idea/shelf/
 out/
 *.class
+.ini
