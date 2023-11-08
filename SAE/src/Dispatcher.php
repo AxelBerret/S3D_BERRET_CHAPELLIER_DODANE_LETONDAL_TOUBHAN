@@ -17,7 +17,7 @@ $signup = new Signup($bdd);
 $connexion = new Connexion($bdd);
 
 // Vérifiez quelle action doit être effectuée (par exemple, en fonction de l'URL ou des paramètres GET/POST)
-$action = $_GET['action'] ?? 'default'; // Vous devez définir une valeur par défaut, par exemple 'default' ici
+$action = $_REQUEST['action'] ?? 'default'; // Vous devez définir une valeur par défaut, par exemple 'default' ici
 
 // En fonction de l'action, appelez la méthode appropriée de vos classes
 switch ($action) {
@@ -85,20 +85,27 @@ switch ($action) {
         }
         break;
 
-    case 'connexion':
+    case 'login':
         $email = $_POST['email'] ?? '';
         $password = $_POST['password'] ?? '';
-        if (!empty($email) && !empty($password)) {
-            $connexion->login($email, $password);
-        }
+            if ($connexion->login($email, $password)) {
+                // Redirection après une connexion réussie
+                header('Location: index.php');
+                exit();
+            } else {
+                // Affichez un message d'erreur en cas d'échec de connexion
+                $erreur = "Identifiants incorrects.";
+            }
         break;
 
     case 'deconnexion':
         session_unset();
+        header('Location: dispatcher.php');
         break;
 
     default:
         // Action par défaut
+
         $touite->afficherListeTouites();
         break;
 }

@@ -28,7 +28,7 @@ class Touite{
                 <meta charset="UTF-8">
                 <title>Touiteur - Accueil</title>
                 <link rel="stylesheet" href="CSS/accueil.css">
-                <link rel="icon" type="image/jpeg" href="images/Logo.jpeg">
+                <link rel="icon" type="image/jpeg" href="images/icon.png">
             </head>
         
             <body>
@@ -73,6 +73,14 @@ HTML;
     </li>
 HTML;
         }
+        if(isset($_SESSION['user_id'])){
+            $nom = $_SESSION['nom'];
+            $prenom = $_SESSION['prenom'];
+        }
+        else{
+            $nom = "Déconnecté";
+            $prenom = "";
+        }
         echo <<<HTML
             </ul>
             </main>
@@ -80,11 +88,15 @@ HTML;
             <nav>
 
                 <ul class="menu">
+HTML;
+        if(isset($_SESSION['user_id'])){
+            echo <<<HTML
                     <li><a href="accueil.html"><img src="images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
                     <li><a href="tendances.html"><img src="images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
+                    <li><a href="profil.html"><img src="images/profil.png" alt="" class="menu-icon">Profil</a></li>
                 </ul>
                 <div class="profile-module">
-                <div class="profile-username">@votreIdentifiant</div>
+                <div class="profile-username">@$nom $prenom</div>
                 </div>
 
                 <div class="tendances-container">
@@ -93,10 +105,31 @@ HTML;
                     <a href="#tag2" class="tag">#Tag2</a>
                     <a href="#tag3" class="tag">#Tag3</a>
                 </div>
-                <form action="login.html" method="post">
+
+                <form action="Dispatcher.php?action=deconnexion" method="post">
+                    <button type="submit" class="btn-connexion">Se déconnecter</button>
+                </form>
+HTML;
+        }
+        else{
+            echo <<<HTML
+                    <li><a href="accueil.html"><img src="images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
+                    <li><a href="tendances.html"><img src="images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
+                </ul>
+                <div class="profile-module">
+                <div class="profile-username">@$nom $prenom</div>
+                </div>
+
+                <div class="tendances-container">
+                    <div class="tendance-title">Tendances France</div>
+                    <a href="#tag1" class="tag">#Tag1</a>
+                    <a href="#tag2" class="tag">#Tag2</a>
+                    <a href="#tag3" class="tag">#Tag3</a>
+                </div>
+            <form action="HTML/login.html" method="post">
                     <button type="submit" class="btn-connexion">Se connecter</button>
                 </form>
-                <form action="signup.html" method="post">
+                <form action="HTML/login.html" method="post">
                     <button type="submit" class="btn-inscription">S'inscrire</button>
                 </form>
             </nav>
@@ -107,6 +140,7 @@ HTML;
             </body>
             </html>
 HTML;
+        }
     }
 
     function afficherTouiteDetail(string $idtouite) {
