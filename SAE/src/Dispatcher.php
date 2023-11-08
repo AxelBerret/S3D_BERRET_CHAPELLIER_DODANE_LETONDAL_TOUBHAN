@@ -33,7 +33,7 @@ switch ($action) {
         break;
 
     case 'afficherTouitesUtilisateur':
-        $idutilisateur = $_GET['idutilisateur'] ?? null;
+        $idutilisateur = $_GET['id_utilisateur'] ?? null;
         if ($idutilisateur !== null) {
             $touite->afficherTouitesUtilisateur($idutilisateur);
         }
