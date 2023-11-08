@@ -60,9 +60,9 @@ class AfficherSonProfil{
             <aside class="sidebar">
                 <nav>
                     <ul class="menu">
-                        <li><a href="accueil.html"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
-                        <li><a href="tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
-                        <li><a href="profil.html"><img src="../images/icon_profil.png" alt="" class="menu-icon">Profil</a></li>
+                        <li><a href="dispatcher.php"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
+                        <li><a href="dispatcher.php?action=afficherTendances"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
+                        <li><a href="dispatcher.php?action=afficherSonProfil"><img src="../images/icon_profil.png" alt="" class="menu-icon">Profil</a></li>
                     </ul>
                     <div class="profile-module">
                         <div class="profile-username">@votreIdentifiant</div>

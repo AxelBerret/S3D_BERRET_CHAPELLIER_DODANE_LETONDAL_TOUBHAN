@@ -102,14 +102,14 @@ switch ($action) {
         $password = $_POST['password'] ?? '';
             if ($connexion->login($email, $password)) {
                 // Redirection après une connexion réussie
-                header('Location: index.php');
+                header('Location: dispatcher.php');
                 exit();
             } else {
                 // Affichez un message d'erreur en cas d'échec de connexion
                 $erreur = "Identifiants incorrects.";
             }
         break;
-    case 'AfficherSonProfil':
+    case 'afficherSonProfil':
         $AfSProfil = new AfficherSonProfil();
         $AfSProfil->execute();
     case 'deconnexion':
