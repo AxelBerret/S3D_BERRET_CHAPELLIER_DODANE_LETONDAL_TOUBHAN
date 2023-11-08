@@ -81,7 +81,15 @@ switch ($action) {
         $email = $_POST['email'] ?? '';
         $password = $_POST['password'] ?? '';
         if (!empty($nom) && !empty($prenom) && !empty($email) && !empty($password)) {
-            $signup->signup($nom, $prenom, $email, $password);
+            if($signup->signup($nom, $prenom, $email, $password)){
+                header('Location: index.php');
+                exit();
+            }else {
+                // Affichez un message d'erreur en cas d'échec de connexion
+                $erreur = "Problèmes coté serveur.";
+            }
+        }else{
+            $erreur = "Erreur dans vos données, veuillez vérifier.";
         }
         break;
 
