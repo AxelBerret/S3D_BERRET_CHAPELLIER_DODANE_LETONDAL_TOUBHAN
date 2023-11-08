@@ -105,7 +105,9 @@ switch ($action) {
                 $erreur = "Identifiants incorrects.";
             }
         break;
-
+    case 'AfficherSonProfil':
+        $AfSProfil = new AfficherSonProfil();
+        $AfSProfil->execute();
     case 'deconnexion':
         session_unset();
         header('Location: dispatcher.php');
