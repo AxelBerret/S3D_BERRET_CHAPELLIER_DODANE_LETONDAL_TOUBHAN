@@ -4,10 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="35837ff0-ffa5-4330-b1dd-3c8d667e459e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SAE/src/Dispatcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/SAE/src/Dispatcher.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SAE/src/HTML/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/SAE/src/HTML/Login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SAE/src/PHP/Connexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/SAE/src/PHP/Connexion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SAE/src/PHP/Signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/SAE/src/PHP/Signup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SAE/src/PHP/Touite.php" beforeDir="false" afterPath="$PROJECT_DIR$/SAE/src/PHP/Touite.php" afterDir="false" />
+=======
     <list default="true" id="aec8c922-169c-4488-b9a8-a7291019aa10" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SAE/src/PHP/Utilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/SAE/src/PHP/Utilisateur.php" afterDir="false" />
+>>>>>>> 825880b49360af185a8a09c528f6c858c25c8aa4
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

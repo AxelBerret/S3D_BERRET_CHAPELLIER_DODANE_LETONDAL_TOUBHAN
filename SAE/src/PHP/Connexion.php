@@ -11,8 +11,7 @@ class Connexion{
     }
 
 
-        public function login($email, $password)
-    {
+        public function login($email, $password){
         // On utilise des requêtes préparées afin de prévenir les injections SQL
         $query = "SELECT * FROM Utilisateur  WHERE email = :email";
         $stmt = $this->db->prepare($query);
@@ -23,6 +22,8 @@ class Connexion{
         if ($user && password_verify($password, $user['password'])) {
             // Ici, on utilise la fonction php password_verify pour vérifier le mot de passe hashé
             $_SESSION['user_id'] = $user['id_utilisateur'];
+            $_SESSION['nom'] = $user['nom'];
+            $_SESSION['prenom'] = $user['prenom'];
             return true;
         }
         return false;
