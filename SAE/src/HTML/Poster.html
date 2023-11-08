@@ -25,6 +25,20 @@
 
         <main class="content">
 
+            <div class="tweet-form-container">
+                <form class="tweet-form" action="upload.php" method="post" enctype="multipart/form-data">
+                    <label for="tweetContent">@votreidentifiant</label>
+                    <textarea id="tweetContent" name="tweetContent" placeholder="Quoi de neuf ?" required></textarea>
+
+                    <!-- Label personnalisé pour le champ de fichier -->
+                    <label for="imageUpload" class="custom-file-upload">
+                        Choisir une image
+                    </label>
+                    <input id="imageUpload" type="file" name="image" accept="image/*" style="visibility: hidden; position: absolute;">
+
+                    <button type="submit" name="submit">Touiter</button>
+                </form>
+            </div>
         </main>
         <aside class="sidebar">
             <nav>
@@ -32,8 +46,12 @@
                 <ul class="menu">
                     <li><a href="accueil.html"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
                     <li><a href="tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
-                </ul>
+                    <li><a href="profil.html"><img src="../images/icon_profil.png" alt="" class="menu-icon">Profil</a></li>
 
+                </ul>
+                <div class="profile-module">
+                    <div class="profile-username">@votreIdentifiant</div>
+                </div>
                 <div class="tendances-container">
                     <div class="tendance-title">Tendances France</div>
                     <a href="#tag1" class="tag">#Tag1</a>
@@ -46,11 +64,9 @@
                 <form action="signup.html" method="post">
                     <button type="submit" class="btn-inscription">S'inscrire</button>
                 </form>
+
             </nav>
-            <div class="profile-module">
-                <img src="../images/profile-pic.jpg" alt="Votre nom" class="profile-picture">
-                <div class="profile-username">@votreIdentifiant</div>
-            </div>
+
         </aside>
         <main class="content">
         </main>

@@ -248,8 +248,6 @@ align-items: center;
     flex-grow: 1; /* Permet au contenu de remplir l'espace disponible */
     padding-left: 300px;
     padding-right: -100px;
-    padding-top: 400px;
-
 
 }
 
@@ -294,51 +292,6 @@ align-items: center;
     color: black;
     background-color: white; /* Fond change au survol */
 }
-
-.tweet-form-container {
-    width: 100%;
-    max-width: 700px;
-    min-width: 700px;
-    background: rgba(0, 89, 255, 0.09); /* Transparent background */
-    border-radius: 30px; /* Rounded borders */
-    border: 1px solid orange; /* Orange border */
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.tweet-form-container label {
-    display: block;
-    font-size: 1rem;
-    color: #ffffff;
-    margin-bottom: 10px;
-}
-
-.tweet-form-container textarea {
-    width: 100%;
-    padding: 10px;
-    height: 100px;
-    border-radius: 15px;
-    border: 1px solid #ddd;
-    resize: vertical;
-    min-width: 150px;
-}
-
-.tweet-form-container button {
-    width: 100%;
-    padding: 10px;
-    border-radius: 15px;
-    border: none;
-    background-color: orange;
-    color: white;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.3s;
-}
-
-.tweet-form-container button:hover {
-    background-color: darkorange;
-}
-
 .btn-tendances {
     background: rgba(255, 98, 98, 0.09); /* Fond légèrement transparent */
 }
