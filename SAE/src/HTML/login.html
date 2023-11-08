@@ -21,13 +21,13 @@
         <!-- Container pour le formulaire -->
         <div class="login-form">
             <!-- Formulaire de connexion -->
-            <form id="formulaire-connexion" action="/login" method="post">
+            <form id="formulaire-connexion" action="../dispatcher.php?action=login" method="post">
                 <h2>Connectez-vous</h2>
 
                 <!-- Groupe de formulaire pour le nom d'utilisateur -->
                 <div class="form-group">
-                    <label for="username">Nom d'utilisateur:</label>
-                    <input type="text" id="username" name="username" required>
+                    <label for="email">Adresse email:</label>
+                    <input type="text" id="email" name="email" required>
                 </div>
 
                 <!-- Groupe de formulaire pour le mot de passe -->
@@ -37,6 +37,7 @@
                 </div>
 
                 <!-- Bouton de connexion -->
+                <input type="hidden" name="action" value="login">
                 <button type="submit" class="btn-connexion">Se connecter</button>
             </form>
         </div>
