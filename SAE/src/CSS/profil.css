@@ -296,6 +296,37 @@ align-items: center;
     background: rgba(255, 98, 98, 0.09); /* Fond légèrement transparent */
 }
 
+.main-content {
+    flex-grow: 1; /* Permet au contenu principal de prendre l'espace restant */
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+}
+
+.profil-main-container {
+    width: 80%; /* ou la largeur de votre choix */
+    max-width: 600px; /* ou la largeur maximale de votre choix */
+    margin: auto; /* Assure le centrage horizontal si la fenêtre est très large */
+    border: 1px solid #FFA500;
+}
+
+.profil-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1); /* Fond légèrement transparent */
+    border-radius: 15px;
+    width: 50%; /* Vous pouvez ajuster cette largeur selon vos préférences */
+    max-width: 800px; /* Ou la largeur maximale que vous souhaitez */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optionnel: Ajoute un peu d'ombre pour le style */
+    margin-top: 150px;
+    margin-bottom: 150px;
+
+}
+.btn-tendances {
+    background: rgba(255, 98, 98, 0.09); /* Fond légèrement transparent */
+}
+
 .tendances-container {
     width: 80%;
     margin: auto; /* Centre le carré dans la sidebar */
@@ -324,4 +355,43 @@ align-items: center;
 
 .tag:hover {
     background-color: rgba(255, 255, 255, 0.2); /* Changement de couleur au survol */
+}
+
+
+.main-content {
+    flex-grow: 1; /* Permet au contenu principal de prendre l'espace restant */
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+}
+
+.profil-main-container {
+    width: 80%; /* ou la largeur de votre choix */
+    max-width: 600px; /* ou la largeur maximale de votre choix */
+    margin: auto; /* Assure le centrage horizontal si la fenêtre est très large */
+    border: 2px solid #FFA500;
+}
+
+.profil-main-container {
+    width: 80%; /* ou la largeur de votre choix */
+    min-width: 700px; /* ou la largeur maximale de votre choix */
+    margin: auto; /* Assure le centrage horizontal si la fenêtre est très large */
+    border: 3px solid #FFA500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 80, 255, 0.49); /* Fond légèrement transparent */
+    border-radius: 15px;
+    max-width: 800px; /* Ou la largeur maximale que vous souhaitez */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optionnel: Ajoute un peu d'ombre pour le style */
+    margin-top: 180px;
+    margin-bottom: 150px;
+
+}
+
+.profil-titles {
+    padding-top: 30px;
+    font-size: 2em; /* Taille du titre */
+    margin-bottom: 30px;
+    color: #ffffff; /* Couleur du texte */
 }
