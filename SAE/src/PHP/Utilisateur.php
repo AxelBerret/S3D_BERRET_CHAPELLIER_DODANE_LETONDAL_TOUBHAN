@@ -3,7 +3,7 @@ declare(strict_types=1);
 require_once 'ConnectionFactory.php';
 require_once 'Action.php';
 
-class Utilisateur extends Action{
+class AfficherSonProfil extends Action{
     private $pdo;
 
     public function __construct($http_methode, $script_name) {
