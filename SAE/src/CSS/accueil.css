@@ -102,7 +102,7 @@ header {
     padding: 10px;
     transition: background-color 0.3s;
     border-radius: 55px; /* Coins très arrondis pour le survol */
-align-items: center;
+    align-items: center;
 }
 
 
