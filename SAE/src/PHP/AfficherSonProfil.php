@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+session_start();
 require_once 'ConnectionFactory.php';
 require_once 'Action.php';
 
@@ -13,7 +14,7 @@ class AfficherSonProfil extends Action{
     }
 
     public function execute() : string{
-        $query = "SELECT id_utilisateur, nom, prenom, email FROM utilisateur";
+        $query = "SELECT id_utilisateur, nom, prenom, email FROM utilisateur where id_utilisateur ";
 
         $result = $this->db->query($query);
         if ($result){
