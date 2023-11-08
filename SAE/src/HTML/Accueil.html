@@ -35,9 +35,28 @@
                 <hr class="tweet-divider">
                 <div class="tweet-content">
                     <p>Ceci est le texte du tweet. Il peut être assez long pour contenir tout le message que l'utilisateur souhaite partager.</p>
-                    <img src="../images/tweet-image.jpg" alt="Image liée au tweet" class="tweet-image">
+                    <div class="like-dislike-buttons">
+                        <img src="../Images/like.png" alt="Like button" onclick="incrementLikes()" class="like-button">
+                        <span class="like-counter">0</span>
+                        <img src="../Images/dislike.png" alt="Dislike button" onclick="incrementDislikes()" class="dislike-button">
+                        <span class="dislike-counter">0</span>
+                    </div>
                 </div>
             </li>
+            <script>
+                let likeCount = 0;
+                let dislikeCount = 0;
+
+                function incrementLikes() {
+                    likeCount++;
+                    document.querySelector('.like-counter').textContent = likeCount;
+                }
+
+                function incrementDislikes() {
+                    dislikeCount++;
+                    document.querySelector('.dislike-counter').textContent = dislikeCount;
+                }
+            </script>
             <li class="tweet">
                 <div class="tweet-header">
                     <div class="tweet-user-info">
