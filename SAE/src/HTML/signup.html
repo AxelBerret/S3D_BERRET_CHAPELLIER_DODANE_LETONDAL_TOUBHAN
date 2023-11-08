@@ -23,22 +23,18 @@
         <div class="login-form">
             <h2>Inscrivez-vous</h2>
 
-            <!-- Formulaire de connexion -->
-            <div class="form-group">
-                <label for="pseudo">Pseudonyme:</label>
-                <input type="text" id="pseudo" name="pseudo" required>
-            </div>
+            <form id="formulaire-connexion" action="../dispatcher.php?action=signup" method="post">
 
             <!-- Groupe de formulaire pour le nom -->
             <div class="form-group">
-                <label for="lastname">Nom:</label>
-                <input type="text" id="lastname" name="lastname" required>
+                <label for="nom">Nom:</label>
+                <input type="text" id="nom" name="nom" required>
             </div>
 
             <!-- Groupe de formulaire pour le prénom -->
             <div class="form-group">
-                <label for="firstname">Prénom:</label>
-                <input type="text" id="firstname" name="firstname" required>
+                <label for="prenom">Prénom:</label>
+                <input type="text" id="prenom" name="prenom" required>
             </div>
 
             <!-- Groupe de formulaire pour l'email -->
@@ -54,7 +50,8 @@
             </div>
 
             <!-- Bouton de connexion -->
-                <button type="submit" class="btn-inscription">S'INSCRIRE</button>
+                <input type="hidden" name="action" value="signup">
+                <button type="submit" class="btn-inscription">S'inscrire</button>
             </form>
         </div>
 
@@ -67,7 +64,6 @@
             <ul class="menu">
                 <li><a href="accueil.html"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
                 <li><a href="tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
-                <li><a href="profil.html"><img src="../images/icon_profil.png" alt="" class="menu-icon">Profil</a></li>
 
             </ul>
             <div class="profile-module">
@@ -80,10 +76,10 @@
                 <a href="#tag3" class="tag">#Tag3</a>
             </div>
 
-            <form action="login.html" method="post">
+            <form action="HTML/login.html" method="post">
                 <button type="submit" class="btn-connexion">Se connecter</button>
             </form>
-            <form action="signup.html" method="post">
+            <form action="HTML/signup.html" method="post">
                 <button type="submit" class="btn-inscription">S'inscrire</button>
             </form>
 

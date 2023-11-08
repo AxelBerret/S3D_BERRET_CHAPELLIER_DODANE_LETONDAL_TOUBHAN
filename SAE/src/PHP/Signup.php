@@ -57,6 +57,7 @@ class Signup{
             $_SESSION['user_id'] = $idutilisateur;
             $_SESSION['nom'] = $nom;
             $_SESSION['prenom'] = $prenom;
+
             return true;
         } else {
             //Dans le cas ou false est retourné, soit il y'a un problème dans la BDD soit un problème dans le nom ou le prénom
