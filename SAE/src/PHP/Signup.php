@@ -23,6 +23,11 @@ class Signup{
         $stmt->execute();
         $count = $stmt->fetchColumn();
 
+        $query = "SELECT COUNT(*) FROM Utilisateur";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $idutilisateur = $stmt->fetchColumn();
+
         if ($count > 0) {
             // Si on trouve un compte, on lève une exception
             throw new DoublonEmailException("Cet utilisateur existe déjà.");
@@ -33,14 +38,15 @@ class Signup{
             throw new MailInvalideException("L'adresse e-mail que vous avez fournie n'est pas valide. Veuillez vérifier et réessayer.");
         }
 
-        if(!$this->checkPasswordStrength($password, 8)) {
+        if(!$this->checkPasswordStrength($password, 7)) {
             // Si le mdp n'est pas assez robuste, on lève une exception
             throw new MDPNonRobusteException("Le mot de passe n'est pas assez robuste, vérifiez les exigences.");
         }
 
         // à nouveau on utilise une requête préparée afin de prévenir toutes injections SQL
-        $query = "INSERT INTO Utilisateur (nom, prenom, email, password) VALUES (:nom, :prenom, :email, :password)";
+        $query = "INSERT INTO Utilisateur (id_utilisateur, nom, prenom, email, password) VALUES (:idutilisateur, :nom, :prenom, :email, :password)";
         $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':idutilisateur', $idutilisateur, PDO::PARAM_STR);
         $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
         $stmt->bindParam(':prenom', $prenom, PDO::PARAM_STR);
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
@@ -48,6 +54,7 @@ class Signup{
         $stmt->bindParam(':password', $hash);
 
         if ($stmt->execute()) {
+            $_SESSION['user_id'] = $idutilisateur;
             return true;
         } else {
             //Dans le cas ou false est retourné, soit il y'a un problème dans la BDD soit un problème dans le nom ou le prénom
@@ -57,13 +64,12 @@ class Signup{
 
 
     //On contrôle la robustesse du mot de passe avec cette fonction
-    public function checkPasswordStrength(string $pass, int $minimumLength = 8): bool{
-        $length = (strlen($pass) < $minimumLength); // longueur minimale
+    public function checkPasswordStrength(string $pass, int $minimumLength = 7): bool{
+        $length = (strlen($pass) > $minimumLength); // longueur minimale
         $digit = preg_match("#[\d]#", $pass); // au moins un digit
-        $special = preg_match("#[\W]#", $pass); // au moins un car. spécial
         $lower = preg_match("#[a-z]#", $pass); // au moins une minuscule
         $upper = preg_match("#[A-Z]#", $pass); // au moins une majuscule
-        if (!$length || !$digit || !$special || !$lower || !$upper) return false;
+        if (!$length || !$digit || !$lower || !$upper) return false;
         return true;
     }
 

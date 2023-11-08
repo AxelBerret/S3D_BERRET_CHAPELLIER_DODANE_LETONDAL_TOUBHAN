@@ -22,6 +22,7 @@ class Connexion{
 
         if ($user && password_verify($password, $user['password'])) {
             // Ici, on utilise la fonction php password_verify pour vérifier le mot de passe hashé
+            $_SESSION['user_id'] = $user['id_utilisateur'];
             return true;
         }
         return false;

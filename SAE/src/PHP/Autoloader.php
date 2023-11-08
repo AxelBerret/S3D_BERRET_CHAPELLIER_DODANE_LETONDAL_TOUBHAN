@@ -7,10 +7,9 @@ class Autoloader {
 
     public static function autoload($class) {
 
-        $baseDir = __DIR__.'/PHP/';
 
         // Comme vu en cours,on remplace les caractères \\ par '/'
-        $classFile = $baseDir.str_replace('\\', '/', $class).'.php';
+        $classFile = __DIR__.'/'.str_replace('\\', '/', $class).'.php';
 
         // On vérifie ensuite si le fichier existe afin d'éviter les erreurs
         if (file_exists($classFile)) {
@@ -18,8 +17,3 @@ class Autoloader {
         }
     }
 }
-
-//On lance l'autoloader
-Autoloader::register();
-
-?>
