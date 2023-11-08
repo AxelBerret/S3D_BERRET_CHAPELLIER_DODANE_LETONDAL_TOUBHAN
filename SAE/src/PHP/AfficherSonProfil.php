@@ -13,10 +13,11 @@ class AfficherSonProfil{
     public function execute(){
         $id = $_SESSION['user_id'];
         $query = "SELECT id_utilisateur, nom, prenom, email FROM utilisateur where id_utilisateur = :id ";
-        $query->bindParam(':id', $id), PDO::PARAM_STR);
-        $result = $this->pdo->query($query);
+        $query = $this->pdo->prepare($query);
+        $query->bindParam(':id', $id, PDO::PARAM_STR);
+        $result = $query->execute();
         if ($result) {
-            $stockage = $result->fetchAll(PDO::FETCH_ASSOC);
+            $stockage = $query->fetchAll(PDO::FETCH_ASSOC);
 
             foreach ($stockage as $row) {
                 $id = $row['id_utilisateur'];
