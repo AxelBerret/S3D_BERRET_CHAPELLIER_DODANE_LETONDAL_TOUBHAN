@@ -30,6 +30,7 @@ header {
     width: 550px; /* Augmentation significative de la taille du logo */
     display: block; /* Pour centrer le logo si nécessaire */
     padding-bottom: 650px;
+    margin-left : -280px;
 
     margin-right: auto;
     position: fixed;
@@ -265,10 +266,11 @@ body, html {
     flex-direction: column;
     max-width: 318px;
     width: calc(100% - 50px); /* Un peu d'espace sur les côtés */
-    margin-right: 100px;
     position: absolute;
     align-self: flex-start; /* Aligner le conteneur du formulaire à gauche */
-
+    margin-right: 100px;
+    margin-left : -230px;
+    padding-top: 80px;
 }
 
 /* Styles pour les champs de saisie */
