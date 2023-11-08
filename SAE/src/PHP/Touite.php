@@ -35,7 +35,7 @@ class Touite{
         
             <div class="container">
                 <div class="header-containerA">
-                    <form action="poster.html" method="post">
+                    <form action="dispatcher.php?action=poster" method="post">
                         <button type="submit" class="btn-poster">Poster</button>
                     </form>
                 </div>
@@ -169,7 +169,7 @@ HTML;
         
             <div class="container">
                 <div class="header-containerA">
-                    <form action="poster.html" method="post">
+                    <form action="dispatcher.php?action=poster" method="post">
                         <button type="submit" class="btn-poster">Poster</button>
                     </form>
                 </div>
@@ -293,7 +293,7 @@ HTML;
     
         <div class="container">
             <div class="header-containerA">
-                <form action="poster.html" method="post">
+                <form action="dispatcher.php?action=poster" method="post">
                     <button type="submit" class="btn-poster">Poster</button>
                 </form>
             </div>
@@ -442,11 +442,12 @@ HTML;
         }
 
         // On insère un nouveau touite dans la table touite
-        $query = "INSERT INTO TOUITE (id_touite, id_utilisateur, texte, datePub) VALUES ($idtouite, :id_utilisateur, :texte, NOW())";
+        $query = "INSERT INTO TOUITE (id_touite, id_utilisateur, texte, datePub) VALUES (:id_touite, :id_utilisateur, :texte, NOW())";
         $jaime = 0;
         $dislike = 0;
 
         $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':id_touite', $idtouite, PDO::PARAM_STR);
         $stmt->bindParam(':id_utilisateur', $idutilisateur, PDO::PARAM_STR);
         $stmt->bindParam(':texte', $texte, PDO::PARAM_STR);
         $stmt->execute();
