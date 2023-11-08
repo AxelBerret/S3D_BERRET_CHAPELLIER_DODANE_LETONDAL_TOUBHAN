@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="35837ff0-ffa5-4330-b1dd-3c8d667e459e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -12,6 +13,11 @@
       <change beforePath="$PROJECT_DIR$/SAE/src/PHP/Connexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/SAE/src/PHP/Connexion.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SAE/src/PHP/Signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/SAE/src/PHP/Signup.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SAE/src/PHP/Touite.php" beforeDir="false" afterPath="$PROJECT_DIR$/SAE/src/PHP/Touite.php" afterDir="false" />
+=======
+    <list default="true" id="aec8c922-169c-4488-b9a8-a7291019aa10" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SAE/src/PHP/Utilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/SAE/src/PHP/Utilisateur.php" afterDir="false" />
+>>>>>>> 825880b49360af185a8a09c528f6c858c25c8aa4
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +33,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\xampp\php\php.exe" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -61,7 +68,7 @@
       <workItem from="1699277654610" duration="7000" />
       <workItem from="1699341644218" duration="10545000" />
       <workItem from="1699358034747" duration="24000" />
-      <workItem from="1699434001209" duration="342000" />
+      <workItem from="1699434001209" duration="4632000" />
     </task>
     <servers />
   </component>
