@@ -10,7 +10,7 @@ a {
 }
 h2{
     font-size: 30px;
-    padding-bottom: 80px;
+    padding-bottom: 30px;
 }
 
 html, body {
@@ -19,7 +19,6 @@ html, body {
     background-color: #000000; /* Fond noir pour tout le site */
     color: #ffffff; /* Couleur de texte blanche pour contraste */
 }
-
 header {
     width: 100%;
     padding: 50px 50px 50px 50px;
@@ -319,8 +318,8 @@ a {
     font-weight: bold;
 }
 .btn-tendances {
-    background: rgba(255, 98, 98, 0.09); /* Fond légèrement transparent */
-}
+     background: rgba(255, 98, 98, 0.09); /* Fond légèrement transparent */
+ }
 
 .tendances-container {
     width: 80%;
@@ -350,4 +349,51 @@ a {
 
 .tag:hover {
     background-color: rgba(255, 255, 255, 0.2); /* Changement de couleur au survol */
+}
+.main-content {
+    flex-grow: 1; /* Permet au contenu principal de prendre l'espace restant */
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+}
+
+.tendances-main-container {
+    width: 80%; /* ou la largeur de votre choix */
+    max-width: 600px; /* ou la largeur maximale de votre choix */
+    margin: auto; /* Assure le centrage horizontal si la fenêtre est très large */
+    /* Autres styles de votre tendances-main-container */
+}
+
+.tendances-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1); /* Fond légèrement transparent */
+    border-radius: 15px;
+    padding: 50px;
+    width: 50%; /* Vous pouvez ajuster cette largeur selon vos préférences */
+    max-width: 800px; /* Ou la largeur maximale que vous souhaitez */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optionnel: Ajoute un peu d'ombre pour le style */
+}
+
+.tendance-titles {
+    font-size: 2em; /* Taille du titre */
+    margin-bottom: 30px;
+    color: #333; /* Couleur du texte */
+}
+
+.tag-main {
+    display: block;
+    margin: 10px 0;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-size: 1.2em; /* Taille du texte plus grande pour les tags */
+    transition: background-color 0.3s;
+}
+
+.tag-main:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }

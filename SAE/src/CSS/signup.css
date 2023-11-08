@@ -318,3 +318,36 @@ a {
     text-decoration: none;
     font-weight: bold;
 }
+.btn-tendances {
+     background: rgba(255, 98, 98, 0.09); /* Fond légèrement transparent */
+ }
+
+.tendances-container {
+    width: 80%;
+    margin: auto; /* Centre le carré dans la sidebar */
+    margin-bottom: 30px; /* Centre le carré dans la sidebar */
+
+    background: rgba(255, 165, 0, 0.09); /* Fond légèrement transparent */
+    border-radius: 15px; /* Bord arrondi */
+    text-align: center; /* Centrer le texte à l'intérieur */
+    margin-top: 20px; /* Espacement après le bouton "Tendances" */
+    border: 2px solid #FFA500; /* Ajoute une bordure orange pour le bouton S'inscrire */
+    padding-top: 30px;
+
+}
+
+.tendances-container .tendance-title {
+    margin-bottom: 20px; /* Espacement entre le titre et les tags */
+}
+
+.tag {
+    display: block; /* Fait que chaque tag prenne toute la largeur */
+    padding: 20px 0; /* Padding pour les tags */
+    text-decoration: none; /* Enlève le soulignement des liens */
+    color: white; /* Couleur du texte pour les tags */
+    transition: background-color 0.3s; /* Transition douce pour le survol */
+}
+
+.tag:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Changement de couleur au survol */
+}
