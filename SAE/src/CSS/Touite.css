@@ -325,3 +325,42 @@ header {
 .tag:hover {
     background-color: rgba(255, 255, 255, 0.2); /* Changement de couleur au survol */
 }
+
+.tweet-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.like-dislike-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+}
+.like-counter{
+    color : green;
+}
+
+.dislike-counter{
+    color : red;
+}
+.like-button,
+.dislike-button {
+    width: 30px;
+    height: 25px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.like-button:hover,
+.dislike-button:hover {
+    opacity: 0.7;
+}
+
+.like-counter,
+.dislike-counter {
+    font-size: 20px;
+    padding-right: 25px;
+    font-weight: bold;
+}
