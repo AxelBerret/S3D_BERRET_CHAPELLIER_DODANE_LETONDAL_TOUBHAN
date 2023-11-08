@@ -20,18 +20,46 @@ html, body {
     color: #ffffff; /* Couleur de texte blanche pour contraste */
 }
 header {
-    width: 100%;
-    padding: 50px 50px 50px 50px;
-    background-color: #000000; /* Assurer que le header est aussi noir */
+    display: flex;
+    justify-content: center; /* Centrer horizontalement */
+    align-items: flex-start; /* Aligner en haut */
+    height: 100px; /* Ajustez la hauteur du header selon vos besoins */
+}
+
+/* CSS pour l'élément h3 */
+h3 {
+    font-family: 'Roboto', sans-serif; /* Utilisez la police Roboto pour un look moderne */
+    color: #ffffff; /* Texte blanc pour le contraste sur fond sombre */
+    text-transform: uppercase; /* Optionnel : transforme le texte en majuscules */
+    text-align: center; /* Centre le texte */
+    font-size: 2.5rem; /* Taille de la police, ajustez selon vos besoins */
+    letter-spacing: 1.5px; /* Espacement des lettres pour un effet élargi */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Ombre douce pour donner de la profondeur */
+    margin: 20px 0; /* Espacement au-dessus et en dessous de h3 */
+    padding: 10px; /* Un peu de padding autour du texte */
+    border-radius: 10px; /* Coins arrondis pour le bloc de texte */
+    background: rgba(255, 255, 255, 0.1); /* Fond légèrement visible */
+    transition: all 0.3s ease-in-out; /* Transition douce pour les effets de survol */
+}
+
+/* Effet de survol pour h3 */
+h3:hover {
+    background: rgba(255, 255, 255, 0.2); /* Augmentez la visibilité du fond au survol */
+    cursor: pointer; /* Change le curseur pour indiquer la possibilité d'interaction */
+    transform: scale(1.05); /* Agrandit légèrement l'élément pour attirer l'attention */
 }
 
 .logo {
-    width: 450px; /* Augmentation significative de la taille du logo */
-    display: block; /* Pour centrer le logo si nécessaire */
-    padding-bottom: 550px;
+    min-width: 450px; /* Ou toute autre taille appropriée pour le logo */
+    max-width: 450px; /* Ou toute autre taille appropriée pour le logo */
 
-    margin-right: auto;
-    position: fixed;
+    display: block; /* Assure que l'élément est traité comme un bloc */
+    margin-right: auto; /* Centrage horizontal si nécessaire */
+    position: fixed; /* Le logo restera fixe lors du défilement de la page */
+    top: 0; /* Aucun espace depuis le haut de la page */
+    left: 0; /* Aucun espace depuis le côté gauche de la page */
+    z-index: 1000; /* S'assure que le logo reste au-dessus des autres éléments */
+    padding: 50px;
 }
 .logo-container {
     display: flex;
@@ -121,6 +149,10 @@ header {
     align-items: center;
     flex-direction: column;
     width: calc(100% - 250px); /* En supposant que la sidebar fait 250px de large */
+    padding-top: 50px; /* Ajoutez une marge en haut équivalente à la hauteur du logo plus un peu d'espace */
+    padding-left: 300px; /* Ajustez si nécessaire pour tenir compte de la largeur de votre sidebar */
+    padding-right: 0; /* Ajustez selon la disposition du site */
+
 }
 
 /* Style pour le bouton Se connecter */
@@ -361,7 +393,7 @@ a {
     width: 80%; /* ou la largeur de votre choix */
     max-width: 600px; /* ou la largeur maximale de votre choix */
     margin: auto; /* Assure le centrage horizontal si la fenêtre est très large */
-    /* Autres styles de votre tendances-main-container */
+    border: 1px solid #FFA500;
 }
 
 .tendances-main-container {
@@ -370,10 +402,12 @@ a {
     align-items: center;
     background: rgba(255, 255, 255, 0.1); /* Fond légèrement transparent */
     border-radius: 15px;
-    padding: 50px;
     width: 50%; /* Vous pouvez ajuster cette largeur selon vos préférences */
     max-width: 800px; /* Ou la largeur maximale que vous souhaitez */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optionnel: Ajoute un peu d'ombre pour le style */
+    margin-top: 150px;
+    margin-bottom: 150px;
+
 }
 
 .tendance-titles {
@@ -385,8 +419,8 @@ a {
 .tag-main {
     display: block;
     margin: 10px 0;
-    padding: 10px 20px;
-    background-color: rgba(0, 0, 0, 0.1);
+    padding: 25px 350px 25px 350px;
+    background-color: rgba(157, 109, 46, 0.55);
     border-radius: 5px;
     text-decoration: none;
     color: white;
@@ -395,5 +429,5 @@ a {
 }
 
 .tag-main:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(49, 32, 204, 0.63);
 }

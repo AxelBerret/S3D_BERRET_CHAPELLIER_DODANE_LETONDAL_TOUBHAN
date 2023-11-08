@@ -8,10 +8,6 @@
 a {
     text-decoration: none; /* Enlève le soulignement sur tous les liens */
 }
-h2{
-    font-size: 30px;
-    padding-bottom: 80px;
-}
 
 html, body {
     height: 100%;
@@ -27,22 +23,15 @@ header {
 }
 
 .logo {
-    width: 450px; /* Augmentation significative de la taille du logo */
+    width: 300px; /* Augmentation significative de la taille du logo */
     display: block; /* Pour centrer le logo si nécessaire */
-    padding-bottom: 550px;
-    margin-left : -280px;
-
     margin-right: auto;
     position: fixed;
 }
-.logo-container {
+.container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 0; /* Ajustez en fonction de l'espacement désiré */
+    justify-content: space-between;
 }
-
-
 
 .sidebar {
     width: calc(1.5 * 250px); /* Largeur de la sidebar 1.5 fois plus grande */
@@ -113,16 +102,18 @@ header {
     padding: 10px;
     transition: background-color 0.3s;
     border-radius: 55px; /* Coins très arrondis pour le survol */
-    align-items: center;
+align-items: center;
 }
 
 
 .content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: calc(100% - 250px); /* En supposant que la sidebar fait 250px de large */
+    margin-left: 20px; /* Espace entre le contenu et la sidebar */
+    margin-right: calc(1.5 * 250px + 20px); /* Espace à droite pour la sidebar */
+    padding: 20px;
+    flex-grow: 1;
+    padding-left: 20px; /* Cela décale le contenu de la zone principale à droite */
+
+
 }
 
 /* Style pour le bouton Se connecter */
@@ -205,119 +196,101 @@ header {
     font-weight: bold; /* Si vous voulez un texte en gras */
     overflow-wrap: break-word; /* Empêche le texte de sortir de son conteneur */
 }
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+.fil {
+    margin: 20px;
+    padding: 10px;
 }
 
-body, html {
-    width: 100%;
-    height: 100%;
-    background-color: #000; /* Fond noir pour tout le body */
-}
 
-.container {
+
+.tweet-header {
     display: flex;
-    min-height: 100vh;
-    align-items: center; /* Alignement vertical */
-    justify-content: center; /* Alignement horizontal */
+    align-items: center;
 }
 
-/* Styles de base */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.tweet-profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
 }
 
-body, html {
-    height: 100%;
-    font-family: 'Arial', sans-serif;
-    background-color: #000; /* Fond noir pour tout le body */
-}
-
-.container {
+.tweet-user-info {
     display: flex;
-    min-height: 100vh;
-    align-items: center; /* Alignement vertical */
-    justify-content: center; /* Alignement horizontal */
-}
-
-/* Styles pour la sidebar et la section principale */
-.sidebar {
-    width: 375px; /* Largeur de la sidebar */
-    /* Ajouter d'autres styles de la sidebar ici si nécessaire */
-}
-
-.content {
-    flex-grow: 1;
-    display: flex;
-
-}
-
-/* Styles pour le formulaire */
-.login-form {
-    background: transparent;
-    border-radius: 55px;
-    margin-right: 100px;
-    margin-left : -230px;
-    display: block;
     flex-direction: column;
-    max-width: 318px;
-    width: calc(100% - 50px); /* Un peu d'espace sur les côtés */
-    position: absolute;
-    align-self: flex-start; /* Aligner le conteneur du formulaire à gauche */
-
 }
 
-/* Styles pour les champs de saisie */
-.login-form input {
-    background-color: transparent;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-    padding: 10px 400px 10px 10px;
-    border-radius: 55px;
-    outline: none;
-    font-size: 16px;
-    color: white;
+.tweet-username {
+    font-weight: bold;
+}
+
+.tweet-divider {
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+    margin: 10px 0;
+}
+
+.tweet-content {
     margin-top: 10px;
 }
 
-/* Styles pour les boutons */
-.login-form .btn-connexion,
-.login-form .btn-inscription {
-    font-weight: bold;
-    border: 1px solid white;
+.tweet-content p {
+    margin-bottom: 10px;
+}
+
+.tweet-image {
+    max-width: 100%;
+    border-radius: 5px;
+}
+.content {
+    flex-grow: 1; /* Permet au contenu de remplir l'espace disponible */
+    padding-left: 300px;
+    padding-right: -100px;
+
+}
+
+/* Reste du CSS du fil d'actualité comme précédemment */
+
+.feed {
+    list-style: none;
+    padding-top: 200px;
+}
+
+.tweet {
+    min-width: 700px; /* ou max-width si vous voulez que cela soit responsive */
+    border: 1px solid #ccc;
+    padding: 30px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: rgba(199, 196, 196, 0.12);
+    /* Pas besoin de margin-left ici car .content a déjà un padding */
+}
+
+.header-buttons {
+    /* aucun style supplémentaire n'est nécessaire si vous utilisez déjà flexbox sur le header */
+}
+
+.btn-poster {
+    padding: 10px 70px 10px 70px;
+    background-color: transparent;
     color: white;
-    text-transform: uppercase;
-    border-radius: 55px;
+    border: 1px solid #ffffff;
     cursor: pointer;
-    outline: none;
-    width: 80%;
-    max-width: 170px;
-    align-self: center; /* Pour centrer les boutons */
-    margin-top: 10px; /* Espace au-dessus des boutons */
-    padding: 10px 10px; /* Ajoutez du padding selon vos besoins */
-    background-color:transparent; /* Votre couleur d'arrière-plan pour le bouton */
-    text-align: left; /* Alignez le texte à gauche */
-    margin-left: 1px;
-}
-
-/* Effet de survol pour les boutons */
-.login-form .btn-connexion:hover,
-.login-form .btn-inscription:hover {
-    background-color: #FFA500;
-    color: white;
-    border: 1px solid #FFA500;
-}
-
-/* Styles pour les liens */
-a {
-    color: white;
-    text-decoration: none;
     font-weight: bold;
+    border-radius: 55px; /* Coins arrondis */
+    font-size: 18px;
+    position: fixed; /* Position fixe sur l'écran */
+    right: 400px; /* À droite de la sidebar (en supposant que la sidebar fait 250px de large) */
+    top: 70px; /* En haut de l'écran */
+    transition: all 0.3s; /* Transition pour les changements d'état */
+    z-index: 1000; /* S'assurer qu'il reste au-dessus des autres éléments */
+}
+
+.btn-poster:hover {
+    color: black;
+    background-color: white; /* Fond change au survol */
 }
 .btn-tendances {
     background: rgba(255, 98, 98, 0.09); /* Fond légèrement transparent */
