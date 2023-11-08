@@ -246,7 +246,7 @@ header {
 }
 .content {
     flex-grow: 1; /* Permet au contenu de remplir l'espace disponible */
-    margin-right: 720px;
+    margin-right: 620px;
     padding-left: 300px;
     padding-right: -100px;
 
