@@ -12,7 +12,15 @@ session_start();
 $bdd = new PDO('mysql:host=localhost; dbname=touiteur; charset=utf8', 'root', '');
 
 // Créez des instances de vos classes
-$touite = new Touite($bdd);
+$afficherListeTouites = new afficherListeTouite($bdd);
+$afficherTouiteDetail = new afficherTouiteDetail($bdd);
+$afficherTouitesUtilisateur = new afficherTouitesUtilisateur($bdd);
+$afficherTouitesTag = new afficherTouitesTag($bdd);
+$publierTouite = new publierTouite($bdd);
+$evaluerTouite = new evaluerTouite($bdd);
+$effacerTouite = new effacerTouite($bdd);
+$suivreUtilisateur = new suivreUtilisateur($bdd);
+$suivreTag = new suivreTag($bdd);
 $signup = new Signup($bdd);
 $connexion = new Connexion($bdd);
 
@@ -22,27 +30,27 @@ $action = $_REQUEST['action'] ?? 'default'; // Vous devez définir une valeur pa
 // En fonction de l'action, appelez la méthode appropriée de vos classes
 switch ($action) {
     case 'afficherListeTouites':
-        $touite->afficherListeTouites();
+        $afficherListeTouites->afficherListeTouites();
         break;
 
     case 'afficherTouiteDetail':
         $idtouite = $_GET['idtouite'] ?? null;
         if ($idtouite !== null) {
-            $touite->afficherTouiteDetail($idtouite);
+            $afficherTouiteDetail->afficherTouiteDetail($idtouite);
         }
         break;
 
     case 'afficherTouitesUtilisateur':
         $idutilisateur = $_GET['id_utilisateur'] ?? null;
         if ($idutilisateur !== null) {
-            $touite->afficherTouitesUtilisateur($idutilisateur);
+            $afficherTouitesUtilisateur->afficherTouitesUtilisateur($idutilisateur);
         }
         break;
 
     case 'afficherTouitesTag':
         $tag = $_GET['tag'] ?? null;
         if ($tag !== null) {
-            $touite->afficherTouitesTag($tag);
+            $afficherTouitesTag->afficherTouitesTag($tag);
         }
         break;
 
@@ -52,8 +60,8 @@ switch ($action) {
             $idutilisateur = $_SESSION['user_id'];
             $texte = $_POST['texte'] ?? '';
             if (!empty($texte)) {
-                $touite->publierTouite($idutilisateur, $texte);
-                if($touite){
+                $publierTouite->publierTouite($idutilisateur, $texte);
+                if($publierTouite){
                     header('Location: dispatcher.php');
                     exit;
                 }else{
@@ -70,8 +78,8 @@ switch ($action) {
             $idtouite = $_GET['idTouite'] ?? null;
             $like = ($_GET['like']);
             if ($idtouite !== null) {
-                $touite->evaluerTouite($idtouite, $like);
-                if($touite){
+                $evaluerTouite->evaluerTouite($idtouite, $like);
+                if($evaluerTouite){
                     header('Location: dispatcher.php');
                     exit;
                 }else{
@@ -87,13 +95,9 @@ switch ($action) {
         if (isset($_SESSION['user_id'])) {
             $idtouite = $_POST['idtouite'] ?? null;
             if ($idtouite !== null) {
-                $touite->effacerTouite($idtouite);
-                if($touite){
+                $effacerTouite->effacerTouite($idtouite);
                     header('Location: dispatcher.php');
                     exit;
-                }else{
-                    $erreur = "La suppression n'a pas fonctionnée";
-                }
             }
         }
         break;
@@ -137,7 +141,7 @@ switch ($action) {
         if (isset($_SESSION['user_id'])) {
             $idutil = $_POST['id_utilisateur'] ?? null;
             if ($idutil !== null) {
-                $idutil = $touite->suivreUtilisateur($idutil);
+                $idutil = $suivreUtilisateur->suivreUtilisateur($idutil);
                 if($idutil){
                     header('Location: dispatcher.php');
                     exit;
@@ -228,9 +232,22 @@ switch ($action) {
     HTML;
     break;
 
+    case 'suivreTag':
+        if (isset($_SESSION['user_id'])) {
+            $libelleTag = $_GET['libelleTag'] ?? null;
+            if ($libelleTag !== null) {
+                $suivreTag->suivreTag($libelleTag);
+                header('Location: dispatcher.php');
+                exit;
+            }
+        } else {
+            header('Location: HTML/login.html');
+        }
+        break;
+
     default:
         // Action par défaut
 
-        $touite->afficherListeTouites();
+        $afficherListeTouites->afficherListeTouites();
         break;
 }
