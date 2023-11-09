@@ -124,14 +124,29 @@ switch ($action) {
                 header('Location: dispatcher.php');
                 exit();
             } else {
-                // Affichez un message d'erreur en cas d'échec de connexion
-                $erreur = "Identifiants incorrects.";
+                header('Location: HTML/login.HTML');
+                exit();
             }
         break;
 
     case 'afficherSonProfil':
         $AfSProfil = new AfficherSonProfil();
         $AfSProfil->execute();
+
+    case 'suivreUtilisateur':
+        if (isset($_SESSION['user_id'])) {
+            $idutil = $_POST['id_utilisateur'] ?? null;
+            if ($idutil !== null) {
+                $idutil = $touite->suivreUtilisateur($idutil);
+                if($idutil){
+                    header('Location: dispatcher.php');
+                    exit;
+                }else{
+                    $erreur = "Le suivi n'a pas fonctionné";
+                }
+            }
+        }
+        break;
 
 
     case 'deconnexion':

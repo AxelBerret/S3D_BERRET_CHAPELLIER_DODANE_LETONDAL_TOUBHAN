@@ -47,6 +47,7 @@ class Touite{
                     <ul class="feed">
 HTML;
 
+
         // On affiche ensuite tout les touites
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             $texteCourt = substr($row['texte'], 0, 65);
@@ -55,13 +56,46 @@ HTML;
                 $texteCourt = $texteCourt . '...';
             }
 
+            $pattern = '/#(\w+)/';
+            preg_match_all($pattern, $texteCourt, $matches);
+
+            $tags = $matches[0];
+
+            foreach ($tags as $tag) {
+
+                $tagSansHash = substr($tag, 1);
+                $texteCourt = str_replace($tag, "<a href='dispatcher.php?action=afficherTouitesTag&tag={$tagSansHash}'>$tag</a>", $texteCourt);
+            }
+
             echo <<<HTML
     <li class="tweet">
         <div class="tweet-header">
             <div class="tweet-user-info">
                 <a href='dispatcher.php?action=afficherTouitesUtilisateur&id_utilisateur={$row['id_utilisateur']}' style='text-decoration: none; color: white;'>
                 <div class="tweet-username">@{$row['nom']} {$row['prenom']}</div>
-                </a><br>
+                </a>
+HTML;
+            if (isset($_SESSION['user_id'])) {
+                $id_utilisateur = $row['id_utilisateur'];
+                $suiviButton = "<form action='dispatcher.php' method='post'>
+                        <input type='hidden' name='action' value='suivreUtilisateur'>
+                        <input type='hidden' name='id_utilisateur' value='$id_utilisateur'>
+                        <button type='submit' class='btn-supprimer'>Suivre</button>
+                    </form>";
+                // Vérifie si l'utilisateur est déjà suivi
+                if ($this->estDejaSuivi($id_utilisateur, $_SESSION['user_id'])) {
+                    $suiviButton = "<button class='btn-supprimer' disabled>Suivi</button>";
+                }
+
+                echo $suiviButton;
+             }else{
+                 echo <<<HTML
+                                        <form action="HTML/login.html" method="post">
+                                            <button type="submit" class="btn-supprimer">Suivre</button>
+                                        </form>
+HTML;
+             }
+echo <<<HTML
             </div>
         </div>
         <hr class="tweet-divider">
@@ -636,14 +670,14 @@ HTML;
             throw new TouiteTropLong("Ce touite dépasse la limite de 235 charactères");
         }
 
-        $query = "SELECT COUNT(id_touite) as nbtouite FROM TOUITE";
+        $query = "SELECT MAX(id_touite) as nbtouite FROM TOUITE";
 
         $result = $this->db->query($query);
 
         $row = $result->fetch(PDO::FETCH_ASSOC);
 
         if ($row) {
-            $idtouite = $row['nbtouite'];
+            $idtouite = $row['nbtouite']+1;
         }
 
         // On insère un nouveau touite dans la table touite
@@ -710,6 +744,39 @@ HTML;
         $stmtTouite->execute();
 
         return true;
+    }
+
+    public function suivreUtilisateur(string $idUtilisateurSuivis) : bool {
+
+        $query = "SELECT MAX(id_suivreU) as nbsuivre FROM AbonnementUtil";
+
+        $result = $this->db->query($query);
+
+        $row = $result->fetch(PDO::FETCH_ASSOC);
+
+        if ($row) {
+            $idSuivreU = $row['nbsuivre']+1;
+        }
+
+        $query = "INSERT INTO AbonnementUtil (id_suivreU, utilisateurSuivis, utilisateurSuiveurU) VALUES (:idSuivreU, :idUtilisateurSuivis, :idUtilisateurSuiveurU)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':idSuivreU', $idSuivreU, PDO::PARAM_STR);
+        $stmt->bindParam(':idUtilisateurSuivis', $idUtilisateurSuivis, PDO::PARAM_STR);
+        $stmt->bindParam(':idUtilisateurSuiveurU', $_SESSION['user_id'], PDO::PARAM_STR);
+        return $stmt->execute(); //Si la requête s'execute alors le suivi a bien eu lieu
+    }
+
+    public function estDejaSuivi($id_utilisateur, $id_suiveur) : bool{
+
+        $query = "SELECT COUNT(*) FROM AbonnementUtil WHERE utilisateurSuivis = :id_utilisateur AND utilisateurSuiveurU = :id_suiveur";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':id_utilisateur', $id_utilisateur, PDO::PARAM_STR);
+        $stmt->bindParam(':id_suiveur', $id_suiveur, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $result = $stmt->fetchColumn();
+
+        return $result > 0;
     }
 
 
