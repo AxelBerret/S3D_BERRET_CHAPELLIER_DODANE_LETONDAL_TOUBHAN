@@ -9,7 +9,7 @@ Autoloader::register();
 session_start();
 
 // Configurez votre connexion à la base de données
-$bdd = new PDO('mysql:host=localhost; dbname=phpbd; charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=localhost; dbname=touiteur; charset=utf8', 'root', '');
 
 // Créez des instances de vos classes
 $touite = new Touite($bdd);
@@ -53,7 +53,12 @@ switch ($action) {
             $texte = $_POST['texte'] ?? '';
             if (!empty($texte)) {
                 $touite->publierTouite($idutilisateur, $texte);
-                header('Location: dispatcher.php');
+                if($touite){
+                    header('Location: dispatcher.php');
+                    exit;
+                }else{
+                  $erreur = "Problème dans la publication du touite";
+                }
             }
         }else{
             header('Location: HTML/login.html');
@@ -62,19 +67,33 @@ switch ($action) {
 
     case 'evaluerTouite':
         if (isset($_SESSION['user_id'])) {
-            $idtouite = $_GET['idtouite'] ?? null;
-            $eval = ($_GET['eval']) === 'like' ? true : false;
+            $idtouite = $_GET['idTouite'] ?? null;
+            $like = ($_GET['like']);
             if ($idtouite !== null) {
-                $touite->evaluerTouite($idtouite, $eval);
+                $touite->evaluerTouite($idtouite, $like);
+                if($touite){
+                    header('Location: dispatcher.php');
+                    exit;
+                }else{
+                    $erreur = "Problème dans l'évaluation du touite";
+                }
             }
+        }else{
+            header('Location: HTML/login.html');
         }
         break;
 
     case 'effacerTouite':
         if (isset($_SESSION['user_id'])) {
-            $idtouite = $_GET['idtouite'] ?? null;
+            $idtouite = $_POST['idtouite'] ?? null;
             if ($idtouite !== null) {
                 $touite->effacerTouite($idtouite);
+                if($touite){
+                    header('Location: dispatcher.php');
+                    exit;
+                }else{
+                    $erreur = "La suppression n'a pas fonctionnée";
+                }
             }
         }
         break;
@@ -109,9 +128,13 @@ switch ($action) {
                 $erreur = "Identifiants incorrects.";
             }
         break;
+
+
     case 'AfficherSonProfil':
         $AfSProfil = new AfficherSonProfil();
         $AfSProfil->execute();
+
+
     case 'deconnexion':
         session_unset();
         header('Location: dispatcher.php');
