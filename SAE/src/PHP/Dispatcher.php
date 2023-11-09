@@ -1,7 +1,7 @@
 <?php
 // dispatcher.php
 
-require 'PHP/Autoloader.php';
+require 'Autoloader.php';
 
 Autoloader::register();
 
@@ -159,13 +159,13 @@ switch ($action) {
         break;
 
     case 'poster':
-    echo<<<HTML
+    echo <<<HTML
             <!DOCTYPE html>
         <html lang="fr">
         <head>
             <meta charset="UTF-8">
             <title>Touiteur - Accueil</title>
-            <link rel="stylesheet" href="CSS/poster.css">
+            <link rel="stylesheet" href="../CSS/poster.css">
             <link rel="icon" type="image/jpeg" href="images/icon.png">
         </head>
     
@@ -212,10 +212,10 @@ switch ($action) {
                         <a href="#tag2" class="tag">#Tag2</a>
                         <a href="#tag3" class="tag">#Tag3</a>
                     </div>
-                    <form action="HTML/login.html" method="post">
+                    <form action="../HTML/login.html" method="post">
                         <button type="submit" class="btn-connexion">Se connecter</button>
                     </form>
-                    <form action="HTML/signup.html" method="post">
+                    <form action="../HTML/signup.html" method="post">
                         <button type="submit" class="btn-inscription">S'inscrire</button>
                     </form>
     
@@ -237,7 +237,8 @@ switch ($action) {
             $libelleTag = $_GET['libelleTag'] ?? null;
             if ($libelleTag !== null) {
                 $suivreTag->suivreTag($libelleTag);
-                header('Location: dispatcher.php');
+                $tagSansHashtag = substr($libelleTag, 1);
+                header("Location: dispatcher.php?action=afficherTouitesTag&tag=$tagSansHashtag");
                 exit;
             }
         } else {

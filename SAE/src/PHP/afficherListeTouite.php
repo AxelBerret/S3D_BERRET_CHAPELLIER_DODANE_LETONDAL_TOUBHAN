@@ -27,8 +27,8 @@ class afficherListeTouite{
             <head>
                 <meta charset="UTF-8">
                 <title>Touiteur - Accueil</title>
-                <link rel="stylesheet" href="CSS/accueil.css">
-                <link rel="icon" type="image/jpeg" href="images/icon.png">
+                <link rel="stylesheet" href="../CSS/accueil.css">
+                <link rel="icon" type="image/jpeg" href="../images/icon.png">
             </head>
         
             <body>
@@ -40,7 +40,7 @@ class afficherListeTouite{
                     </form>
                 </div>
                 <header>
-                    <img src="images/logo.jpeg" alt="Logo Touiteur" class="logo">
+                    <img src="../images/logo.jpeg" alt="Logo Touiteur" class="logo">
                 </header>
         
                 <main class="content">
@@ -106,15 +106,16 @@ HTML;
                         <div class="like-dislike-buttons">
                             <div class="like-dislike-buttons">
                                 <a href="dispatcher.php?action=evaluerTouite&idTouite={$row['id_touite']}&like=1">
-                                    <img src="Images/like.png" alt="Like button" class="like-button">
+                                    <img src="../Images/like.png" alt="Like button" class="like-button">
                                 </a>
                                 <span class="like-counter">{$row['jaime']}</span>
                                 
                                 <a href="dispatcher.php?action=evaluerTouite&idTouite={$row['id_touite']}&like=0">
-                                    <img src="Images/dislike.png" alt="Dislike button" class="dislike-button">
+                                    <img src="../Images/dislike.png" alt="Dislike button" class="dislike-button">
                                 </a>
                                 <span class="dislike-counter">{$row['dislike']}</span>
 HTML;
+            if(isset($_SESSION['user_id'])){
             if ($_SESSION['user_id'] == $row['id_utilisateur']) {
                 echo <<<HTML
                                         <form action="dispatcher.php" method="post">
@@ -122,7 +123,7 @@ HTML;
                                             <input type="hidden" name="idtouite" value="{$row['id_touite']}">
                                             <button type="submit" class="btn-supprimer">Supprimer</button>
                                         </form>
-HTML;
+HTML;}
             }echo<<<HTML
 
                             </div>
@@ -149,9 +150,9 @@ HTML;
 HTML;
         if(isset($_SESSION['user_id'])){
             echo <<<HTML
-                    <li><a href="dispatcher.php"><img src="images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
-                    <li><a href="HTML/tendances.html"><img src="images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
-                    <li><a href="dispatcher.php?action=afficherSonProfil"><img src="images/profil.png" alt="" class="menu-icon">Profil</a></li>
+                    <li><a href="dispatcher.php"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
+                    <li><a href="HTML/tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
+                    <li><a href="dispatcher.php?action=afficherSonProfil"><img src="../images/profil.png" alt="" class="menu-icon">Profil</a></li>
                 </ul>
                 <div class="profile-module">
                 <div class="profile-username">@$nom $prenom</div>
@@ -179,8 +180,8 @@ HTML;
         }
         else{
             echo <<<HTML
-                    <li><a href="dispatcher.php"><img src="images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
-                    <li><a href="tendances.html"><img src="images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
+                    <li><a href="dispatcher.php"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
+                    <li><a href="tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
                 </ul>
                 <div class="profile-module">
                 <div class="profile-username">@$nom $prenom</div>

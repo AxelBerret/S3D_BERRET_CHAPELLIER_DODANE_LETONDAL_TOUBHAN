@@ -27,8 +27,8 @@ class afficherTouitesUtilisateur{
         <head>
             <meta charset="UTF-8">
             <title>Touiteur - Accueil</title>
-            <link rel="stylesheet" href="CSS/accueil.css">
-            <link rel="icon" type="image/jpeg" href="images/icon.png">
+            <link rel="stylesheet" href="../CSS/accueil.css">
+            <link rel="icon" type="image/jpeg" href="../images/icon.png">
         </head>
     
         <body>
@@ -40,7 +40,7 @@ class afficherTouitesUtilisateur{
                 </form>
             </div>
             <header>
-                <img src="images/logo.jpeg" alt="Logo Touiteur" class="logo">
+                <img src="../images/logo.jpeg" alt="Logo Touiteur" class="logo">
             </header>
     
             <main class="content">
@@ -92,9 +92,9 @@ class afficherTouitesUtilisateur{
 
         if(isset($_SESSION['user_id'])){
             echo <<<HTML
-                    <li><a href="dispatcher.php"><img src="images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
-                    <li><a href="HTML/tendances.html"><img src="images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
-                    <li><a href="dispatcher.php?action=afficherMurUtilisateur&idtouite={$_SESSION['user_id']}"><img src="images/profil.png" alt="" class="menu-icon">Profil</a></li>
+                    <li><a href="dispatcher.php"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
+                    <li><a href="HTML/tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
+                    <li><a href="dispatcher.php?action=afficherMurUtilisateur&idtouite={$_SESSION['user_id']}"><img src="../images/profil.png" alt="" class="menu-icon">Profil</a></li>
                 </ul>
                 <div class="profile-module">
                 <div class="profile-username">@$nom $prenom</div>
@@ -122,8 +122,8 @@ class afficherTouitesUtilisateur{
         }
         else{
             echo <<<HTML
-                    <li><a href="dispatcher.php"><img src="images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
-                    <li><a href="tendances.html"><img src="images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
+                    <li><a href="dispatcher.php"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
+                    <li><a href="tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
                 </ul>
                 <div class="profile-module">
                 <div class="profile-username">@$nom $prenom</div>
