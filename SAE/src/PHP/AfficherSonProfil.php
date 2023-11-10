@@ -17,19 +17,21 @@ class AfficherSonProfil{
         $query->bindParam(':id', $id, PDO::PARAM_STR);
         $result = $query->execute();
         if ($result) {
-            $stockage = $query->fetchAll(PDO::FETCH_ASSOC);
+            if ($query->rowCount() > 0) {
+                $stockage = $query->fetchAll(PDO::FETCH_ASSOC);
 
-            foreach ($stockage as $row) {
-                $id = $row['id_utilisateur'];
-                $nom = $row['nom'];
-                $prenom = $row['prenom'];
-                $email = $row['email'];
+                foreach ($stockage as $row) {
+                    $id = $row['id_utilisateur'];
+                    $nom = $row['nom'];
+                    $prenom = $row['prenom'];
+                    $email = $row['email'];
+                }
             }
         }else {
             echo "Erreur lors de l'exécution de la requête.";
         }
 
-        $queryScore = "Select (avg(jaime-dislike),2) as scoreMoyen from touite where id_utilisateur = :idUtilisateur";
+        $queryScore = "Select ROUND(avg(jaime - dislike),2) as scoreMoyen from touite where id_utilisateur = :idUtilisateur";
         $stmtScore = $this->pdo->prepare($queryScore);
         $stmtScore->bindParam(':idUtilisateur', $id, PDO::PARAM_STR);
         $stmtScore->execute();
