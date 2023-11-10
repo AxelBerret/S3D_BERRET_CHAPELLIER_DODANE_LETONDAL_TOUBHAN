@@ -126,6 +126,7 @@ HTML;}
                             </div>
                         </div>
                     </div>
+                    </div>
     </li>
 HTML;
         }
