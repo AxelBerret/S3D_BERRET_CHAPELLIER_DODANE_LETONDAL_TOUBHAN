@@ -30,9 +30,6 @@ $action = $_REQUEST['action'] ?? 'default'; // Vous devez définir une valeur pa
 
 // En fonction de l'action, appelez la méthode appropriée de vos classes
 switch ($action) {
-    case 'afficherListeTouites':
-        $afficherListeTouites->afficherListeTouites();
-        break;
 
     case 'afficherTouiteDetail':
         $idtouite = $_GET['idtouite'] ?? null;
@@ -86,7 +83,7 @@ switch ($action) {
                     exit;
                 }else{
                     //Déjà évalué
-                    header('Location: dispatcher.php');
+                    header("Refresh:0");
                 }
             }
         }else{
@@ -99,7 +96,7 @@ switch ($action) {
             $idtouite = $_POST['idtouite'] ?? null;
             if ($idtouite !== null) {
                 $effacerTouite->effacerTouite($idtouite);
-                    header('Location: dispatcher.php');
+                    header("Refresh:0");
                     exit;
             }
         }
@@ -146,7 +143,7 @@ switch ($action) {
             if ($idutil !== null) {
                 $idutil = $suivreUtilisateur->suivreUtilisateur($idutil);
                 if($idutil){
-                    header('Location: dispatcher.php');
+                    header("Refresh:0");
                     exit;
                 }else{
                     $erreur = "Le suivi n'a pas fonctionné";
@@ -322,10 +319,12 @@ switch ($action) {
             echo '<li>' . $influenceur['nom'] . ' ' . $influenceur['prenom'] . ' - ' . $influenceur['nbSuiveurs'] . ' suiveurs</li>';
         }
         break;
+
     case 'utilisateurNarcissique':
         $un = new UtilisateurNarcissique();
         $un->execute();
         break;
+
     default:
             $afficherListeTouites->afficherListeTouites();
         break;

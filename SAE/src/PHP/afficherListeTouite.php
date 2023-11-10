@@ -101,9 +101,6 @@ HTML;
                 }
 
                 echo $suiviButton;
-            }else{
-                echo <<<HTML
-HTML;
             }
             echo <<<HTML
         </div>
