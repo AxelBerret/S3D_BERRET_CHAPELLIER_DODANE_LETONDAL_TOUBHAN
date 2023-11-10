@@ -187,9 +187,10 @@ switch ($action) {
             <main class="content">
     
                 <div class="tweet-form-container">
-                    <form class="tweet-form" action="dispatcher.php?action=publierTouite" method="post">
+                    <form class="tweet-form" action="dispatcher.php?action=publierTouite" method="post" enctype="multipart/form-data">
                         <label for="tweetContent">@{$_SESSION['nom']} {$_SESSION['prenom']}</label>
                         <textarea id="texte" name="texte" placeholder="Veuillez écrire ici." required></textarea>
+                        <input type="file" name="image" id="image" accept="image/*">
                         <input type="hidden" name="action" value="publierTouite">
                         <button type="submit" name="submit">Touiter</button>
                     </form>
