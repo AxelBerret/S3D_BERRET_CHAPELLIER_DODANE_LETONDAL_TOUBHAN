@@ -17,7 +17,6 @@ html, body {
 }
 
 header {
-    width: 100%;
     padding: 50px 50px 50px 50px;
     background-color: #000000; /* Assurer que le header est aussi noir */
 }
@@ -359,7 +358,7 @@ header {
 
 .btn-suivre {
     padding : 10px 20px;
-
+margin-top: 20px;
     color : white;
     background-color: transparent;
     border-radius: 55px;
