@@ -35,14 +35,12 @@ class AfficherSonProfil{
         }else {
             echo "Erreur lors de l'exécution de la requête.";
         }
-        $queryAbonnes = "SELECT COUNT(*) FROM abonnementUtil where UtilisateurSuivis = ;id";
+        //Comptage des abonnements
+        $queryAbonnes = "SELECT COUNT(*) FROM abonnementUtil where UtilisateurSuivis = :id";
         $queryAbonnes = $this->pdo->prepare($queryAbonnes);
-        $query->bindParam(':id', $id, PDO::PARAM_STR);
-        $result = $query->execute();
-        if ($result) {
-            $nbAbo = $queryAbonnes->fetchColumn();
-            // Utilisez $nbAbo comme nécessaire
-        }
+        $queryAbonnes->bindParam(':id', $id, PDO::PARAM_STR);
+        $queryAbonnes->execute();
+        $nbAbo = $queryAbonnes->fetchColumn();
         if ($nbAbo == null){
             $nbAbo = 0;
         }

@@ -40,7 +40,7 @@ class UtilisateurNarcissique
             echo "Erreur lors de l'exécution de la requête.";
         }
         //Récupération des abonnés
-        $query = "SELECT nom, prenom FROM utilisateur INNER JOIN abonnementutil ON utilisateur.id_utilisateur = abonnementutil.utilisateurSuiveur WHERE abonnementutil.utilisateurSuivis = :id";
+        $query = "SELECT id_utilisateur, nom, prenom FROM utilisateur INNER JOIN abonnementutil ON utilisateur.id_utilisateur = abonnementutil.utilisateurSuiveur WHERE abonnementutil.utilisateurSuivis = :id";
         $query = $this->pdo->prepare($query);
         $query->bindParam(':id', $id, PDO::PARAM_INT);
         $query->execute();
@@ -71,7 +71,7 @@ class UtilisateurNarcissique
                     <div class="profil-titles"><h3>Liste de vos abonnés</h3></div>
                     <ul class="menu">';
         for ($i=0;$i<$tailleTableau;$i++){
-            $htmlString .= "<li><a>Nom : {$results[$i]['nom']} Prénom : {$results[$i]['prenom']}</a></li>";
+            $htmlString .= "<li><a href='dispatcher.php?action=afficherTouitesUtilisateur&id_utilisateur={$results[$i]['id_utilisateur']}'>Nom : {$results[$i]['nom']} Prénom : {$results[$i]['prenom']}</a></li>";
     }
         $htmlString .= '
                     </ul>
