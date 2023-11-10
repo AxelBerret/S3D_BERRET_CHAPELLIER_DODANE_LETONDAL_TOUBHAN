@@ -7,6 +7,7 @@ class TouiteTropLong extends Exception {}
 class afficherListeTouite{
 
     private $db;
+    private $touiteParPage = 5;
 
     public function __construct(PDO $db) {
         $this->db = $db;
@@ -14,12 +15,19 @@ class afficherListeTouite{
 
     function afficherListeTouites() {
 
-        // Requête permettant de récupérer tous les touites et les trier par date récente
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        //Nous ne sommes pas familié avec l'utilisation de offset mais c'est l'unique solution abordable trouvée en ligne
+        $offset = ($page - 1) * $this->touiteParPage;
+
+        // Requête permettant de récupérer tous les touites et les trier par date récente, ainsi que de limiter le nombre par page avec LIMIT
         $query = "SELECT TOUITE.*, UTILISATEUR.nom, UTILISATEUR.prenom, UTILISATEUR.id_utilisateur FROM TOUITE 
                  JOIN UTILISATEUR ON TOUITE.Id_utilisateur = UTILISATEUR.id_utilisateur 
-                 ORDER BY TOUITE.datePub DESC";
+                 ORDER BY TOUITE.datePub DESC LIMIT :offset, :touiteParPage";
 
-        $result = $this->db->query($query);
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $stmt->bindParam(':touiteParPage', $this->touiteParPage, PDO::PARAM_INT);
+        $stmt->execute();
 
         echo <<<HTML
             <!DOCTYPE html>
@@ -49,7 +57,7 @@ HTML;
 
 
         // On affiche ensuite tout les touites
-        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $texteCourt = substr($row['texte'], 0, 65);
 
             if (strlen($texteCourt) > 64) {
@@ -129,14 +137,16 @@ HTML;}
     </li>
 HTML;
         }
-        if(isset($_SESSION['user_id'])){
-            $nom = $_SESSION['nom'];
-            $prenom = $_SESSION['prenom'];
+        $totalPages = $this->getTotalPages();
+        echo '<div class="pagination-buttons">';
+        if ($page > 1) {
+            echo '<a href="dispatcher.php?action=afficherListeTouite&page='.($page-1).'">Page précédente</a>';
         }
-        else{
-            $nom = "Déconnecté";
-            $prenom = "";
+        if ($page < $totalPages) {
+            echo '<a href="dispatcher.php?action=afficherListeTouite&page='.($page + 1).'">Page suivante</a>';
         }
+        echo '</div>';
+
         echo <<<HTML
             </ul>
             </main>
@@ -145,6 +155,14 @@ HTML;
 
                 <ul class="menu">
 HTML;
+        if(isset($_SESSION['user_id'])){
+            $nom = $_SESSION['nom'];
+            $prenom = $_SESSION['prenom'];
+        }
+        else{
+            $nom = "Déconnecté";
+            $prenom = "";
+        }
         if(isset($_SESSION['user_id'])){
             echo <<<HTML
                     <li><a href="dispatcher.php?action=afficherMonMur"><img src="../images/mur_accueil.png" alt="" class="menu-icon">Mon Mur</a></li>
@@ -229,6 +247,13 @@ HTML;
         return $result > 0;
     }
 
+    private function getTotalPages() {
+        $query = "SELECT COUNT(*) FROM TOUITE";
+        $stmt = $this->db->query($query);
+        $totalTouite = $stmt->fetchColumn();
+        //Permet d'arrondir à l'entier
+        return ceil($totalTouite / $this->touiteParPage);
+    }
 }
 
 
