@@ -229,7 +229,7 @@ HTML;
 
     public function estDejaSuivi($id_utilisateur, $id_suiveur) : bool{
 
-        $query = "SELECT COUNT(*) FROM AbonnementUtil WHERE utilisateurSuivis = :id_utilisateur AND utilisateurSuiveurU = :id_suiveur";
+        $query = "SELECT COUNT(*) FROM AbonnementUtil WHERE utilisateurSuivis = :id_utilisateur AND utilisateurSuiveur = :id_suiveur;";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':id_utilisateur', $id_utilisateur, PDO::PARAM_STR);
         $stmt->bindParam(':id_suiveur', $id_suiveur, PDO::PARAM_STR);
