@@ -30,6 +30,9 @@
                 <div class="tweet-header">
                     <div class="tweet-user-info">
                         <div class="tweet-username">@NomUtilisateur</div>
+                        <form action="HTML/login.html" method="post">
+                            <button type="submit" class="btn-suivre">Suivre</button>
+                        </form>
                     </div>
                 </div>
                 <hr class="tweet-divider">
@@ -40,6 +43,10 @@
                         <span class="like-counter">0</span>
                         <img src="../Images/dislike.png" alt="Dislike button" onclick="incrementDislikes()" class="dislike-button">
                         <span class="dislike-counter">0</span>
+                        <form action="HTML/login.html" method="post">
+                            <button type="submit" class="btn-supprimer">Supprimer</button>
+                        </form>
+
                     </div>
                 </div>
             </li>
@@ -166,7 +173,9 @@
                 <a href="#tag2" class="tag">#Tag2</a>
                 <a href="#tag3" class="tag">#Tag3</a>
             </div>
-
+            <form action="HTML/login.html" method="post">
+                <button type="submit" class="btn-suivre-tag">Suivre le tag</button>
+            </form>
             <form action="login.html" method="post">
                 <button type="submit" class="btn-connexion">Se connecter</button>
             </form>

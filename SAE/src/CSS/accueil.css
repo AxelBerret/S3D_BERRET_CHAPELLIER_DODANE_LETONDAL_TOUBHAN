@@ -364,3 +364,57 @@ header {
     font-weight: bold;
 }
 
+.btn-suivre {
+    margin-left: 20px;
+    padding : 10px 20px;
+
+    color : white;
+    background-color: transparent;
+    border-radius: 55px;
+    border: 2px solid #ffffff; /* Ajoute une bordure orange pour le bouton S'inscrire */
+}
+
+.btn-suivre:hover {
+    color : white;
+    background-color: rgb(255, 165, 0);
+    border-radius: 55px;
+    padding : 10px 20px;
+    transition-duration: 0.3s;
+
+}
+
+.btn-suivre-tag {
+    margin-left: 20px;
+    padding : 10px 20px;
+
+    color : white;
+    background-color: transparent;
+    border-radius: 55px;
+    border: 2px solid #ffffff; /* Ajoute une bordure orange pour le bouton S'inscrire */
+}
+
+.btn-suivre-tag:hover {
+    color : white;
+    background-color: rgb(255, 165, 0);
+    border-radius: 55px;
+    padding : 10px 20px;
+    transition-duration: 0.3s;
+
+}
+
+.btn-supprimer {
+    color : red;
+    background-color: transparent;
+    border-radius: 55px;
+    border: 2px solid red; /* Ajoute une bordure orange pour le bouton S'inscrire */
+    padding : 10px 20px;
+
+}
+
+.btn-supprimer:hover {
+    color : white;
+    background-color: darkred;
+    border-radius: 55px;
+    padding : 10px 20px;
+    transition-duration: 0.3s;
+}
