@@ -169,7 +169,7 @@ switch ($action) {
             <meta charset="UTF-8">
             <title>Touiteur - Accueil</title>
             <link rel="stylesheet" href="../CSS/poster.css">
-            <link rel="icon" type="image/jpeg" href="images/icon.png">
+            <link rel="icon" type="image/jpeg" href="../images/icon.png">
         </head>
     
         <body>
@@ -182,7 +182,7 @@ switch ($action) {
                 </form>
             </div>
             <header>
-                <img src="images/logo.jpeg" alt="Logo Touiteur" class="logo">
+                <img src="../images/logo.jpeg" alt="Logo Touiteur" class="logo">
     
             </header>
     
@@ -202,9 +202,10 @@ switch ($action) {
                 <nav>
     
                     <ul class="menu">
-                        <li><a href="dispatcher.php"><img src="images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
-                        <li><a href="tendances.html"><img src="images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
-                        <li><a href="ACONFIGURER"><img src="images/icon_profil.png" alt="" class="menu-icon">Profil</a></li>
+                        <li><a href="dispatcher.php?action=afficherMonMur"><img src="../images/mur_accueil.png" alt="" class="menu-icon">Mon Mur</a></li>
+                        <li><a href="dispatcher.php"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
+                        <li><a href="tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
+                        <li><a href="dispatcher.php?action='afficherSonProfil"><img src="../images/icon_profil.png" alt="" class="menu-icon">Profil</a></li>
     
                     </ul>
                     <div class="profile-module">
@@ -292,7 +293,9 @@ switch ($action) {
             echo '<li>' . $influenceur['nom'] . ' ' . $influenceur['prenom'] . ' - ' . $influenceur['nbSuiveurs'] . ' suiveurs</li>';
         }
         break;
-
+    case 'utilisateurNarcissique':
+        $un = new UtilisateurNarcissique();
+        $un->execute();
     default:
         if (isset($_SESSION['user_id'])) {
             $iduser = $_SESSION['user_id'] ?? null;

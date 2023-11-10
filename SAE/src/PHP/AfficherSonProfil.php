@@ -30,7 +30,17 @@ class AfficherSonProfil{
         }else {
             echo "Erreur lors de l'exécution de la requête.";
         }
-
+        $queryAbonnes = "SELECT COUNT(*) FROM abonnementUtil where UtilisateurSuivis = ;id";
+        $queryAbonnes = $this->pdo->prepare($queryAbonnes);
+        $query->bindParam(':id', $id, PDO::PARAM_STR);
+        $result = $query->execute();
+        if ($result) {
+            $nbAbo = $queryAbonnes->fetchColumn();
+            // Utilisez $nbAbo comme nécessaire
+        }
+        if ($nbAbo == null){
+            $nbAbo = 0;
+        }
 
         $queryScore = "Select ROUND(avg(jaime - dislike),2) as scoreMoyen from touite where id_utilisateur = :idUtilisateur";
 
@@ -68,6 +78,7 @@ class AfficherSonProfil{
                         <li><a>Prénom : ' . $prenom . '</a></li>
                         <li><a>email : ' . $email . '</a></li>
                         <li><a>Score Moyen : ' . $ScoreMoyen . '</a></li>
+                        <li><a href="dispatcher.php?action=utilisateurNarcissique">Nombre d\'abonnés : ' . $nbAbo . ' (cliquez pour voir en détail)</a></li>
                     </ul>
                 </div>
             </div>
@@ -75,7 +86,9 @@ class AfficherSonProfil{
                 <nav>
                     <ul class="menu">';
         if(isset($_SESSION['user_id'])){
-            $htmlString .= ' <li><a href="dispatcher.php"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
+            $htmlString .= '                    <li><a href="dispatcher.php?action=afficherMonMur"><img src="../images/mur_accueil.png" alt="" class="menu-icon">Mon Mur</a></li>
+ <li><a href="dispatcher.php">
+ <img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
                     <li><a href="HTML/tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
                     <li><a href="dispatcher.php?action=afficherSonProfil"><img src="../images/profil.png" alt="" class="menu-icon">Profil</a></li>
                 </ul>

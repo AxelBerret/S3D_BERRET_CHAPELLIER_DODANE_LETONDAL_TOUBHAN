@@ -233,6 +233,7 @@ header {
 
 .tweet-content {
     margin-top: 10px;
+
 }
 
 .tweet-content p {
@@ -240,8 +241,8 @@ header {
 }
 
 .tweet-image {
-    max-width: 100%;
     border-radius: 5px;
+    max-width: 500px;
 }
 
 
@@ -255,8 +256,10 @@ header {
 .tweet {
     border: 1px solid #ccc;
     padding: 30px;
-    margin-bottom: 20px;
+    margin-left: 25%;
+    margin-bottom: 30px;
     border-radius: 8px;
+    max-width: 750px;
     background-color: rgba(199, 196, 196, 0.12);
 }
 
