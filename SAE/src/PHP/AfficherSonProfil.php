@@ -28,6 +28,15 @@ class AfficherSonProfil{
         }else {
             echo "Erreur lors de l'exécution de la requête.";
         }
+
+        $queryScore = "Select avg(jaime-dislike) as scoreMoyen from touite where id_utilisateur = :idUtilisateur";
+        $Score = $this->pdo->prepare($queryScore);
+        $Score->bindParam(':idUtilisateur', $id, PDO::PARAM_STR);
+        $Score->execute();
+        $ScoreMoyen = $Score->fetch(PDO::FETCH_ASSOC)['scoreMoyen'];
+
+
+
         echo '$htmlString = <!DOCTYPE html>
         <html lang="fr">
         <head>
