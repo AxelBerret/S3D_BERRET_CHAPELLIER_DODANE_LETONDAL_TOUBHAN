@@ -438,3 +438,13 @@ header {
     transition-duration: 0.3s;
 
 }
+
+.tag-search-input{
+    margin-left: 20px;
+    padding : 10px 20px;
+
+    color : white;
+    background-color: transparent;
+    border-radius: 55px;
+    border: 2px solid #ffffff;
+}
