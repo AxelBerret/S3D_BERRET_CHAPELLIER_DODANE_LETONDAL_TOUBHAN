@@ -63,6 +63,7 @@ class AfficherSonProfil{
                         <li><a>' . $nom . '</a></li>
                         <li><a>' . $prenom . '</a></li>
                         <li><a>' . $email . '</a></li>
+                        <li><a>' . $ScoreMoyen . '</a></li>
                     </ul>
                 </div>
             </div>
