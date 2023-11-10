@@ -74,7 +74,7 @@ HTML;
                 <a href='dispatcher.php?action=afficherTouitesUtilisateur&id_utilisateur={$row['id_utilisateur']}' style='text-decoration: none; color: white;'>
                 <div class="tweet-username">@{$row['nom']} {$row['prenom']}</div>
                 </a>
-                     
+                      </div>
 HTML;
             if (isset($_SESSION['user_id'])) {
                 $id_utilisateur = $row['id_utilisateur'];
@@ -94,7 +94,6 @@ HTML;
 HTML;
             }
             echo <<<HTML
-            </div>
         </div>
         <hr class="tweet-divider">
         <div class="tweet-content">
@@ -126,6 +125,7 @@ HTML;}
 
                             </div>
                         </div>
+                    </div>
                     </div>
     </li>
 HTML;

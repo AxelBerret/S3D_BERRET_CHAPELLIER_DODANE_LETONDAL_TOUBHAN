@@ -107,11 +107,8 @@ header {
 
 
 .content {
-    margin-left: 20px; /* Espace entre le contenu et la sidebar */
-    margin-right: 370px; /* Espace à droite pour la sidebar */
     padding: 20px;
     flex-grow: 1;
-    padding-left: 20px; /* Cela décale le contenu de la zone principale à droite */
 
 
 }
@@ -246,12 +243,7 @@ header {
     max-width: 100%;
     border-radius: 5px;
 }
-.content {
-    flex-grow: 1; /* Permet au contenu de remplir l'espace disponible */
-    padding-left: 300px;
-    padding-right: -100px;
 
-}
 
 /* Reste du CSS du fil d'actualité comme précédemment */
 
@@ -336,7 +328,6 @@ header {
 .like-dislike-buttons {
     display: flex;
     flex-direction: row;
-    align-items: center;
     margin-top: 10px;
 }
 .like-counter{
