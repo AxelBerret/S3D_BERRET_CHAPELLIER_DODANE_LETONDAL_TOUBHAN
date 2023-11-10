@@ -29,6 +29,21 @@ class Connexion{
         return false;
     }
 
+    public function getInfluenceurs(int $limit = 10) {
+        $query = "select u.id_utilisateur, u.nom, u.prenom, count(AU.id_suivreU) as nbSuiveurs
+                    from Utilisateur u left join AbonnementUtil au 
+                        on U.id_utilisateur = au.utilisateurSuivis
+                          group by u.id_utilisateur, u.nom, u.prenom
+                            order by nbSuiveurs desc
+                                limit :limit";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 }
 
 ?>
