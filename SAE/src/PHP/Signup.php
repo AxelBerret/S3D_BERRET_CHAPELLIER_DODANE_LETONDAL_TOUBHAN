@@ -53,6 +53,8 @@ class Signup{
         $stmt->bindParam(':password', $hash);
 
         if ($stmt->execute()) {
+            $idutilisateur = $this->db->lastInsertId();
+            $_SESSION['user_id'] = $idutilisateur;
             $_SESSION['user_id'] = $idutilisateur;
             $_SESSION['nom'] = $nom;
             $_SESSION['prenom'] = $prenom;
