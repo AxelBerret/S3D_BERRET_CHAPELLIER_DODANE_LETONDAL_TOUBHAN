@@ -94,7 +94,7 @@ HTML;
             }else{
                 echo <<<HTML
                                         <form action="HTML/login.html" method="post">
-                                            <button type="submit" class="btn-supprimer">Suivre</button>
+                                            <button type="submit" class="btn-suivre">Suivre</button>
                                         </form>
 HTML;
             }

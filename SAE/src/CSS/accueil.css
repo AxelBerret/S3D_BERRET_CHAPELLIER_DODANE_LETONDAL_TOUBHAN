@@ -419,3 +419,22 @@ header {
     padding : 10px 20px;
     transition-duration: 0.3s;
 }
+
+.tag-search-button {
+    margin-left: 20px;
+    padding : 10px 20px;
+
+    color : white;
+    background-color: transparent;
+    border-radius: 55px;
+    border: 2px solid #ffffff; /* Ajoute une bordure orange pour le bouton S'inscrire */
+}
+
+.btn-search-tag:hover {
+    color : white;
+    background-color: rgb(255, 165, 0);
+    border-radius: 55px;
+    padding : 10px 20px;
+    transition-duration: 0.3s;
+
+}
