@@ -182,9 +182,9 @@ HTML;
     }
 
     public function estDejaAbonneAuTag(string $tagSuivis): bool {
-        $query = "SELECT * FROM AbonnementTag WHERE utilisateurSuiveurT = :utilisateurSuiveurT AND tagSuivis = :tagSuivis";
+        $query = "SELECT * FROM AbonnementTag WHERE id_utilisateur = :id_utilisateur AND tagSuivis = :tagSuivis";
         $stmt = $this->db->prepare($query);
-        $stmt->bindParam(':utilisateurSuiveurT', $_SESSION['user_id'], PDO::PARAM_STR);
+        $stmt->bindParam(':id_utilisateur', $_SESSION['user_id'], PDO::PARAM_STR);
         $stmt->bindParam(':tagSuivis', $tagSuivis, PDO::PARAM_STR);
         $stmt->execute();
 
