@@ -12,8 +12,8 @@ class afficherMurUtilisateur
         $this->db = $db;
     }
 
-    public function afficherMurUtilisateur(string $id_utilisateur)
-    {
+    public function afficherMurUtilisateur(string $id_utilisateur){
+
         $query = "SELECT DISTINCT TOUITE.*, UTILISATEUR.nom, UTILISATEUR.prenom, UTILISATEUR.id_utilisateur 
           FROM TOUITE 
           JOIN UTILISATEUR ON TOUITE.id_utilisateur = UTILISATEUR.id_utilisateur 
@@ -66,6 +66,9 @@ class afficherMurUtilisateur
 HTML;
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+            $utilSuivi = $row['id_utilisateur'];
+
             $texteCourt = substr($row['texte'], 0, 65);
 
             if (strlen($texteCourt) > 64) {
@@ -80,7 +83,7 @@ HTML;
             foreach ($tags as $tag) {
 
                 $tagSansHash = substr($tag, 1);
-                $texteCourt = str_replace($tag, "<a href='dispatcher.php?action=afficherTouitesTag&tag={$tagSansHash}'>$tag</a>", $texteCourt);
+                $texteCourt = str_replace($tag, "<a href='dispatcher.php?action=afficherTouitesTag&tag={$tagSansHash}' style='color: blue;'>$tag</a>", $texteCourt);
             }
 
             echo <<<HTML
@@ -92,6 +95,16 @@ HTML;
                 </a>
                       </div>
 HTML;
+            if($_SESSION['user_id'] !== $utilSuivi) {
+                $suiviButton = "<form action='dispatcher.php' method='post'>
+                        <input type='hidden' name='action' value='nePlusSuivreUtilisateur'>
+                        <input type='hidden' name='id_utilisateur' value='$utilSuivi'>
+                        <button type='submit' class='btn-suivre'>Ne plus suivre</button>
+                    </form>";
+
+                echo $suiviButton;
+            }
+
             echo <<<HTML
         </div>
         <hr class="tweet-divider">

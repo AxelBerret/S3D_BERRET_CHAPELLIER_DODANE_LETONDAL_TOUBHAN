@@ -7,7 +7,7 @@ class TouiteTropLong extends Exception {}
 class afficherListeTouite{
 
     private $db;
-    private $touiteParPage = 5;
+    private $touiteParPage = 10;
 
     public function __construct(PDO $db) {
         $this->db = $db;
@@ -72,7 +72,7 @@ HTML;
             foreach ($tags as $tag) {
 
                 $tagSansHash = substr($tag, 1);
-                $texteCourt = str_replace($tag, "<a href='dispatcher.php?action=afficherTouitesTag&tag={$tagSansHash}'>$tag</a>", $texteCourt);
+                $texteCourt = str_replace($tag, "<a href='dispatcher.php?action=afficherTouitesTag&tag={$tagSansHash}' style='color: blue;'>$tag</a>", $texteCourt);
             }
 
             echo <<<HTML
@@ -108,8 +108,9 @@ HTML;
         <div class="tweet-content">
                         <a href='dispatcher.php?action=afficherTouiteDetail&idtouite={$row['id_touite']}' style='text-decoration: none; color: white;'>
                         <p>$texteCourt</p>
-                        <img src='{$row['image']}' alt='Image du touite' class='tweet-image'>
+                        <br>
                         </a><br>
+                        <img src='{$row['image']}' alt='Image du touite' class='tweet-image'>
                         <div class="like-dislike-buttons">
                             <div class="like-dislike-buttons">
                                 <a href="dispatcher.php?action=evaluerTouite&idTouite={$row['id_touite']}&like=1">
@@ -143,6 +144,8 @@ HTML;
         echo '<div class="pagination-buttons">';
         if ($page > 1) {
             echo '<a href="dispatcher.php?action=afficherListeTouite&page='.($page-1).'">Page précédente</a>';
+        }else{
+            echo "Il n'y a qu'une seule page.";
         }
         if ($page < $totalPages) {
             echo '<a href="dispatcher.php?action=afficherListeTouite&page='.($page + 1).'">Page suivante</a>';
@@ -169,7 +172,7 @@ HTML;
             echo <<<HTML
                     <li><a href="dispatcher.php?action=afficherMonMur"><img src="../images/mur_accueil.png" alt="" class="menu-icon">Mon Mur</a></li>
                     <li><a href="dispatcher.php?action=afficherListeTouite"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
-                    <li><a href="HTML/tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
+                    <li><a href="../HTML/tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
                     <li><a href="dispatcher.php?action=afficherSonProfil"><img src="../images/profil.png" alt="" class="menu-icon">Profil</a></li>
                 </ul>
                 <div class="profile-module">
@@ -186,7 +189,7 @@ HTML;
                 <div class="recherche-tag">
                 <form action="dispatcher.php" method="get">
                     <input type="text" name="action" value="afficherTouitesTag" style="display: none;">
-                    <input type="text" name="tag" placeholder="Rechercher des tags..." class="tag-search-input">
+                    <input type="text" name="tag" placeholder="Rechercher des tags (sans #) ..." class="tag-search-input">
                     <button type="submit" class="tag-search-button">Rechercher</button>
                 </form>
                 </div>
@@ -199,7 +202,7 @@ HTML;
         else{
             echo <<<HTML
                     <li><a href="dispatcher.php"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
-                    <li><a href="tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
+                    <li><a href="../Tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
                 </ul>
                 <div class="profile-module">
                 <div class="profile-username">@$nom $prenom</div>

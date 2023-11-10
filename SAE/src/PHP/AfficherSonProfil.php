@@ -92,7 +92,7 @@ class AfficherSonProfil{
             $htmlString .= '                    <li><a href="dispatcher.php?action=afficherMonMur"><img src="../images/mur_accueil.png" alt="" class="menu-icon">Mon Mur</a></li>
  <li><a href="dispatcher.php">
  <img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
-                    <li><a href="HTML/tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
+                    <li><a href="../HTML/tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
                     <li><a href="dispatcher.php?action=afficherSonProfil"><img src="../images/profil.png" alt="" class="menu-icon">Profil</a></li>
                 </ul>
                 <div class="profile-module">
@@ -126,7 +126,7 @@ class AfficherSonProfil{
         </html>';
         } else{
             $htmlString .= '<li><a href="dispatcher.php"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
-                        <li><a href="dispatcher.php?action=afficherTendances"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
+                        <li><a href="../HTML/Tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
                         <li><a href="dispatcher.php?action=afficherSonProfil"><img src="../images/icon_profil.png" alt="" class="menu-icon">Profil</a></li>
                     </ul>
                     <div class="profile-module">
@@ -141,7 +141,7 @@ class AfficherSonProfil{
                     <div class="recherche-tag">
                 <form action="dispatcher.php" method="get">
                     <input type="text" name="action" value="afficherTouitesTag" style="display: none;">
-                    <input type="text" name="tag" placeholder="Rechercher des tags..." class="tag-search-input">
+                    <input type="text" name="tag" placeholder="Rechercher des tags (sans #) ..." class="tag-search-input">
                     <button type="submit" class="tag-search-button">Rechercher</button>
                 </form>
                     <form action="login.html" method="post">

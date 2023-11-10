@@ -25,6 +25,17 @@ class afficherTouiteDetail
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        $pattern = '/#(\w+)/';
+        preg_match_all($pattern, $row['texte'], $matches);
+
+        $tags = $matches[0];
+
+        foreach ($tags as $tag) {
+
+            $tagSansHash = substr($tag, 1);
+            $row['texte'] = str_replace($tag, "<a href='dispatcher.php?action=afficherTouitesTag&tag={$tagSansHash}' style='color: blue;'>$tag</a>", $row['texte']);
+        }
+
         echo <<<HTML
             <!DOCTYPE html>
             <html lang="fr">
@@ -109,7 +120,7 @@ HTML;
                 <div class="recherche-tag">
                 <form action="dispatcher.php" method="get">
                     <input type="text" name="action" value="afficherTouitesTag" style="display: none;">
-                    <input type="text" name="tag" placeholder="Rechercher des tags..." class="tag-search-input">
+                    <input type="text" name="tag" placeholder="Rechercher des tags (sans #) ..." class="tag-search-input">
                     <button type="submit" class="tag-search-button">Rechercher</button>
                 </form>
                 </div>
