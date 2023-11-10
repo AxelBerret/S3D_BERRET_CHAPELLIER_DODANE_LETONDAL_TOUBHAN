@@ -2,18 +2,15 @@
 declare(strict_types=1);
 require_once 'ConnectionFactory.php';
 
-class AfficherSonProfil
-{
+class AfficherSonProfil{
     private $pdo;
 
-    public function __construct()
-    {
+    public function __construct() {
         ConnectionFactory::setConfig('db.config.ini');
         $this->pdo = ConnectionFactory::makeConnection();
     }
 
-    public function execute()
-    {
+    public function execute(){
         $id = $_SESSION['user_id'];
         $query = "SELECT id_utilisateur, nom, prenom, email FROM utilisateur where id_utilisateur = :id ";
         $query = $this->pdo->prepare($query);
@@ -28,19 +25,19 @@ class AfficherSonProfil
                 $prenom = $row['prenom'];
                 $email = $row['email'];
             }
-        } else {
+        }else {
             echo "Erreur lors de l'exécution de la requête.";
         }
 
         $queryScore = "Select avg(jaime-dislike) as scoreMoyen from touite where id_utilisateur = :idUtilisateur";
-        $Score = $this->pdo->prepare($queryScore);
-        $Score->bindParam(':idUtilisateur', $id, PDO::PARAM_STR);
-        $Score->execute();
-        $ScoreMoyen = $Score->fetch(PDO::FETCH_ASSOC)['scoreMoyen'];
+        $stmtScore = $this->pdo->prepare($queryScore);
+        $stmtScore->bindParam(':idUtilisateur', $id, PDO::PARAM_STR);
+        $stmtScore->execute();
+        $ScoreMoyen = $stmtScore->fetch(PDO::FETCH_ASSOC)['scoreMoyen'];
 
 
-        echo <<<HTML
-        <!DOCTYPE html>
+
+        $htmlString = '<!DOCTYPE html>
         <html lang="fr">
         <head>
             <meta charset="UTF-8">
@@ -72,11 +69,9 @@ class AfficherSonProfil
             </div>
             <aside class="sidebar">
                 <nav>
-                    <ul class="menu">'
-HTML;
-        if (isset($_SESSION['user_id'])) {
-            echo <<<HTML
-                    <li><a href="dispatcher.php"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
+                    <ul class="menu">';
+        if(isset($_SESSION['user_id'])){
+            $htmlString .= '<li><a href="dispatcher.php"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
                     <li><a href="HTML/tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
                     <li><a href="dispatcher.php?action=afficherSonProfil"><img src="../images/profil.png" alt="" class="menu-icon">Profil</a></li>
                 </ul>
@@ -101,76 +96,35 @@ HTML;
 
                 <form action="Dispatcher.php?action=deconnexion" method="post">
                     <button type="submit" class="btn-connexion">Se déconnecter</button>
-                </form>
-HTML;
-        } else {
-            echo <<<HTML
-                    <li><a href="dispatcher.php"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
-                    <li><a href="tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
-                </ul>
-                <div class="profile-module">
-                <div class="profile-username">@$nom $prenom</div>
-                </div>
-
-                <div class="tendances-container">
-                    <div class="tendance-title">Tendances France</div>
-                    <a href="#tag1" class="tag">#Tag1</a>
-                    <a href="#tag2" class="tag">#Tag2</a>
-                    <a href="#tag3" class="tag">#Tag3</a>
-                </div>
-                
-                <div class="recherche-tag">
-                <form action="dispatcher.php" method="get">
-                    <input type="text" name="action" value="afficherTouitesTag" style="display: none;">
-                    <input type="text" name="tag" placeholder="Rechercher des tags..." class="tag-search-input">
-                    <button type="submit" class="tag-search-button">Rechercher</button>
-                </form>
-                </div>
-                <form action="../HTML/login.html" method="post">
-                    <button type="submit" class="btn-connexion">Se connecter</button>
-                </form>
-            <form action="../HTML/login.html" method="post">
-                    <button type="submit" class="btn-suivre-tag">Suivre le tag</button>
-                </form>
-                <form action="../HTML/signup.html" method="post">
-                    <button type="submit" class="btn-inscription">S'inscrire</button>
-                </form>
-            </nav>  
-            </aside>
-            </ul>
-            </main>
-            </div>
-            </body>
-            </html>
-HTML;
-
-            /*
-                                    <li><a href="dispatcher.php"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
-                                    <li><a href="dispatcher.php?action=afficherTendances"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
-                                    <li><a href="dispatcher.php?action=afficherSonProfil"><img src="../images/icon_profil.png" alt="" class="menu-icon">Profil</a></li>
-                                </ul>
-                                <div class="profile-module">
-                                    <div class="profile-username">@votreIdentifiant</div>
-                                </div>
-                                <div class="tendances-container">
-                                    <div class="tendance-title">Tendances France</div>
-                                    <a href="#tag1" class="tag">#Tag1</a>
-                                    <a href="#tag2" class="tag">#Tag2</a>
-                                    <a href="#tag3" class="tag">#Tag3</a>
-                                </div>
-                                <form action="login.html" method="post">
-                                    <button type="submit" class="btn-connexion">Se connecter</button>
-                                </form>
-                                <form action="signup.html" method="post">
-                                    <button type="submit" class="btn-inscription">S\'inscrire</button>
-                                </form>
-                            </nav>
-                        </aside>
-                        <main class="content">
-                        </main>
+                </form>';
+        } else{
+            $htmlString .= '<li><a href="dispatcher.php"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
+                        <li><a href="dispatcher.php?action=afficherTendances"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
+                        <li><a href="dispatcher.php?action=afficherSonProfil"><img src="../images/icon_profil.png" alt="" class="menu-icon">Profil</a></li>
+                    </ul>
+                    <div class="profile-module">
+                        <div class="profile-username">@votreIdentifiant</div>
                     </div>
-                    </body>
-                    </html>';*/
+                    <div class="tendances-container">
+                        <div class="tendance-title">Tendances France</div>
+                        <a href="#tag1" class="tag">#Tag1</a>
+                        <a href="#tag2" class="tag">#Tag2</a>
+                        <a href="#tag3" class="tag">#Tag3</a>
+                    </div>
+                    <form action="login.html" method="post">
+                        <button type="submit" class="btn-connexion">Se connecter</button>
+                    </form>
+                    <form action="signup.html" method="post">
+                        <button type="submit" class="btn-inscription">S\'inscrire</button>
+                    </form>
+                </nav>
+            </aside>
+            <main class="content">
+            </main>
+        </div>
+        </body>
+        </html>';
         }
+
     }
 }

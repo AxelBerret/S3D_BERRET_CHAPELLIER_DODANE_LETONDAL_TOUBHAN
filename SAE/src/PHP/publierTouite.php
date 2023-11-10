@@ -10,10 +10,20 @@ class publierTouite{
         $this->db = $db;
     }
 
-    public function publierTouite(string $idutilisateur, string $texte) : bool{
+    public function publierTouite(string $idutilisateur, string $texte,$image) : bool{
 
         if(235 < strlen($texte)){
             throw new TouiteTropLong("Ce touite dépasse la limite de 235 charactères");
+        }
+
+        if ($image !== null && !empty($image['tmp_name'])) {
+            $imagePath = '../images/';
+            $imageName = uniqid() . '_' . $image['name'];
+            $imageFullPath = $imagePath . $imageName;
+
+            move_uploaded_file($image['tmp_name'], $imageFullPath);
+        } else {
+            $imageName = null;
         }
 
         $query = "SELECT MAX(id_touite) as nbtouite FROM TOUITE";
@@ -27,7 +37,7 @@ class publierTouite{
         }
 
         // On insère un nouveau touite dans la table touite
-        $query = "INSERT INTO TOUITE (id_touite, id_utilisateur, texte, datePub) VALUES (:id_touite, :id_utilisateur, :texte, NOW())";
+        $query = "INSERT INTO TOUITE (id_touite, id_utilisateur, texte, image, datePub) VALUES (:id_touite, :id_utilisateur, :texte, :image, NOW())";
         $jaime = 0;
         $dislike = 0;
 
@@ -35,6 +45,7 @@ class publierTouite{
         $stmt->bindParam(':id_touite', $idtouite, PDO::PARAM_STR);
         $stmt->bindParam(':id_utilisateur', $idutilisateur, PDO::PARAM_STR);
         $stmt->bindParam(':texte', $texte, PDO::PARAM_STR);
+        $stmt->bindParam(':image', $imageName, PDO::PARAM_STR);
         $stmt->execute();
 
         $tags = [];
