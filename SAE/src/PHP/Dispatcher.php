@@ -75,7 +75,7 @@ switch ($action) {
                 }
             }
         }else{
-            header('Location: HTML/login.html');
+            header('Location: ../HTML/login.html');
         }
         break;
 
@@ -86,7 +86,7 @@ switch ($action) {
             if ($idtouite !== null) {
                 $evaluerTouite->evaluerTouite($idtouite, $like);
                 if($evaluerTouite){
-                    header('Location: dispatcher.php');
+                    header("Refresh:0");
                     exit;
                 }else{
                     //Déjà évalué
@@ -94,7 +94,7 @@ switch ($action) {
                 }
             }
         }else{
-            header('Location: HTML/login.html');
+            header('Location: ../HTML/login.html');
         }
         break;
 
@@ -209,7 +209,7 @@ switch ($action) {
     
                 <div class="tweet-form-container">
                     <form class="tweet-form" action="dispatcher.php?action=publierTouite" method="post" enctype="multipart/form-data">
-                        <label for="tweetContent">@{$_SESSION['nom']} {$_SESSION['prenom']}</label>
+                        <label for="tweetContent">@Déconnecté</label>
                         <textarea id="texte" name="texte" placeholder="Veuillez écrire ici." required></textarea>
                         <input type="file" name="image" id="image" accept="image/*">
                         <input type="hidden" name="action" value="publierTouite">
@@ -228,7 +228,7 @@ switch ($action) {
     
                     </ul>
                     <div class="profile-module">
-                        <div class="profile-username">@{$_SESSION['nom']} {$_SESSION['prenom']}</div>
+                        <div class="profile-username">@Déconnecté</div>
                     </div>
                     <div class="tendances-container">
                         <div class="tendance-title">Tendances France</div>
@@ -236,8 +236,11 @@ switch ($action) {
                         <a href="#tag2" class="tag">#Tag2</a>
                         <a href="#tag3" class="tag">#Tag3</a>
                     </div>
-             <form action="Dispatcher.php?action=deconnexion" method="post">
-                    <button type="submit" class="btn-connexion">Se déconnecter</button>
+                <form action="../HTML/login.html" method="post">
+                    <button type="submit" class="btn-connexion">Se connecter</button>
+                </form>
+                <form action="../HTML/signup.html" method="post">
+                    <button type="submit" class="btn-inscription">S'inscrire</button>
                 </form>
     
                 </nav>
@@ -263,7 +266,7 @@ switch ($action) {
                 exit;
             }
         } else {
-            header('Location: HTML/login.html');
+            header('Location: ../HTML/login.html');
         }
         break;
 
@@ -277,7 +280,7 @@ switch ($action) {
                 exit;
             }
         } else {
-            header('Location: HTML/login.html');
+            header('Location: ../HTML/login.html');
         }
         break;
 
@@ -288,7 +291,7 @@ switch ($action) {
                 $afficherMurUtilisateur->afficherMurUtilisateur($iduser);
             }
         } else {
-            header('Location: HTML/login.html');
+            header('Location: ../HTML/login.html');
         }
         break;
 

@@ -12,6 +12,11 @@ class effacerTouite{
 
     public function effacerTouite(string $idtouite) : bool{
 
+        $queryInteraction = "DELETE FROM InteractionTouite WHERE id_touite = :idtouite";
+        $stmtInteraction = $this->db->prepare($queryInteraction);
+        $stmtInteraction->bindParam(':idtouite', $idtouite, PDO::PARAM_STR);
+        $stmtInteraction->execute();
+
         $queryTag = "DELETE FROM TAG WHERE id_touite = :idtouite";
         $stmtTag = $this->db->prepare($queryTag);
         $stmtTag->bindParam(':idtouite', $idtouite, PDO::PARAM_STR);
