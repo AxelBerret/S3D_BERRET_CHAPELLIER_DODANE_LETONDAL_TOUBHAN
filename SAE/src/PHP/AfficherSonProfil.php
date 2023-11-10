@@ -59,11 +59,11 @@ class AfficherSonProfil{
                 <div class="profil-main-container">
                     <div class="profil-titles"><h3>Profil de username</h3></div>
                     <ul class="menu">
-                        <li><a>'. $id . '</a></li>
-                        <li><a>' . $nom . '</a></li>
-                        <li><a>' . $prenom . '</a></li>
-                        <li><a>' . $email . '</a></li>
-                        <li><a>' . $ScoreMoyen . '</a></li>
+                        <li><a>ID : '. $id . '</a></li>
+                        <li><a>Nom : ' . $nom . '</a></li>
+                        <li><a>Prénom : ' . $prenom . '</a></li>
+                        <li><a>email : ' . $email . '</a></li>
+                        <li><a>Score Moyen : ' . $ScoreMoyen . '</a></li>
                     </ul>
                 </div>
             </div>
