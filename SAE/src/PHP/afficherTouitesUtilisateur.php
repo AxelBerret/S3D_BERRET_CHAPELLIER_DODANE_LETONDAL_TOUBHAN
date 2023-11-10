@@ -93,7 +93,7 @@ class afficherTouitesUtilisateur{
         if(isset($_SESSION['user_id'])){
             echo <<<HTML
                     <li><a href="dispatcher.php"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
-                    <li><a href="HTML/tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
+                    <li><a href="../HTML/tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
                     <li><a href="dispatcher.php?action=afficherMurUtilisateur&idtouite={$_SESSION['user_id']}"><img src="../images/profil.png" alt="" class="menu-icon">Profil</a></li>
                 </ul>
                 <div class="profile-module">
@@ -123,7 +123,7 @@ class afficherTouitesUtilisateur{
         else{
             echo <<<HTML
                     <li><a href="dispatcher.php"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
-                    <li><a href="tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
+                    <li><a href="../HTML/tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
                 </ul>
                 <div class="profile-module">
                 <div class="profile-username">@$nom $prenom</div>
@@ -144,10 +144,10 @@ class afficherTouitesUtilisateur{
                 </form>
                 </div>
                 
-            <form action="HTML/login.html" method="post">
+            <form action="../HTML/login.html" method="post">
                     <button type="submit" class="btn-connexion">Se connecter</button>
                 </form>
-                <form action="HTML/signup.html" method="post">
+                <form action="../HTML/signup.html" method="post">
                     <button type="submit" class="btn-inscription">S'inscrire</button>
                 </form>
             </nav>
