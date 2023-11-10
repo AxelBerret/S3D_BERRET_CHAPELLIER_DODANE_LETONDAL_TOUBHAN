@@ -74,6 +74,9 @@ HTML;
                 <a href='dispatcher.php?action=afficherTouitesUtilisateur&id_utilisateur={$row['id_utilisateur']}' style='text-decoration: none; color: white;'>
                 <div class="tweet-username">@{$row['nom']} {$row['prenom']}</div>
                 </a>
+                     <form action="HTML/login.html" method="post">
+                        <button type="submit" class="btn-suivre">Suivre</button>
+                    </form>
 HTML;
             if (isset($_SESSION['user_id'])) {
                 $id_utilisateur = $row['id_utilisateur'];
@@ -114,6 +117,9 @@ HTML;
                                     <img src="../Images/dislike.png" alt="Dislike button" class="dislike-button">
                                 </a>
                                 <span class="dislike-counter">{$row['dislike']}</span>
+                         <form action="HTML/login.html" method="post">
+                            <button type="submit" class="btn-supprimer">Supprimer</button>
+                        </form>
 HTML;
             if(isset($_SESSION['user_id'])){
             if ($_SESSION['user_id'] == $row['id_utilisateur']) {
@@ -201,11 +207,11 @@ HTML;
                     <button type="submit" class="tag-search-button">Rechercher</button>
                 </form>
                 </div>
+                 <form action="../HTML/login.html" method="post">
+                    <button type="submit" class="btn-suivre-tag">Suivre le tag</button>
+                </form>
                 <form action="../HTML/login.html" method="post">
                     <button type="submit" class="btn-connexion">Se connecter</button>
-                </form>
-            <form action="../HTML/login.html" method="post">
-                    <button type="submit" class="btn-suivre-tag">Suivre le tag</button>
                 </form>
                 <form action="../HTML/signup.html" method="post">
                     <button type="submit" class="btn-inscription">S'inscrire</button>

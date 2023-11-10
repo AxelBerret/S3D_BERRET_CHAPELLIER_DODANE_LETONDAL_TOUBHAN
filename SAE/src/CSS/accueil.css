@@ -205,7 +205,9 @@ header {
 
 .tweet-header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+
 }
 
 .tweet-profile-pic {
@@ -365,7 +367,6 @@ header {
 }
 
 .btn-suivre {
-    margin-left: 20px;
     padding : 10px 20px;
 
     color : white;
