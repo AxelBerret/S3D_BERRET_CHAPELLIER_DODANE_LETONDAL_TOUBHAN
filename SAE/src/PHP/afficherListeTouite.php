@@ -170,9 +170,7 @@ HTML;
                     <button type="submit" class="tag-search-button">Rechercher</button>
                 </form>
                 </div>
-                <form action="../HTML/login.html" method="post">
-                    <button type="submit" class="btn-suivre-tag">Suivre le tag</button>
-                </form>
+               
                 <form action="Dispatcher.php?action=deconnexion" method="post">
                     <button type="submit" class="btn-connexion">Se déconnecter</button>
                 </form>
