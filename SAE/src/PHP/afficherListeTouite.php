@@ -74,9 +74,7 @@ HTML;
                 <a href='dispatcher.php?action=afficherTouitesUtilisateur&id_utilisateur={$row['id_utilisateur']}' style='text-decoration: none; color: white;'>
                 <div class="tweet-username">@{$row['nom']} {$row['prenom']}</div>
                 </a>
-                     <form action="HTML/login.html" method="post">
-                        <button type="submit" class="btn-suivre">Suivre</button>
-                    </form>
+                     
 HTML;
             if (isset($_SESSION['user_id'])) {
                 $id_utilisateur = $row['id_utilisateur'];
