@@ -5,18 +5,17 @@ require 'Autoloader.php';
 
 Autoloader::register();
 
-// Démarrez la session
 session_start();
 
-// Configurez votre connexion à la base de données
 $bdd = new PDO('mysql:host=localhost; dbname=touiteur; charset=utf8', 'root', '');
 
-// Créez des instances de vos classes
+// Instances de nos classes
 $afficherListeTouites = new afficherListeTouite($bdd);
 $afficherTouiteDetail = new afficherTouiteDetail($bdd);
 $afficherTouitesUtilisateur = new afficherTouitesUtilisateur($bdd);
 $afficherTouitesTag = new afficherTouitesTag($bdd);
 $afficherMurUtilisateur = new afficherMurUtilisateur($bdd);
+$administrateur = new Administrateur($bdd);
 $publierTouite = new publierTouite($bdd);
 $evaluerTouite = new evaluerTouite($bdd);
 $effacerTouite = new effacerTouite($bdd);
@@ -25,10 +24,10 @@ $suivreTag = new suivreTag($bdd);
 $signup = new Signup($bdd);
 $connexion = new Connexion($bdd);
 
-// Vérifiez quelle action doit être effectuée (par exemple, en fonction de l'URL ou des paramètres GET/POST)
+// On récupère l'action nécessaire
 $action = $_REQUEST['action'] ?? 'default'; // Vous devez définir une valeur par défaut, par exemple 'default' ici
 
-// En fonction de l'action, appelez la méthode appropriée de vos classes
+// Switch de l'action
 switch ($action) {
 
     case 'afficherTouiteDetail':
@@ -50,6 +49,14 @@ switch ($action) {
         if ($tag !== null) {
             $afficherTouitesTag->afficherTouitesTag($tag);
         }
+        break;
+
+    case 'afficherInfluenceurs':
+        $administrateur->afficherInfluenceurs();
+        break;
+
+    case 'afficherTagsTendances':
+        $administrateur->afficherTagsTendances();
         break;
 
     case 'publierTouite':
@@ -112,11 +119,11 @@ switch ($action) {
                 header('Location: ../index.php');
                 exit();
             }else {
-                // Affichez un message d'erreur en cas d'échec de connexion
-                $erreur = "Problèmes coté serveur.";
+                // Afficher un message d'erreur en cas d'échec de connexion
+                header("Refresh:0");
             }
         }else{
-            $erreur = "Erreur dans vos données, veuillez vérifier.";
+            header("Refresh:0");
         }
         break;
 
@@ -128,7 +135,7 @@ switch ($action) {
                 header('Location: dispatcher.php');
                 exit();
             } else {
-                header('Location: ../HTML/login.HTML');
+                header("Refresh:0");
                 exit();
             }
         break;

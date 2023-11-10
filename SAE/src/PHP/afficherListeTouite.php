@@ -20,7 +20,7 @@ class afficherListeTouite{
         $offset = ($page - 1) * $this->touiteParPage;
 
         // Requête permettant de récupérer tous les touites et les trier par date récente, ainsi que de limiter le nombre par page avec LIMIT
-        $query = "SELECT TOUITE.*, UTILISATEUR.nom, UTILISATEUR.prenom, UTILISATEUR.id_utilisateur FROM TOUITE 
+        $query = "SELECT TOUITE.*, UTILISATEUR.* FROM TOUITE 
                  JOIN UTILISATEUR ON TOUITE.Id_utilisateur = UTILISATEUR.id_utilisateur 
                  ORDER BY TOUITE.datePub DESC LIMIT :offset, :touiteParPage";
 
@@ -58,6 +58,7 @@ HTML;
 
         // On affiche ensuite tout les touites
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
             $texteCourt = substr($row['texte'], 0, 65);
 
             if (strlen($texteCourt) > 64) {
@@ -151,7 +152,7 @@ HTML;
         echo '<div class="pagination-buttons">';
         if ($page > 1) {
             echo '<a href="dispatcher.php?action=afficherListeTouite&page='.($page-1).'">Page précédente</a>';
-        }else{
+        }else if($totalPages == 0){
             echo "Il n'y a qu'une seule page.";
         }
         if ($page < $totalPages) {
@@ -200,6 +201,22 @@ HTML;
                     <button type="submit" class="tag-search-button">Rechercher</button>
                 </form>
                 </div>
+                HTML;
+
+            if($_SESSION['user_id'] === "2") {
+                echo<<<HTML
+                <form action = "dispatcher.php" method = "post" >
+                    <input type = "hidden" name = "action" value = "afficherInfluenceurs" >
+                    <button type = "submit" class="btn-connexion" > Afficher les influenceurs </button >
+                </form >
+                <form action = "dispatcher.php" method = "post" >
+                    <input type = "hidden" name = "action" value = "afficherTagsTendances" >
+                    <button type = "submit" class="btn-connexion" > Afficher les Tags tendances </button >
+                </form >
+                HTML;
+                }
+
+            echo<<<HTML
                
                 <form action="Dispatcher.php?action=deconnexion" method="post">
                     <button type="submit" class="btn-connexion">Se déconnecter</button>

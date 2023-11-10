@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+    transform: scale(0.9); /* Réduit la taille de 10% */
+}
+
+header {
+    padding: 50px 50px 50px 50px;
+    background-color: #000000;
+}
+
+.logo {
+    max-width: 300px;
+    display: block;
+    margin-right: auto;
+    position: fixed;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.influenceurs-list {
+    list-style: none;
+    padding-top: 50px;
+}
+
+.influenceurs-list li {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: rgba(199, 196, 196, 0.12);
+}
+
+.influenceur-username {
+    font-weight: bold;
+}
+
+.nb-suiveurs {
+    color: #ccc;
+    margin-left: 10px;
+}
+
+.content {
+    padding: 20px;
+    flex-grow: 1;
+    margin-right: 375px;
+}
+
+.logo {
+    max-width: 300px;
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.menu {
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+}
+.menu a {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+    border: 2px solid transparent;
+    border-radius: 25px;
+    transition: border-color 0.3s;
+    max-width: 80%;
+    margin: 10px auto;
+    list-style-type: none;
+}
+
+.menu a:hover {
+    background-color: rgba(255, 255, 255, 0.23);
+}
+.menu li {
+    list-style-type: none;
+
+}
+.menu ul {
+    list-style-type: none; /* Enlève les puces devant les éléments de liste */
+
+
+}
+
+.menu-icon {
+    width: 22px;
+    height: 22px;
+    margin-right: 40px;
+    vertical-align: middle;
+    object-fit: cover;
+    align-items: center;
+
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #ffffff;
+    display: block;
+    padding: 10px;
+    transition: background-color 0.3s;
+    border-radius: 55px;
+    align-items: center;
+}

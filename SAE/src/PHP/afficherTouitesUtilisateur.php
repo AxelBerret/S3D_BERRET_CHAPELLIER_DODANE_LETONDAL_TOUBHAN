@@ -152,7 +152,7 @@ HTML;
         echo '<div class="pagination-buttons">';
         if ($page > 1) {
             echo '<a href="dispatcher.php?action=afficherTouitesUtilisateur&id_utilisateur='.$idutilisateur.'&page='.($page-1).'">Page précédente</a>';
-        }else{
+        }else if($totalPages == 0){
             echo "Il n'y a qu'une seule page.";
         }
         if ($page < $totalPages) {

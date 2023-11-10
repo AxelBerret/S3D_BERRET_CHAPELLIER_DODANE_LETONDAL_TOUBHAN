@@ -150,12 +150,6 @@ HTML;
                     </div>
     </li>
 HTML;
-            if($row['image']==null){
-                echo '<br><br><br>';
-            }
-            else{
-                echo "<img src='{$row['image']}' alt='Image du touite' class='tweet-image'>";
-            }
         }
         if (isset($_SESSION['user_id'])) {
             $nom = $_SESSION['nom'];
