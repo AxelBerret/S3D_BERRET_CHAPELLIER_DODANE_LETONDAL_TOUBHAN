@@ -17,7 +17,7 @@ class publierTouite{
         }
 
         if ($image !== null && !empty($image['tmp_name'])) {
-            $imagePath = '../images/';
+            $imagePath = '../ImagesTouite/';
             $imageName = uniqid() . '_' . $image['name'];
             $imageFullPath = $imagePath . $imageName;
 

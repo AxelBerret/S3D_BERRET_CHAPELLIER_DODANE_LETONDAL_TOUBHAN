@@ -163,7 +163,18 @@ HTML;
                     <a href="#tag2" class="tag">#Tag2</a>
                     <a href="#tag3" class="tag">#Tag3</a>
                 </div>
-
+                
+                <div class="recherche-tag">
+                <form action="dispatcher.php" method="get">
+                    <input type="text" name="action" value="afficherTouitesTag" style="display: none;">
+                    <input type="text" name="tag" placeholder="Rechercher des tags..." class="tag-search-input">
+                    <button type="submit" class="tag-search-button">Rechercher</button>
+                </form>
+                </div>
+               
+                <form action="Dispatcher.php?action=deconnexion" method="post">
+                    <button type="submit" class="btn-connexion">Se déconnecter</button>
+                </form>
 HTML;
         }
         else{

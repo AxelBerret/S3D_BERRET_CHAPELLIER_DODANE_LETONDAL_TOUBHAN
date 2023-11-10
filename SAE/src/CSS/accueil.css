@@ -253,13 +253,11 @@ header {
 }
 
 .tweet {
-    min-width: 700px; /* ou max-width si vous voulez que cela soit responsive */
     border: 1px solid #ccc;
     padding: 30px;
     margin-bottom: 20px;
     border-radius: 8px;
     background-color: rgba(199, 196, 196, 0.12);
-    /* Pas besoin de margin-left ici car .content a déjà un padding */
 }
 
 .header-buttons {
