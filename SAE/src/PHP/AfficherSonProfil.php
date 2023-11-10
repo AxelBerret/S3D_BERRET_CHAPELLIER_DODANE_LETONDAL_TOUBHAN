@@ -71,7 +71,7 @@ class AfficherSonProfil{
                 <nav>
                     <ul class="menu">';
         if(isset($_SESSION['user_id'])){
-            $htmlString .= '<li><a href="dispatcher.php"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
+            $htmlString .= ' <li><a href="dispatcher.php"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
                     <li><a href="HTML/tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
                     <li><a href="dispatcher.php?action=afficherSonProfil"><img src="../images/profil.png" alt="" class="menu-icon">Profil</a></li>
                 </ul>
@@ -96,7 +96,14 @@ class AfficherSonProfil{
 
                 <form action="Dispatcher.php?action=deconnexion" method="post">
                     <button type="submit" class="btn-connexion">Se déconnecter</button>
-                </form>';
+                </form>
+                </nav>
+            </aside>
+            <main class="content">
+            </main>
+        </div>
+        </body>
+        </html>';
         } else{
             $htmlString .= '<li><a href="dispatcher.php"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
                         <li><a href="dispatcher.php?action=afficherTendances"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
@@ -111,6 +118,13 @@ class AfficherSonProfil{
                         <a href="#tag2" class="tag">#Tag2</a>
                         <a href="#tag3" class="tag">#Tag3</a>
                     </div>
+                    <div class="recherche-tag">
+                <form action="dispatcher.php" method="get">
+                    <input type="text" name="action" value="afficherTouitesTag" style="display: none;">
+                    <input type="text" name="tag" placeholder="Rechercher des tags..." class="tag-search-input">
+                    <button type="submit" class="tag-search-button">Rechercher</button>
+                </form>
+                </div>
                     <form action="login.html" method="post">
                         <button type="submit" class="btn-connexion">Se connecter</button>
                     </form>
