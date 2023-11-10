@@ -123,7 +123,6 @@ HTML;
 HTML;}
             }echo<<<HTML
 
-                            </div>
                         </div>
                     </div>
                     </div>
