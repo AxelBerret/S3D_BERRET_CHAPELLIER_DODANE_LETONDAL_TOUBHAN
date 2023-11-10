@@ -11,7 +11,12 @@ class AfficherSonProfil{
     }
 
     public function execute(){
-        $id = $_SESSION['user_id'];
+        if (isset($_SESSION['user_id'])){
+            $id = $_SESSION['user_id'];
+        }else{
+            $id=null;
+        }
+
         $query = "SELECT id_utilisateur, nom, prenom, email FROM utilisateur where id_utilisateur = :id ";
         $query = $this->pdo->prepare($query);
         $query->bindParam(':id', $id, PDO::PARAM_STR);

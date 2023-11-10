@@ -15,9 +15,12 @@ class UtilisateurNarcissique
 
     public function execute()
     {
-        $id = $_SESSION['user_id'];
         //Récupération des infos du compte connecté :
-        $id = $_SESSION['user_id'];
+        if (isset($_SESSION['user_id'])){
+            $id = $_SESSION['user_id'];
+        }else{
+            $id=null;
+        }
         $query = "SELECT id_utilisateur, nom, prenom, email FROM utilisateur where id_utilisateur = :id ";
         $query = $this->pdo->prepare($query);
         $query->bindParam(':id', $id, PDO::PARAM_STR);
@@ -65,12 +68,12 @@ class UtilisateurNarcissique
             </header>
             <div class="main-content">
                 <div class="profil-main-container">
-                    <div class="profil-titles"><h3>Profil de username</h3></div>
+                    <div class="profil-titles"><h3>Liste de vos abonnés</h3></div>
                     <ul class="menu">';
         for ($i=0;$i<$tailleTableau;$i++){
             $htmlString .= "<li><a>Nom : {$results[$i]['nom']} Prénom : {$results[$i]['prenom']}</a></li>";
     }
-        $htmlString = '
+        $htmlString .= '
                     </ul>
                 </div>
             </div>
