@@ -387,10 +387,101 @@ align-items: center;
     margin-bottom: 150px;
 
 }
+.tendances-container .tendance-title {
+    margin-bottom: 20px; /* Espacement entre le titre et les tags */
+}
 
+.tag {
+    display: block; /* Fait que chaque tag prenne toute la largeur */
+    padding: 20px 0; /* Padding pour les tags */
+    text-decoration: none; /* Enlève le soulignement des liens */
+    color: white; /* Couleur du texte pour les tags */
+    transition: background-color 0.3s; /* Transition douce pour le survol */
+}
+
+.tag:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Changement de couleur au survol */
+}
 .profil-titles {
     padding-top: 30px;
     font-size: 2em; /* Taille du titre */
     margin-bottom: 30px;
     color: #ffffff; /* Couleur du texte */
+}
+.tag-search-button {
+    margin-left: 20px;
+    margin-top: 20px;
+    padding : 10px 20px;
+
+    color : white;
+    background-color: transparent;
+    border-radius: 55px;
+    border: 2px solid #ffffff; /* Ajoute une bordure orange pour le bouton S'inscrire */
+}
+
+.btn-search-tag:hover {
+    color : white;
+    background-color: rgb(255, 165, 0);
+    border-radius: 55px;
+    padding : 10px 20px;
+    transition-duration: 0.3s;
+
+}
+
+.tag-search-input{
+    margin-left: 20px;
+    padding : 10px 20px;
+
+    color : white;
+    background-color: transparent;
+    border-radius: 55px;
+    border: 2px solid #ffffff;
+}
+.btn-suivre {
+    padding : 10px 20px;
+    color : white;
+    background-color: transparent;
+    border-radius: 55px;
+    border: 2px solid #ffffff; /* Ajoute une bordure orange pour le bouton S'inscrire */
+}
+
+.btn-suivre:hover {
+    color : white;
+    background-color: rgb(255, 165, 0);
+    border-radius: 55px;
+    padding : 10px 20px;
+    transition-duration: 0.3s;
+
+}
+
+.btn-suivre-tag {
+    margin-top: 20px;
+
+    margin-left: 20px;
+    padding : 10px 20px;
+
+    color : white;
+    background-color: transparent;
+    border-radius: 55px;
+    border: 2px solid #ffffff; /* Ajoute une bordure orange pour le bouton S'inscrire */
+}
+
+.btn-suivre-tag:hover {
+    color : white;
+    background-color: rgb(255, 165, 0);
+    border-radius: 55px;
+    padding : 10px 20px;
+    transition-duration: 0.3s;
+
+}
+.tag {
+    display: block; /* Fait que chaque tag prenne toute la largeur */
+    padding: 20px 0; /* Padding pour les tags */
+    text-decoration: none; /* Enlève le soulignement des liens */
+    color: white; /* Couleur du texte pour les tags */
+    transition: background-color 0.3s; /* Transition douce pour le survol */
+}
+
+.tag:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Changement de couleur au survol */
 }
