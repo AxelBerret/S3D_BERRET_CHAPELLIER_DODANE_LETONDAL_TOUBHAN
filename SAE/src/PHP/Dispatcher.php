@@ -155,6 +155,21 @@ switch ($action) {
         }
         break;
 
+    case 'nePlusSuivreUtilisateur':
+        if (isset($_SESSION['user_id'])) {
+            $idutil = $_POST['id_utilisateur'] ?? null;
+            if ($idutil !== null) {
+                $idutil = $suivreUtilisateur->nePlusSuivreUtilisateur($idutil);
+                if($idutil){
+                    header("Refresh:0");
+                    exit;
+                }else{
+                    $erreur = "L'unfollow n'a pas fonctionné";
+                }
+            }
+        }
+        break;
+
 
     case 'deconnexion':
         session_unset();
@@ -242,6 +257,20 @@ switch ($action) {
             $libelleTag = $_GET['libelleTag'] ?? null;
             if ($libelleTag !== null) {
                 $suivreTag->suivreTag($libelleTag);
+                $tagSansHashtag = substr($libelleTag, 1);
+                header("Location: dispatcher.php?action=afficherTouitesTag&tag=$tagSansHashtag");
+                exit;
+            }
+        } else {
+            header('Location: HTML/login.html');
+        }
+        break;
+
+    case 'nePlusSuivreTag':
+        if (isset($_SESSION['user_id'])) {
+            $libelleTag = $_GET['libelleTag'] ?? null;
+            if ($libelleTag !== null) {
+                $suivreTag->nePlusSuivreTag($libelleTag);
                 $tagSansHashtag = substr($libelleTag, 1);
                 header("Location: dispatcher.php?action=afficherTouitesTag&tag=$tagSansHashtag");
                 exit;

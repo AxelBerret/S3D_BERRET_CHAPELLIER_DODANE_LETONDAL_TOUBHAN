@@ -93,7 +93,11 @@ HTML;
                     </form>";
                 // Vérifie si l'utilisateur est déjà suivi
                 if ($this->estDejaSuivi($id_utilisateur, $_SESSION['user_id'])) {
-                    $suiviButton = "<button class='btn-suivre' disabled>Suivi</button>";
+                    $suiviButton = "<form action='dispatcher.php' method='post'>
+                        <input type='hidden' name='action' value='nePlusSuivreUtilisateur'>
+                        <input type='hidden' name='id_utilisateur' value='$id_utilisateur'>
+                        <button type='submit' class='btn-suivre'>Ne plus suivre</button>
+                    </form>";
                 }
 
                 echo $suiviButton;

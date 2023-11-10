@@ -14,20 +14,20 @@ class afficherMurUtilisateur
 
     public function afficherMurUtilisateur(string $id_utilisateur)
     {
-        $query = "SELECT TOUITE.*, UTILISATEUR.nom, UTILISATEUR.prenom, UTILISATEUR.id_utilisateur 
+        $query = "SELECT DISTINCT TOUITE.*, UTILISATEUR.nom, UTILISATEUR.prenom, UTILISATEUR.id_utilisateur 
           FROM TOUITE 
           JOIN UTILISATEUR ON TOUITE.id_utilisateur = UTILISATEUR.id_utilisateur 
+          LEFT JOIN TAG ON TOUITE.id_touite = TAG.id_touite
           WHERE TOUITE.id_utilisateur IN (
               SELECT utilisateurSuivis
               FROM AbonnementUtil
               WHERE utilisateurSuiveur = :id_utilisateur
           )
-          OR TOUITE.id_utilisateur IN (
-              SELECT DISTINCT U.id_utilisateur
-              FROM TAG T
-              JOIN TOUITE T2 ON T.id_touite = T2.id_touite
-              JOIN UTILISATEUR U ON T2.id_utilisateur = U.id_utilisateur
-              WHERE T.libelleTag IN (
+          OR TOUITE.id_utilisateur = :id_utilisateur
+          OR TOUITE.id_touite IN (
+              SELECT DISTINCT T1.id_touite
+              FROM TAG T1
+              WHERE T1.libelleTag IN (
                   SELECT tagSuivis
                   FROM AbonnementTag
                   WHERE id_utilisateur = :id_utilisateur
