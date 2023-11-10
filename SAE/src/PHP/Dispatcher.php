@@ -291,7 +291,9 @@ switch ($action) {
             echo '<li>' . $influenceur['nom'] . ' ' . $influenceur['prenom'] . ' - ' . $influenceur['nbSuiveurs'] . ' suiveurs</li>';
         }
         break;
-
+    case 'utilisateurNarcissique':
+        $un = new UtilisateurNarcissique();
+        $un->execute();
     default:
         // Action par défaut
 
