@@ -203,7 +203,7 @@ HTML;
                 </div>
                 HTML;
 
-            if($_SESSION['user_id'] === "2") {
+            if($_SESSION['user_id'] === "6" || $_SESSION['user_id'] === "7" || $_SESSION['user_id'] === "8") {
                 echo<<<HTML
                 <form action = "dispatcher.php" method = "post" >
                     <input type = "hidden" name = "action" value = "afficherInfluenceurs" >
