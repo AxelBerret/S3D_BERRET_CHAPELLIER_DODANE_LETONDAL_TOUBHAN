@@ -31,7 +31,7 @@ class afficherTouiteDetail
             <head>
                 <meta charset="UTF-8">
                 <title>Touiteur - Accueil</title>
-                <link rel="stylesheet" href="CSS/accueil.css">
+                <link rel="stylesheet" href="../CSS/accueil.css">
                 <link rel="icon" type="image/jpeg" href="images/icon.png">
             </head>
         
