@@ -31,7 +31,9 @@ class AfficherSonProfil{
             echo "Erreur lors de l'exécution de la requête.";
         }
 
+
         $queryScore = "Select ROUND(avg(jaime - dislike),2) as scoreMoyen from touite where id_utilisateur = :idUtilisateur";
+
         $stmtScore = $this->pdo->prepare($queryScore);
         $stmtScore->bindParam(':idUtilisateur', $id, PDO::PARAM_STR);
         $stmtScore->execute();
