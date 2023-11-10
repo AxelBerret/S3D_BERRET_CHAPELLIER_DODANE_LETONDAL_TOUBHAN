@@ -94,7 +94,6 @@ HTML;
 HTML;
             }
             echo <<<HTML
-            </div>
         </div>
         <hr class="tweet-divider">
         <div class="tweet-content">
