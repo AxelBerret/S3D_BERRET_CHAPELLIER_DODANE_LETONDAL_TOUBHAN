@@ -68,6 +68,7 @@ class AfficherSonProfil{
                         <li><a>Prénom : ' . $prenom . '</a></li>
                         <li><a>email : ' . $email . '</a></li>
                         <li><a>Score Moyen : ' . $ScoreMoyen . '</a></li>
+                        <li><a>Nombre d\'abonnés : ' . $ScoreMoyen . '</a></li>
                     </ul>
                 </div>
             </div>
