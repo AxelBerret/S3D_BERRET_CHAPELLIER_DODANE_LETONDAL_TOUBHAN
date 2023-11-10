@@ -297,11 +297,6 @@ switch ($action) {
         $un = new UtilisateurNarcissique();
         $un->execute();
     default:
-        if (isset($_SESSION['user_id'])) {
-            $iduser = $_SESSION['user_id'] ?? null;
-            $afficherMurUtilisateur->afficherMurUtilisateur($iduser);
-        }else{
             $afficherListeTouites->afficherListeTouites();
-        }
         break;
 }
