@@ -102,9 +102,9 @@ class afficherTouitesUtilisateur{
 
                 <div class="tendances-container">
                     <div class="tendance-title">Tendances France</div>
-                    <a href="#tag1" class="tag">#Tag1</a>
-                    <a href="#tag2" class="tag">#Tag2</a>
-                    <a href="#tag3" class="tag">#Tag3</a>
+                    <a href="dispatcher.php?action=afficherTouitesTag&tag=Tag1" class="tag">#Tag1</a>
+                    <a href="dispatcher.php?action=afficherTouitesTag&tag=Tag2" class="tag">#Tag2</a>
+                    <a href="dispatcher.php?action=afficherTouitesTag&tag=Tag3" class="tag">#Tag3</a>
                 </div>
                 
                 <div class="recherche-tag">
@@ -131,9 +131,9 @@ class afficherTouitesUtilisateur{
 
                 <div class="tendances-container">
                     <div class="tendance-title">Tendances France</div>
-                    <a href="#tag1" class="tag">#Tag1</a>
-                    <a href="#tag2" class="tag">#Tag2</a>
-                    <a href="#tag3" class="tag">#Tag3</a>
+                    <a href="dispatcher.php?action=afficherTouitesTag&tag=Tag1" class="tag">#Tag1</a>
+                    <a href="dispatcher.php?action=afficherTouitesTag&tag=Tag2" class="tag">#Tag2</a>
+                    <a href="dispatcher.php?action=afficherTouitesTag&tag=Tag3" class="tag">#Tag3</a>
                 </div>
                 
                 <div class="recherche-tag">
