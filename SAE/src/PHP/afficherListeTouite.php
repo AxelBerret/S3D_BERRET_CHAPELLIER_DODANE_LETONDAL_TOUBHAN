@@ -148,6 +148,7 @@ HTML;
 HTML;
         if(isset($_SESSION['user_id'])){
             echo <<<HTML
+                    <li><a href="dispatcher.php?action=afficherMonMur"><img src="../images/mur_accueil.png" alt="" class="menu-icon">Mon Mur</a></li>
                     <li><a href="dispatcher.php"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
                     <li><a href="HTML/tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
                     <li><a href="dispatcher.php?action=afficherSonProfil"><img src="../images/profil.png" alt="" class="menu-icon">Profil</a></li>
@@ -162,20 +163,7 @@ HTML;
                     <a href="#tag2" class="tag">#Tag2</a>
                     <a href="#tag3" class="tag">#Tag3</a>
                 </div>
-                
-                <div class="recherche-tag">
-                <form action="dispatcher.php" method="get">
-                    <input type="text" name="action" value="afficherTouitesTag" style="display: none;">
-                    <input type="text" name="tag" placeholder="Rechercher des tags..." class="tag-search-input">
-                    <button type="submit" class="tag-search-button">Rechercher</button>
-                </form>
-                </div>
-                <form action="../HTML/login.html" method="post">
-                    <button type="submit" class="btn-suivre-tag">Suivre le tag</button>
-                </form>
-                <form action="Dispatcher.php?action=deconnexion" method="post">
-                    <button type="submit" class="btn-connexion">Se déconnecter</button>
-                </form>
+
 HTML;
         }
         else{
@@ -220,7 +208,7 @@ HTML;
 
     public function estDejaSuivi($id_utilisateur, $id_suiveur) : bool{
 
-        $query = "SELECT COUNT(*) FROM AbonnementUtil WHERE utilisateurSuivis = :id_utilisateur AND utilisateurSuiveur = :id_suiveur;";
+        $query = "SELECT COUNT(*) FROM AbonnementUtil WHERE utilisateurSuivis = :id_utilisateur AND utilisateurSuiveurU = :id_suiveur;";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':id_utilisateur', $id_utilisateur, PDO::PARAM_STR);
         $stmt->bindParam(':id_suiveur', $id_suiveur, PDO::PARAM_STR);

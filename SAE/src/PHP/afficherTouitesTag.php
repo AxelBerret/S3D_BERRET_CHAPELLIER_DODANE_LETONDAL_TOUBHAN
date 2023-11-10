@@ -134,6 +134,13 @@ HTML;
 HTML;
         } else {
             echo <<<HTML
+                    <div class="recherche-tag">
+                    <form action="dispatcher.php" method="get">
+                        <input type="text" name="action" value="afficherTouitesTag" style="display: none;">
+                        <input type="text" name="tag" placeholder="Rechercher des tags..." class="tag-search-input">
+                        <button type="submit" class="tag-search-button">Rechercher</button>
+                    </form>
+                    </div>
                     <li><a href="dispatcher.php"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
                     <li><a href="tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
                 </ul>
