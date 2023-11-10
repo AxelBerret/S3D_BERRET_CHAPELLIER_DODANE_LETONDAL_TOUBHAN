@@ -251,6 +251,20 @@ switch ($action) {
         }
         break;
 
+    case 'nePlusSuivreTag':
+        if (isset($_SESSION['user_id'])) {
+            $libelleTag = $_GET['libelleTag'] ?? null;
+            if ($libelleTag !== null) {
+                $suivreTag->nePlusSuivreTag($libelleTag);
+                $tagSansHashtag = substr($libelleTag, 1);
+                header("Location: dispatcher.php?action=afficherTouitesTag&tag=$tagSansHashtag");
+                exit;
+            }
+        } else {
+            header('Location: HTML/login.html');
+        }
+        break;
+
     case 'afficherMonMur':
         if (isset($_SESSION['user_id'])) {
             $iduser = $_SESSION['user_id'] ?? null;

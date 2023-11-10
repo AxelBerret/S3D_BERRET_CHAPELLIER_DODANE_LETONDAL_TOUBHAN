@@ -92,7 +92,11 @@ HTML;
 HTML;
         if ($this->estDejaAbonneAuTag($tag)) {
             echo<<<HTML
-            <li><button type="submit" class="btn-suivre" disabled>Suivi</button></li>
+            <li><form action="dispatcher.php" method="get">
+                        <input type="hidden" name="action" value="nePlusSuivreTag">
+                        <input type="hidden" name="libelleTag" value="$tag">
+                        <button type="submit" class="btn-suivre">Ne plus suivre ce tag</button>
+                    </form></li>
 HTML;
         }else{
             echo<<<HTML
