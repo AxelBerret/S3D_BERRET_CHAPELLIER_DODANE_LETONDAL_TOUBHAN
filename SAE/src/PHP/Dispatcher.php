@@ -85,7 +85,8 @@ switch ($action) {
                     header('Location: dispatcher.php');
                     exit;
                 }else{
-                    $erreur = "Problème dans l'évaluation du touite";
+                    //Déjà évalué
+                    header('Location: dispatcher.php');
                 }
             }
         }else{
@@ -293,8 +294,11 @@ switch ($action) {
         break;
 
     default:
-        // Action par défaut
-
-        $afficherListeTouites->afficherListeTouites();
+        if (isset($_SESSION['user_id'])) {
+            $iduser = $_SESSION['user_id'] ?? null;
+            $afficherMurUtilisateur->afficherMurUtilisateur($iduser);
+        }else{
+            $afficherListeTouites->afficherListeTouites();
+        }
         break;
 }
