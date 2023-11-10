@@ -202,13 +202,13 @@ HTML;
                 </form>
                 </div>
                 
-            <form action="HTML/login.html" method="post">
+            <form action="../HTML/login.html" method="post">
                     <button type="submit" class="btn-connexion">Se connecter</button>
                 </form>
-                <form action="HTML/signup.html" method="post">
+                <form action="../HTML/signup.html" method="post">
                     <button type="submit" class="btn-inscription">S'inscrire</button>
                 </form>
-            </nav>
+            </nav>  
             </aside>
             </ul>
             </main>

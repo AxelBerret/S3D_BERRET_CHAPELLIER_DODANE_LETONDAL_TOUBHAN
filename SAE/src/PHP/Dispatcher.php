@@ -109,7 +109,7 @@ switch ($action) {
         $password = $_POST['password'] ?? '';
         if (!empty($nom) && !empty($prenom) && !empty($email) && !empty($password)) {
             if($signup->signup($nom, $prenom, $email, $password)){
-                header('Location: index.php');
+                header('Location: ../index.php');
                 exit();
             }else {
                 // Affichez un message d'erreur en cas d'échec de connexion
