@@ -155,6 +155,21 @@ switch ($action) {
         }
         break;
 
+    case 'nePlusSuivreUtilisateur':
+        if (isset($_SESSION['user_id'])) {
+            $idutil = $_POST['id_utilisateur'] ?? null;
+            if ($idutil !== null) {
+                $idutil = $suivreUtilisateur->nePlusSuivreUtilisateur($idutil);
+                if($idutil){
+                    header("Refresh:0");
+                    exit;
+                }else{
+                    $erreur = "L'unfollow n'a pas fonctionné";
+                }
+            }
+        }
+        break;
+
 
     case 'deconnexion':
         session_unset();
