@@ -23,11 +23,11 @@ class suivreUtilisateur{
             $idSuivreU = $row['nbsuivre']+1;
         }
 
-        $query = "INSERT INTO AbonnementUtil (id_suivreU, utilisateurSuivis, utilisateurSuiveurU) VALUES (:idSuivreU, :idUtilisateurSuivis, :idUtilisateurSuiveurU)";
+        $query = "INSERT INTO AbonnementUtil (id_suivreU, utilisateurSuivis, utilisateurSuiveur) VALUES (:idSuivreU, :idUtilisateurSuivis, :idUtilisateurSuiveur)";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':idSuivreU', $idSuivreU, PDO::PARAM_STR);
         $stmt->bindParam(':idUtilisateurSuivis', $idUtilisateurSuivis, PDO::PARAM_STR);
-        $stmt->bindParam(':idUtilisateurSuiveurU', $_SESSION['user_id'], PDO::PARAM_STR);
+        $stmt->bindParam(':idUtilisateurSuiveur', $_SESSION['user_id'], PDO::PARAM_STR);
         return $stmt->execute(); //Si la requête s'execute alors le suivi a bien eu lieu
     }
 
