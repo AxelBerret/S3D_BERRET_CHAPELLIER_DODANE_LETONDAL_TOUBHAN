@@ -168,7 +168,7 @@ switch ($action) {
             <meta charset="UTF-8">
             <title>Touiteur - Accueil</title>
             <link rel="stylesheet" href="../CSS/poster.css">
-            <link rel="icon" type="image/jpeg" href="images/icon.png">
+            <link rel="icon" type="image/jpeg" href="../images/icon.png">
         </head>
     
         <body>
@@ -181,7 +181,7 @@ switch ($action) {
                 </form>
             </div>
             <header>
-                <img src="images/logo.jpeg" alt="Logo Touiteur" class="logo">
+                <img src="../images/logo.jpeg" alt="Logo Touiteur" class="logo">
     
             </header>
     
