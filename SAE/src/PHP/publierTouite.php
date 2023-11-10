@@ -35,7 +35,7 @@ class publierTouite{
             echo "Échec du téléchargement ou type non autorisé<br>";
         }
 
-        $dest = str_replace('\\', '/', $dest);
+        $dest = str_replace('\\', '/', $dest);// ON essaye de remplacer les backslash pour que ça soit bien lu par le html
 
         // On insère un nouveau touite dans la table touite
         $query = "INSERT INTO TOUITE (id_utilisateur, texte, image, jaime, dislike, datePub) VALUES ( :id_utilisateur, :texte, :image, :jaime, :dislike, NOW())";
