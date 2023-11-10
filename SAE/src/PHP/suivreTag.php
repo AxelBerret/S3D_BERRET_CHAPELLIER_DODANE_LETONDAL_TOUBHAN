@@ -13,7 +13,7 @@ class suivreTag{
     public function suivreTag(string $tagSuivis): bool {
 
         // Insérer un nouvel abonnement au tag dans la base de données
-        $query = "INSERT INTO AbonnementTag (id_suivreT, tagSuivis, utilisateurSuiveurT) VALUES (UUID(), :tagSuivis, :utilisateurSuiveurT)";
+        $query = "INSERT INTO AbonnementTag (tagSuivis, utilisateurSuiveurT) VALUES (:tagSuivis, :utilisateurSuiveurT)";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':tagSuivis', $tagSuivis, PDO::PARAM_STR);
         $stmt->bindParam(':utilisateurSuiveurT', $_SESSION['user_id'], PDO::PARAM_STR);

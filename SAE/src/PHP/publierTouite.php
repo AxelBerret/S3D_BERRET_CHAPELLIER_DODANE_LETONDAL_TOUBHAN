@@ -10,42 +10,22 @@ class publierTouite{
         $this->db = $db;
     }
 
-    public function publierTouite(string $idutilisateur, string $texte,$image) : bool{
+    public function publierTouite(string $idutilisateur, string $texte) : bool{
 
         if(235 < strlen($texte)){
             throw new TouiteTropLong("Ce touite dépasse la limite de 235 charactères");
         }
 
-        if ($image !== null && !empty($image['tmp_name'])) {
-            $imagePath = '../ImagesTouite/';
-            $imageName = uniqid() . '_' . $image['name'];
-            $imageFullPath = $imagePath . $imageName;
-
-            move_uploaded_file($image['tmp_name'], $imageFullPath);
-        } else {
-            $imageName = null;
-        }
-
-        $query = "SELECT MAX(id_touite) as nbtouite FROM TOUITE";
-
-        $result = $this->db->query($query);
-
-        $row = $result->fetch(PDO::FETCH_ASSOC);
-
-        if ($row) {
-            $idtouite = $row['nbtouite']+1;
-        }
-
         // On insère un nouveau touite dans la table touite
-        $query = "INSERT INTO TOUITE (id_touite, id_utilisateur, texte, image, datePub) VALUES (:id_touite, :id_utilisateur, :texte, :image, NOW())";
+        $query = "INSERT INTO TOUITE (id_utilisateur, texte, jaime, dislike, datePub) VALUES ( :id_utilisateur, :texte, :jaime, :dislike, NOW())";
         $jaime = 0;
         $dislike = 0;
 
         $stmt = $this->db->prepare($query);
-        $stmt->bindParam(':id_touite', $idtouite, PDO::PARAM_STR);
         $stmt->bindParam(':id_utilisateur', $idutilisateur, PDO::PARAM_STR);
         $stmt->bindParam(':texte', $texte, PDO::PARAM_STR);
-        $stmt->bindParam(':image', $imageName, PDO::PARAM_STR);
+        $stmt->bindParam(':jaime', $jaime, PDO::PARAM_STR);
+        $stmt->bindParam(':dislike', $dislike, PDO::PARAM_STR);
         $stmt->execute();
 
         $tags = [];
@@ -57,12 +37,21 @@ class publierTouite{
             $tags = $matches[0];
         }
 
+        $query = "SELECT id_touite, datePub FROM touite WHERE id_utilisateur = :id_utilisateur AND datePub = NOW()";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':id_utilisateur', $idutilisateur, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $idtouite =  $stmt->fetch(PDO::FETCH_ASSOC);
+
+
         foreach ($tags as $tag) {
             // Insérer l'association dans la table des tags
             $query = "INSERT INTO TAG (libelletag, id_touite) VALUES (:libelletag, :id_touite)";
             $stmt = $this->db->prepare($query);
             $stmt->bindParam(':libelletag', $tag, PDO::PARAM_STR);
-            $stmt->bindParam(':id_touite', $idtouite, PDO::PARAM_STR);
+            $stmt->bindParam(':id_touite', $idtouite['id_touite'], PDO::PARAM_STR);
             $stmt->execute();
         }
 

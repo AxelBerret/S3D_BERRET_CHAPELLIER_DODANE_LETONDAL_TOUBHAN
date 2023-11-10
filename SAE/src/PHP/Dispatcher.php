@@ -16,6 +16,7 @@ $afficherListeTouites = new afficherListeTouite($bdd);
 $afficherTouiteDetail = new afficherTouiteDetail($bdd);
 $afficherTouitesUtilisateur = new afficherTouitesUtilisateur($bdd);
 $afficherTouitesTag = new afficherTouitesTag($bdd);
+$afficherMurUtilisateur = new afficherMurUtilisateur($bdd);
 $publierTouite = new publierTouite($bdd);
 $evaluerTouite = new evaluerTouite($bdd);
 $effacerTouite = new effacerTouite($bdd);
@@ -129,7 +130,7 @@ switch ($action) {
                 header('Location: dispatcher.php');
                 exit();
             } else {
-                header('Location: HTML/login.HTML');
+                header('Location: ../HTML/login.HTML');
                 exit();
             }
         break;
@@ -242,6 +243,17 @@ switch ($action) {
                 $tagSansHashtag = substr($libelleTag, 1);
                 header("Location: dispatcher.php?action=afficherTouitesTag&tag=$tagSansHashtag");
                 exit;
+            }
+        } else {
+            header('Location: HTML/login.html');
+        }
+        break;
+
+    case 'afficherMonMur':
+        if (isset($_SESSION['user_id'])) {
+            $iduser = $_SESSION['user_id'] ?? null;
+            if ($iduser !== null) {
+                $afficherMurUtilisateur->afficherMurUtilisateur($iduser);
             }
         } else {
             header('Location: HTML/login.html');
