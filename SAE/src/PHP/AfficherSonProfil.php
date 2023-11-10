@@ -33,10 +33,10 @@ class AfficherSonProfil
         }
 
         $queryScore = "Select avg(jaime-dislike) as scoreMoyen from touite where id_utilisateur = :idUtilisateur";
-        $Score = $this->pdo->prepare($queryScore);
-        $Score->bindParam(':idUtilisateur', $id, PDO::PARAM_STR);
-        $Score->execute();
-        $ScoreMoyen = $Score->fetch(PDO::FETCH_ASSOC)['scoreMoyen'];
+        $stmtScore = $this->pdo->prepare($queryScore);
+        $stmtScore->bindParam(':idUtilisateur', $id, PDO::PARAM_STR);
+        $stmtScore->execute();
+        $ScoreMoyen = $stmtScore->fetch(PDO::FETCH_ASSOC)['scoreMoyen'];
 
 
         echo <<<HTML
