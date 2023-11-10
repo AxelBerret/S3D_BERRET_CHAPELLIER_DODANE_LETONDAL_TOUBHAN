@@ -68,6 +68,14 @@ class afficherTouitesUtilisateur{
                         <a href='dispatcher.php?action=afficherTouiteDetail&idtouite={$row['id_touite']}' style='text-decoration: none; color: white;'>
                         <p>$texteCourt</p>
                         </a><br>
+    HTML;
+            if($row['image']==null){
+                echo '<br><br><br>';
+            }
+            else{
+                echo "<img src='{$row['image']}' alt='Image du touite' class='tweet-image'>";
+            }
+            echo <<<HTML
                     </div>
     </li>
     HTML;
