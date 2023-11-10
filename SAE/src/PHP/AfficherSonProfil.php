@@ -124,7 +124,6 @@ class AfficherSonProfil{
                     <input type="text" name="tag" placeholder="Rechercher des tags..." class="tag-search-input">
                     <button type="submit" class="tag-search-button">Rechercher</button>
                 </form>
-                </div>
                     <form action="login.html" method="post">
                         <button type="submit" class="btn-connexion">Se connecter</button>
                     </form>
