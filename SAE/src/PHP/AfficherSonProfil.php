@@ -125,6 +125,6 @@ class AfficherSonProfil{
         </body>
         </html>';
         }
-
+    echo $htmlString;
     }
 }

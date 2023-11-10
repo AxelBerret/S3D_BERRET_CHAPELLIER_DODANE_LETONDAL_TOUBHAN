@@ -59,8 +59,9 @@ switch ($action) {
 
             $idutilisateur = $_SESSION['user_id'];
             $texte = $_POST['texte'] ?? '';
+            $image = $_FILES['image'] ?? null;
             if (!empty($texte)) {
-                $publierTouite->publierTouite($idutilisateur, $texte);
+                $publierTouite->publierTouite($idutilisateur, $texte,$image);
                 if($publierTouite){
                     header('Location: dispatcher.php');
                     exit;
