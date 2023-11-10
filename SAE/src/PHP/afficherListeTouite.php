@@ -111,7 +111,7 @@ HTML;
         <div class="tweet-content">
                         <a href='dispatcher.php?action=afficherTouiteDetail&idtouite={$row['id_touite']}' style='text-decoration: none; color: white;'>
                         <p>$texteCourt</p>
-                        <img src="{$row['image']}" alt="Nom de l'image" class="tweet-image">
+                        <img src='{$row['image']}' alt='Image du touite' class='tweet-image'>
                         </a><br>
                         <div class="like-dislike-buttons">
                             <div class="like-dislike-buttons">

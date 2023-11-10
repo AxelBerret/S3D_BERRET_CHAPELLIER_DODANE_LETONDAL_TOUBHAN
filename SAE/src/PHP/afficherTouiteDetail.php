@@ -65,7 +65,11 @@ HTML;
                 <div class="tweet-content">
                                 <p>{$row['texte']}</p>
                                 <br><br><br>
+                                                        <img src='{$row['image']}' alt='Image du touite' class='tweet-image'>
+                                <br><br><br>
+
                                 <p>{$row['datePub']}</p>
+                                
                             </div>
             </li>
 HTML;

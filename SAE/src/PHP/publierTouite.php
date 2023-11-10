@@ -15,37 +15,42 @@ class publierTouite{
         if(235 < strlen($texte)){
             throw new TouiteTropLong("Ce touite dépasse la limite de 235 charactères");
         }
-        $upload_dir = __DIR__ . DIRECTORY_SEPARATOR . 'ImagesTouite' . DIRECTORY_SEPARATOR;  // Répertoire où les images seront stockées
-        $filename = uniqid();  // nom de fichier unique
-        $tmp = $image['image']['tmp_name'];
-        $allowedFileType = ['image/jpeg', 'image/png', 'image/gif']; // Types de fichiers autorisés
+        $allowedFileType = ['image/jpeg', 'image/png', 'image/gif'];
 
-        if (
-            ($_FILES['image']['error'] === UPLOAD_ERR_OK) &&
-            (in_array($_FILES['image']['type'], $allowedFileType))
-        ) {
-            // Vérification du type de fichier et déplacement vers le répertoire de destination
-            $dest = $upload_dir . $filename . '.png';  // Nom de fichier
-            if (move_uploaded_file($tmp, $dest)) {
-                echo "Téléchargement terminé avec succès<br>";
+        $upload_dir = 'ImagesTouite' . DIRECTORY_SEPARATOR;
+        $filename = uniqid() . '.png';
+
+        // Vérifie si le fichier a été téléchargé
+        if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+            // Récupérer le chemin temporaire du fichier
+            $tmp = $_FILES['image']['tmp_name'];
+
+            // Vérification du type de fichier
+            if (in_array($_FILES['image']['type'], $allowedFileType)) {
+                $dest = __DIR__ . DIRECTORY_SEPARATOR . $upload_dir . $filename;
+                $relative_dest = $upload_dir . $filename;
+
+                if (move_uploaded_file($tmp, $dest)) {
+                    echo "Téléchargement terminé avec succès<br>";
+                } else {
+                    echo "Hum, hum, téléchargement non valide<br>";
+                }
             } else {
-                echo "Hum, hum, téléchargement non valide<br>";
+                echo "Échec du téléchargement ou type non autorisé<br>";
             }
         } else {
-            echo "Échec du téléchargement ou type non autorisé<br>";
+            echo "Aucun fichier téléchargé ou erreur de fichier<br>";
         }
 
-        $dest = str_replace('\\', '/', $dest);// ON essaye de remplacer les backslash pour que ça soit bien lu par le html
-
-        // On insère un nouveau touite dans la table touite
-        $query = "INSERT INTO TOUITE (id_utilisateur, texte, image, jaime, dislike, datePub) VALUES ( :id_utilisateur, :texte, :image, :jaime, :dislike, NOW())";
+// Utilisez le chemin relatif pour l'insertion dans la base de données
+        $query = "INSERT INTO TOUITE (id_utilisateur, texte, image, jaime, dislike, datePub) VALUES (:id_utilisateur, :texte, :image, :jaime, :dislike, NOW())";
         $jaime = 0;
         $dislike = 0;
 
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':id_utilisateur', $idutilisateur, PDO::PARAM_STR);
         $stmt->bindParam(':texte', $texte, PDO::PARAM_STR);
-        $stmt->bindParam(':image', $dest, PDO::PARAM_STR);
+        $stmt->bindParam(':image', $relative_dest, PDO::PARAM_STR);
         $stmt->bindParam(':jaime', $jaime, PDO::PARAM_STR);
         $stmt->bindParam(':dislike', $dislike, PDO::PARAM_STR);
         $stmt->execute();
@@ -64,6 +69,7 @@ class publierTouite{
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':id_utilisateur', $idutilisateur, PDO::PARAM_STR);
         $stmt->execute();
+        $stmt->bindParam(':image', $relative_dest, PDO::PARAM_STR); // Utiliser $relative_dest ici
 
         $idtouite =  $stmt->fetch(PDO::FETCH_ASSOC);
 
