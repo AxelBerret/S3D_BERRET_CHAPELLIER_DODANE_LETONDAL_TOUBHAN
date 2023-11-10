@@ -83,19 +83,16 @@ HTML;
                 $suiviButton = "<form action='dispatcher.php' method='post'>
                         <input type='hidden' name='action' value='suivreUtilisateur'>
                         <input type='hidden' name='id_utilisateur' value='$id_utilisateur'>
-                        <button type='submit' class='btn-supprimer'>Suivre</button>
+                        <button type='submit' class='btn-suivre'>Suivre</button>
                     </form>";
                 // Vérifie si l'utilisateur est déjà suivi
                 if ($this->estDejaSuivi($id_utilisateur, $_SESSION['user_id'])) {
-                    $suiviButton = "<button class='btn-supprimer' disabled>Suivi</button>";
+                    $suiviButton = "<button class='btn-suivre' disabled>Suivi</button>";
                 }
 
                 echo $suiviButton;
             }else{
                 echo <<<HTML
-                                        <form action="HTML/login.html" method="post">
-                                            <button type="submit" class="btn-suivre">Suivre</button>
-                                        </form>
 HTML;
             }
             echo <<<HTML
@@ -117,9 +114,6 @@ HTML;
                                     <img src="../Images/dislike.png" alt="Dislike button" class="dislike-button">
                                 </a>
                                 <span class="dislike-counter">{$row['dislike']}</span>
-                         <form action="HTML/login.html" method="post">
-                            <button type="submit" class="btn-supprimer">Supprimer</button>
-                        </form>
 HTML;
             if(isset($_SESSION['user_id'])){
             if ($_SESSION['user_id'] == $row['id_utilisateur']) {
