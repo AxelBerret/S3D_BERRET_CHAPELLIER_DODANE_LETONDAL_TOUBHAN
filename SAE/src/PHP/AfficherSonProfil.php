@@ -76,7 +76,7 @@ class AfficherSonProfil{
                     <li><a href="dispatcher.php?action=afficherSonProfil"><img src="../images/profil.png" alt="" class="menu-icon">Profil</a></li>
                 </ul>
                 <div class="profile-module">
-                <div class="profile-username">@$nom $prenom</div>
+                <div class="profile-username">@'.$nom.' '. $prenom.'</div>
                 </div>
 
                 <div class="tendances-container">
@@ -125,6 +125,6 @@ class AfficherSonProfil{
         </body>
         </html>';
         }
-
+    echo $htmlString;
     }
 }
