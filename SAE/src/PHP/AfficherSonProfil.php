@@ -74,7 +74,7 @@ class AfficherSonProfil{
             </header>
             <div class="main-content">
                 <div class="profil-main-container">
-                    <div class="profil-titles"><h3>Profil de username</h3></div>
+                    <div class="profil-titles"><h3>Profil de ' . $prenom . '</h3></div>
                     <ul class="menu">
                         <li><a>ID : '. $id . '</a></li>
                         <li><a>Nom : ' . $nom . '</a></li>
