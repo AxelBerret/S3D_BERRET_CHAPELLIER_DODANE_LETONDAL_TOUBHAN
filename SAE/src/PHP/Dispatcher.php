@@ -168,7 +168,7 @@ switch ($action) {
             <meta charset="UTF-8">
             <title>Touiteur - Accueil</title>
             <link rel="stylesheet" href="../CSS/poster.css">
-            <link rel="icon" type="image/jpeg" href="images/icon.png">
+            <link rel="icon" type="image/jpeg" href="../images/icon.png">
         </head>
     
         <body>
@@ -181,7 +181,7 @@ switch ($action) {
                 </form>
             </div>
             <header>
-                <img src="images/logo.jpeg" alt="Logo Touiteur" class="logo">
+                <img src="../images/logo.jpeg" alt="Logo Touiteur" class="logo">
     
             </header>
     
@@ -201,9 +201,9 @@ switch ($action) {
                 <nav>
     
                     <ul class="menu">
-                        <li><a href="dispatcher.php"><img src="images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
-                        <li><a href="tendances.html"><img src="images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
-                        <li><a href="ACONFIGURER"><img src="images/icon_profil.png" alt="" class="menu-icon">Profil</a></li>
+                        <li><a href="dispatcher.php"><img src="../images/icon_accueil.png" alt="" class="menu-icon">Accueil</a></li>
+                        <li><a href="tendances.html"><img src="../images/icon_tendances.png" alt="" class="menu-icon">Tendances</a></li>
+                        <li><a href="ACONFIGURER"><img src="../images/icon_profil.png" alt="" class="menu-icon">Profil</a></li>
     
                     </ul>
                     <div class="profile-module">
