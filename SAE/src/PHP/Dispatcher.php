@@ -232,12 +232,9 @@ switch ($action) {
                         <a href="#tag2" class="tag">#Tag2</a>
                         <a href="#tag3" class="tag">#Tag3</a>
                     </div>
-                    <form action="../HTML/login.html" method="post">
-                        <button type="submit" class="btn-connexion">Se connecter</button>
-                    </form>
-                    <form action="../HTML/signup.html" method="post">
-                        <button type="submit" class="btn-inscription">S'inscrire</button>
-                    </form>
+             <form action="Dispatcher.php?action=deconnexion" method="post">
+                    <button type="submit" class="btn-connexion">Se déconnecter</button>
+                </form>
     
                 </nav>
     
