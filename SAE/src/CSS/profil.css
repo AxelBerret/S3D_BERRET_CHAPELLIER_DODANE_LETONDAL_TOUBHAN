@@ -17,7 +17,6 @@ html, body {
 }
 
 header {
-    width: 100%;
     padding: 50px 50px 50px 50px;
     background-color: #000000; /* Assurer que le header est aussi noir */
 }

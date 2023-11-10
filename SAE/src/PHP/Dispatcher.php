@@ -247,6 +247,38 @@ switch ($action) {
         }
         break;
 
+    case 'afficherInfluenceurs':
+        $influenceurs = $connexion->afficherInfluenceurs();
+        echo <<<HTML
+            <!DOCTYPE html>
+        <html lang="fr">
+        <head>
+            <meta charset="UTF-8">
+            <title>Touiteur - Influenceurs</title>
+            <link rel="stylesheet" href="../CSS/influenceurs.css"> <!-- Assurez-vous d'avoir un fichier CSS approprié -->
+            <link rel="icon" type="image/jpeg" href="../images/icon.png">
+        </head>
+        <body>
+        <div class="container">
+            <header>
+                <img src="../images/logo.jpeg" alt="Logo Touiteur" class="logo">
+            </header>
+            <div class="main-content">
+                <div class="influenceurs-container">
+                    <h2>Les Influenceurs</h2>
+                    <ul></ul>
+                </div>
+            </div>
+        </div>
+        </body>
+        </html>
+        HTML;
+
+        foreach ($influenceurs as $influenceur) {
+            echo '<li>' . $influenceur['nom'] . ' ' . $influenceur['prenom'] . ' - ' . $influenceur['nbSuiveurs'] . ' suiveurs</li>';
+        }
+        break;
+
     default:
         // Action par défaut
 
