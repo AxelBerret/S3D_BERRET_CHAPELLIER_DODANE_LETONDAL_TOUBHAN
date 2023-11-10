@@ -44,9 +44,8 @@ class Signup{
         }
 
         // à nouveau on utilise une requête préparée afin de prévenir toutes injections SQL
-        $query = "INSERT INTO Utilisateur (id_utilisateur, nom, prenom, email, password) VALUES (:idutilisateur, :nom, :prenom, :email, :password)";
+        $query = "INSERT INTO Utilisateur (nom, prenom, email, password) VALUES (:nom, :prenom, :email, :password)";
         $stmt = $this->db->prepare($query);
-        $stmt->bindParam(':idutilisateur', $idutilisateur, PDO::PARAM_STR);
         $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
         $stmt->bindParam(':prenom', $prenom, PDO::PARAM_STR);
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
