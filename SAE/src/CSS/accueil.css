@@ -358,7 +358,7 @@ header {
 
 .btn-suivre {
     padding : 10px 20px;
-
+margin-top: 20px;
     color : white;
     background-color: transparent;
     border-radius: 55px;
