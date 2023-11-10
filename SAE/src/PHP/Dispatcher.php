@@ -130,7 +130,7 @@ switch ($action) {
                 header('Location: dispatcher.php');
                 exit();
             } else {
-                header('Location: HTML/login.HTML');
+                header('Location: ../HTML/login.HTML');
                 exit();
             }
         break;
