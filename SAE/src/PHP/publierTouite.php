@@ -10,20 +10,42 @@ class publierTouite{
         $this->db = $db;
     }
 
-    public function publierTouite(string $idutilisateur, string $texte) : bool{
+    public function publierTouite(string $idutilisateur, string $texte, $image) : bool{
 
         if(235 < strlen($texte)){
             throw new TouiteTropLong("Ce touite dépasse la limite de 235 charactères");
         }
+        $upload_dir = __DIR__ . DIRECTORY_SEPARATOR . 'ImagesTouite' . DIRECTORY_SEPARATOR;  // Répertoire où les images seront stockées
+        $filename = uniqid();  // nom de fichier unique
+        $tmp = $image['image']['tmp_name'];
+        $allowedFileType = ['image/jpeg', 'image/png', 'image/gif']; // Types de fichiers autorisés
+
+        if (
+            ($_FILES['image']['error'] === UPLOAD_ERR_OK) &&
+            (in_array($_FILES['image']['type'], $allowedFileType))
+        ) {
+            // Vérification du type de fichier et déplacement vers le répertoire de destination
+            $dest = $upload_dir . $filename . '.png';  // Nom de fichier
+            if (move_uploaded_file($tmp, $dest)) {
+                echo "Téléchargement terminé avec succès<br>";
+            } else {
+                echo "Hum, hum, téléchargement non valide<br>";
+            }
+        } else {
+            echo "Échec du téléchargement ou type non autorisé<br>";
+        }
+
+        $dest = str_replace('\\', '/', $dest);
 
         // On insère un nouveau touite dans la table touite
-        $query = "INSERT INTO TOUITE (id_utilisateur, texte, jaime, dislike, datePub) VALUES ( :id_utilisateur, :texte, :jaime, :dislike, NOW())";
+        $query = "INSERT INTO TOUITE (id_utilisateur, texte, image, jaime, dislike, datePub) VALUES ( :id_utilisateur, :texte, :image, :jaime, :dislike, NOW())";
         $jaime = 0;
         $dislike = 0;
 
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':id_utilisateur', $idutilisateur, PDO::PARAM_STR);
         $stmt->bindParam(':texte', $texte, PDO::PARAM_STR);
+        $stmt->bindParam(':image', $dest, PDO::PARAM_STR);
         $stmt->bindParam(':jaime', $jaime, PDO::PARAM_STR);
         $stmt->bindParam(':dislike', $dislike, PDO::PARAM_STR);
         $stmt->execute();
