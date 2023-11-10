@@ -296,6 +296,7 @@ switch ($action) {
     case 'utilisateurNarcissique':
         $un = new UtilisateurNarcissique();
         $un->execute();
+        break;
     default:
             $afficherListeTouites->afficherListeTouites();
         break;
