@@ -110,7 +110,7 @@ HTML;
                         <p>$texteCourt</p>
                         <br>
                         </a><br>
-                        <img src='{$row['image']}' alt='Image du touite' class='tweet-image'>
+                        
                         <div class="like-dislike-buttons">
                             <div class="like-dislike-buttons">
                                 <a href="dispatcher.php?action=evaluerTouite&idTouite={$row['id_touite']}&like=1">
@@ -136,6 +136,14 @@ HTML;}
 
                         </div>
                     </div>
+    HTML;
+            if($row['image']==null){
+                echo '<br><br><br>';
+            }
+            else{
+                echo "<img src='{$row['image']}' alt='Image du touite' class='tweet-image'>";
+            }
+            echo <<<HTML
                     </div>
     </li>
 HTML;

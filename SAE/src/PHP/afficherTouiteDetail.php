@@ -64,6 +64,7 @@ HTML;
 
         if ($row) {
             echo <<<HTML
+                                
             <li class="tweet">
                 <div class="tweet-header">
                     <div class="tweet-user-info">
@@ -76,7 +77,15 @@ HTML;
                 <div class="tweet-content">
                                 <p>{$row['texte']}</p>
                                 <br><br><br>
-                                                        <img src='{$row['image']}' alt='Image du touite' class='tweet-image'>
+            HTML;
+            if($row['image']==null){
+                echo '<br><br><br>';
+            }
+            else{
+                echo "<img src='{$row['image']}' alt='Image du touite' class='tweet-image'>";
+            }
+                        echo <<<HTML
+
                                 <br><br><br>
 
                                 <p>{$row['datePub']}</p>

@@ -111,6 +111,14 @@ HTML;
         <div class="tweet-content">
                         <a href='dispatcher.php?action=afficherTouiteDetail&idtouite={$row['id_touite']}' style='text-decoration: none; color: white;'>
                         <p>$texteCourt</p>
+        HTML;
+            if($row['image']==null){
+                echo '<br><br><br>';
+            }
+            else{
+                echo "<img src='{$row['image']}' alt='Image du touite' class='tweet-image'>";
+            }
+            echo <<<HTML
                         </a><br>
                         <div class="like-dislike-buttons">
                             <div class="like-dislike-buttons">
@@ -142,6 +150,12 @@ HTML;
                     </div>
     </li>
 HTML;
+            if($row['image']==null){
+                echo '<br><br><br>';
+            }
+            else{
+                echo "<img src='{$row['image']}' alt='Image du touite' class='tweet-image'>";
+            }
         }
         if (isset($_SESSION['user_id'])) {
             $nom = $_SESSION['nom'];

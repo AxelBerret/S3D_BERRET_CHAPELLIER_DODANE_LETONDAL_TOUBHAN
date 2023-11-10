@@ -110,14 +110,21 @@ HTML;
                         <p>$texteCourt</p>
                         <br>
                         </a><br>
-                        <img src='{$row['image']}' alt='Image du touite' class='tweet-image'>
+HTML;
+            if($row['image']==null){
+                echo '<br><br><br>';
+            }
+            else{
+                echo "<img src='{$row['image']}' alt='Image du touite' class='tweet-image'>";
+            }
+            echo<<<HTML
                         <div class="like-dislike-buttons">
                             <div class="like-dislike-buttons">
                                 <a href="dispatcher.php?action=evaluerTouite&idTouite={$row['id_touite']}&like=1">
                                     <img src="../Images/like.png" alt="Like button" class="like-button">
                                 </a>
                                 <span class="like-counter">{$row['jaime']}</span>
-                                
+
                                 <a href="dispatcher.php?action=evaluerTouite&idTouite={$row['id_touite']}&like=0">
                                     <img src="../Images/dislike.png" alt="Dislike button" class="dislike-button">
                                 </a>

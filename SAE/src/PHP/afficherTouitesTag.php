@@ -103,6 +103,7 @@ HTML;
 
                 echo $suiviButton;
             }
+
             echo <<<HTML
         </div>
         <hr class="tweet-divider">
@@ -110,8 +111,15 @@ HTML;
                         <a href='dispatcher.php?action=afficherTouiteDetail&idtouite={$row['id_touite']}' style='text-decoration: none; color: white;'>
                         <p>$texteCourt</p>
                         <br>
+HTML;
+            if($row['image']==null){
+                echo '<br><br><br>';
+            }
+            else{
+                echo "<img src='{$row['image']}' alt='Image du touite' class='tweet-image'>";
+            }
+            echo<<<HTML
                         </a><br>
-                        <img src='{$row['image']}' alt='Image du touite' class='tweet-image'>
                         <div class="like-dislike-buttons">
                             <div class="like-dislike-buttons">
                                 <a href="dispatcher.php?action=evaluerTouite&idTouite={$row['id_touite']}&like=1">
@@ -124,6 +132,7 @@ HTML;
                                 </a>
                                 <span class="dislike-counter">{$row['dislike']}</span>
 HTML;
+
             if(isset($_SESSION['user_id'])){
                 if ($_SESSION['user_id'] == $row['id_utilisateur']) {
                     echo <<<HTML
@@ -133,12 +142,14 @@ HTML;
                                             <button type="submit" class="btn-supprimer">Supprimer</button>
                                         </form>
 HTML;}
+
             }echo<<<HTML
 
                         </div>
                     </div>
                     </div>
     </li>
+
 HTML;
         }
         $totalPages = $this->getTotalPages($tag);
