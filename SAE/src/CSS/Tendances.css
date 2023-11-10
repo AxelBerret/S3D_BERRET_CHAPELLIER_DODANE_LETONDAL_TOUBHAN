@@ -18,6 +18,8 @@ html, body {
     font-family: 'Arial', sans-serif;
     background-color: #000000; /* Fond noir pour tout le site */
     color: #ffffff; /* Couleur de texte blanche pour contraste */
+    transform: scale(0.9); /* Réduit la taille de 10% */
+
 }
 header {
     display: flex;

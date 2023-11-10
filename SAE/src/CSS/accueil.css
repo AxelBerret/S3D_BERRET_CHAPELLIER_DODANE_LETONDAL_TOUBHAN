@@ -13,8 +13,7 @@ html, body {
     font-family: 'Arial', sans-serif;
     background-color: #000000;
     color: #ffffff;
-        transform: scale(0.9); /* Réduit la taille de 10% */
-        transform-origin: top center; /* Définit l'origine de la transformation */
+    transform: scale(0.9); /* Réduit la taille de 10% */
 
 
 }
